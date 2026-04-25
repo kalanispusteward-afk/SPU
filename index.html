@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunrise Professionals Unit</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E2C97E;
+    --gold-dark: #A8883A;
+    --purple: #2D1B4E;
+    --purple-mid: #3D2666;
+    --purple-light: #4E3180;
+    --purple-pale: #1E1235;
+    --black: #0D0A14;
+    --white: #F5F0FF;
+    --gray: #8B82A0;
+    --gray-light: #C4BBDA;
+    --surface: #1A1030;
+    --surface2: #221540;
+    --border: rgba(201,168,76,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,10,20,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: 0.06em; color: var(--gold); text-transform: uppercase; }
+  .nav-logo span { color: var(--gray-light); font-weight: 400; font-size: 13px; letter-spacing: 0.08em; margin-left: 10px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--gray); text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .alert-banner { background: linear-gradient(90deg, var(--purple-mid), var(--purple-light), var(--purple-mid)); border-bottom: 1px solid var(--border); color: var(--gold-light); text-align: center; padding: 9px 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; position: fixed; top: 64px; left: 0; right: 0; z-index: 99; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 5rem 5rem; position: relative; overflow: hidden; background: radial-gradient(ellipse at 80% 50%, rgba(78,49,128,0.25) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(45,27,78,0.3) 0%, transparent 50%); }
+  .hero::after { content: 'SPU'; position: absolute; right: -40px; bottom: -80px; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 320px; color: rgba(201,168,76,0.04); line-height: 1; pointer-events: none; user-select: none; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 2rem; width: fit-content; }
+  .hero-tag::before { content: ''; display: block; width: 32px; height: 2px; background: var(--gold); }
+  .hero-tag span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(52px, 8.5vw, 110px); line-height: 0.92; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2.5rem; color: var(--white); }
+  .hero h1 .accent { color: var(--gold); }
+  .hero h1 .outline { -webkit-text-stroke: 1.5px var(--purple-light); color: transparent; }
+  .hero-sub { font-size: 17px; color: var(--gray-light); max-width: 520px; font-weight: 300; line-height: 1.8; margin-bottom: 3rem; }
+  .hero-mission { background: rgba(45,27,78,0.5); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1.75rem 2rem; max-width: 620px; font-size: 15px; font-style: italic; color: var(--gray-light); line-height: 1.9; }
+  .hero-mission strong { display: block; font-style: normal; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  section { padding: 6rem 5rem; border-top: 1px solid rgba(201,168,76,0.08); }
+  .section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
+  .section-label::after { content: ''; display: block; width: 24px; height: 1px; background: var(--gold-dark); }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px, 5vw, 58px); text-transform: uppercase; line-height: 0.95; margin-bottom: 2.5rem; color: var(--white); letter-spacing: -0.01em; }
+  .section-intro { color: var(--gray-light); max-width: 600px; margin-bottom: 3rem; font-size: 15px; line-height: 1.8; font-weight: 300; }
+  .grievance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.08); }
+  .grievance-card { background: var(--surface); padding: 2rem; transition: background 0.25s; position: relative; }
+  .grievance-card:hover { background: var(--surface2); }
+  .grievance-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold-dark), transparent); opacity: 0; transition: opacity 0.25s; }
+  .grievance-card:hover::before { opacity: 1; }
+  .grievance-status { display: inline-block; background: rgba(201,168,76,0.12); color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 1rem; border: 1px solid rgba(201,168,76,0.2); }
+  .grievance-type { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px; text-transform: uppercase; margin-bottom: 0.75rem; color: var(--white); }
+  .grievance-desc { color: var(--gray); font-size: 14px; line-height: 1.7; }
+  .events-list { display: flex; flex-direction: column; gap: 1px; }
+  .event-item { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 2rem; background: var(--surface); padding: 1.5rem 2rem; border-left: 2px solid transparent; transition: all 0.2s; }
+  .event-item:hover { background: var(--surface2); border-left-color: var(--gold); }
+  .event-date { text-align: center; font-family: 'Barlow Condensed', sans-serif; }
+  .event-date .month { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  .event-date .day { font-size: 44px; font-weight: 900; line-height: 1; color: var(--white); }
+  .event-info .event-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 21px; text-transform: uppercase; margin-bottom: 4px; color: var(--white); }
+  .event-info .event-detail { color: var(--gray); font-size: 13px; }
+  .event-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(201,168,76,0.25); color: var(--gold); white-space: nowrap; background: rgba(201,168,76,0.06); }
+  .officers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.08); }
+  .officer-card { background: var(--surface); padding: 2rem; transition: background 0.2s; }
+  .officer-card:hover { background: var(--surface2); }
+  .officer-initial { width: 48px; height: 48px; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+  .officer-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 19px; text-transform: uppercase; margin-bottom: 3px; color: var(--white); }
+  .officer-title { color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .officer-contact { color: var(--gray); font-size: 13px; }
+  .forms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+  .form-card { background: var(--surface); border: 1px solid rgba(201,168,76,0.1); padding: 2.5rem; position: relative; overflow: hidden; }
+  .form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark)); }
+  .form-card.urgent::before { background: linear-gradient(90deg, #8B1A1A, #C0392B, #8B1A1A); }
+  .form-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--white); }
+  .form-card-desc { color: var(--gray); font-size: 13px; margin-bottom: 2rem; line-height: 1.7; font-weight: 300; }
+  .form-group { margin-bottom: 1.1rem; }
+  label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px; }
+  input, textarea, select { width: 100%; background: rgba(13,10,20,0.6); border: 1px solid rgba(201,168,76,0.15); color: var(--white); padding: 11px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+  input:focus, textarea:focus, select:focus { border-color: var(--gold); background: rgba(45,27,78,0.3); }
+  input::placeholder, textarea::placeholder { color: rgba(139,130,160,0.5); }
+  textarea { resize: vertical; min-height: 90px; }
+  select option { background: var(--purple-pale); }
+  .btn { display: block; width: 100%; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border: none; cursor: pointer; margin-top: 1rem; transition: opacity 0.2s, transform 0.1s; }
+  .btn:hover { opacity: 0.9; }
+  .btn:active { transform: scale(0.99); }
+  .btn-urgent { background: linear-gradient(135deg, #8B1A1A, #C0392B); color: var(--white); }
+  footer { background: var(--purple-pale); border-top: 1px solid var(--border); padding: 3rem 5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 32px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); }
+  .footer-tagline { font-size: 12px; color: var(--gray); letter-spacing: 0.06em; margin-top: 4px; }
+  .footer-info { color: var(--gray); font-size: 13px; text-align: right; line-height: 1.8; }
+  .footer-info a { color: var(--gold-light); text-decoration: none; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-tag { animation: fadeUp 0.5s ease both; }
+  .hero h1 { animation: fadeUp 0.5s ease 0.1s both; }
+  .hero-sub { animation: fadeUp 0.5s ease 0.2s both; }
+  .hero-mission { animation: fadeUp 0.5s ease 0.3s both; }
+  @media (max-width: 768px) {
+    nav { padding: 0 1.5rem; } .nav-links { display: none; } .hero { padding: 8rem 1.5rem 4rem; } section { padding: 4rem 1.5rem; } footer { padding: 2rem 1.5rem; flex-direction: column; } .footer-info { text-align: left; } .event-item { grid-template-columns: 75px 1fr; } .event-badge { display: none; } .forms-grid { grid-template-columns: 1fr; } .hero::after { font-size: 160px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="alert-banner">&#9733; Member Alert — Next General Meeting Coming Soon &middot; Check Upcoming Dates Below &#9733;</div>
+
+<nav>
+  <div class="nav-logo">SPU <span>Sunrise Professionals Unit</span></div>
+  <ul class="nav-links">
+    <li><a href="#grievances">Grievances</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#officers">Officers</a></li>
+    <li><a href="#forms">Submit</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag"><span>Your Voice. Your Rights. Your Union.</span></div>
+  <h1><span class="outline">Sunrise</span><br><span class="accent">Professionals</span><br>Unit</h1>
+  <p class="hero-sub">Standing together to protect the rights, benefits, and dignity of every member we represent. Informed members are empowered members.</p>
+  <blockquote class="hero-mission">
+    <strong>Our Mission</strong>
+    The mission of the Sunrise Professionals Unit is to advocate for fair treatment, safe working conditions, and equitable compensation for all members — ensuring every voice is heard and every right is defended.
+  </blockquote>
+</section>
+
+<section id="grievances">
+  <div class="section-label">Know Your Rights</div>
+  <h2 class="section-title">Open Grievance<br>Categories</h2>
+  <p class="section-intro">The following categories represent types of grievances currently being monitored and processed by your stewards. Specific case details are kept confidential to protect members. If you believe you have experienced a similar situation, use the form below to request a consultation.</p>
+  <div class="grievance-grid">
+    <div class="grievance-card">
+      <div class="grievance-status">Active</div>
+      <div class="grievance-type">Disciplinary Action</div>
+      <p class="grievance-desc">Disputes related to written warnings, suspensions, or terminations that members believe were issued unfairly or without just cause under our contract.</p>
+    </div>
+    <div class="grievance-card">
+      <div class="grievance-status">Active</div>
+      <div class="grievance-type">Contract Violations</div>
+      <p class="grievance-desc">Cases where management has failed to follow the terms of our collective bargaining agreement including scheduling, pay rates, or work assignments.</p>
+    </div>
+    <div class="grievance-card">
+      <div class="grievance-status">Active</div>
+      <div class="grievance-type">Workplace Safety</div>
+      <p class="grievance-desc">Concerns regarding unsafe working conditions, failure to provide proper equipment, or inadequate responses to reported hazards and safety issues.</p>
+    </div>
+    <div class="grievance-card">
+      <div class="grievance-status">Active</div>
+      <div class="grievance-type">Discrimination & Harassment</div>
+      <p class="grievance-desc">Issues involving unfair treatment, hostile work environment, or conduct that violates member rights under law or our collective bargaining agreement.</p>
+    </div>
+    <div class="grievance-card">
+      <div class="grievance-status">Active</div>
+      <div class="grievance-type">Pay & Benefits</div>
+      <p class="grievance-desc">Discrepancies in wages, improper denial of benefits, overtime disputes, or failure to apply negotiated raises and step increases correctly.</p>
+    </div>
+    <div class="grievance-card">
+      <div class="grievance-status">Monitoring</div>
+      <div class="grievance-type">Workload & Staffing</div>
+      <p class="grievance-desc">Situations where excessive workloads, understaffing, or mandatory overtime may violate contract provisions or create unsafe working conditions.</p>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="section-label">Stay Informed</div>
+  <h2 class="section-title">Upcoming Dates<br>& Events</h2>
+  <div class="events-list">
+    <div class="event-item">
+      <div class="event-date"><div class="month">May</div><div class="day">07</div></div>
+      <div class="event-info"><div class="event-title">General Membership Meeting</div><div class="event-detail">6:00 PM &middot; Location TBD &middot; All members welcome</div></div>
+      <div class="event-badge">Meeting</div>
+    </div>
+    <div class="event-item">
+      <div class="event-date"><div class="month">May</div><div class="day">14</div></div>
+      <div class="event-info"><div class="event-title">Steward Training — Know Your Contract</div><div class="event-detail">10:00 AM &middot; Virtual &middot; Open to all members</div></div>
+      <div class="event-badge">Training</div>
+    </div>
+    <div class="event-item">
+      <div class="event-date"><div class="month">May</div><div class="day">21</div></div>
+      <div class="event-info"><div class="event-title">Labor Management Committee</div><div class="event-detail">2:00 PM &middot; Management Conference Room</div></div>
+      <div class="event-badge">LMC</div>
+    </div>
+    <div class="event-item">
+      <div class="event-date"><div class="month">Jun</div><div class="day">04</div></div>
+      <div class="event-info"><div class="event-title">Grievance Procedure Training</div><div class="event-detail">11:00 AM &middot; Virtual &middot; Stewards & interested members</div></div>
+      <div class="event-badge">Training</div>
+    </div>
+    <div class="event-item">
+      <div class="event-date"><div class="month">Jun</div><div class="day">11</div></div>
+      <div class="event-info"><div class="event-title">General Membership Meeting</div><div class="event-detail">6:00 PM &middot; Location TBD &middot; All members welcome</div></div>
+      <div class="event-badge">Meeting</div>
+    </div>
+  </div>
+</section>
+
+<section id="officers">
+  <div class="section-label">Leadership</div>
+  <h2 class="section-title">Unit Officers</h2>
+  <div class="officers-grid">
+    <div class="officer-card">
+      <div class="officer-initial">P</div>
+      <div class="officer-name">[ President Name ]</div>
+      <div class="officer-title">Unit President</div>
+      <div class="officer-contact">president@spuunion.org</div>
+    </div>
+    <div class="officer-card">
+      <div class="officer-initial">VP</div>
+      <div class="officer-name">[ Vice President ]</div>
+      <div class="officer-title">Vice President</div>
+      <div class="officer-contact">vp@spuunion.org</div>
+    </div>
+    <div class="officer-card">
+      <div class="officer-initial">S</div>
+      <div class="officer-name">[ Secretary Name ]</div>
+      <div class="officer-title">Recording Secretary</div>
+      <div class="officer-contact">secretary@spuunion.org</div>
+    </div>
+    <div class="officer-card">
+      <div class="officer-initial">T</div>
+      <div class="officer-name">[ Treasurer Name ]</div>
+      <div class="officer-title">Treasurer</div>
+      <div class="officer-contact">treasurer@spuunion.org</div>
+    </div>
+    <div class="officer-card">
+      <div class="officer-initial">K</div>
+      <div class="officer-name">Kalani</div>
+      <div class="officer-title">Union Steward</div>
+      <div class="officer-contact">kalanispusteward@gmail.com</div>
+    </div>
+  </div>
+</section>
+
+<section id="forms">
+  <div class="section-label">Take Action</div>
+  <h2 class="section-title">Submit a Request</h2>
+  <div class="forms-grid">
+
+    <div class="form-card">
+      <div class="form-card-title">Grievance Consideration</div>
+      <p class="form-card-desc">Believe your rights under the contract have been violated? Submit your situation for steward review. All submissions are kept strictly confidential.</p>
+      <form action="https://formspree.io/f/xdayjged" method="POST">
+        <input type="hidden" name="_subject" value="SPU — Grievance Consideration Request">
+        <div class="form-group"><label>Full Name</label><input type="text" name="name" placeholder="Your full name" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="Your email" required></div>
+        <div class="form-group"><label>Department / Work Location</label><input type="text" name="department" placeholder="Where do you work?"></div>
+        <div class="form-group"><label>Grievance Category</label>
+          <select name="category">
+            <option value="">Select a category</option>
+            <option>Disciplinary Action</option>
+            <option>Contract Violation</option>
+            <option>Workplace Safety</option>
+            <option>Discrimination or Harassment</option>
+            <option>Pay or Benefits</option>
+            <option>Workload or Staffing</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Describe the Situation</label><textarea name="description" placeholder="Briefly describe what happened, when, and who was involved..." required></textarea></div>
+        <button type="submit" class="btn">Submit for Review &rarr;</button>
+      </form>
+    </div>
+
+    <div class="form-card">
+      <div class="form-card-title">Labor Management Committee</div>
+      <p class="form-card-desc">Have a workplace issue or suggestion you'd like raised at the Labor Management Committee? Submit it here for consideration at the next session.</p>
+      <form action="https://formspree.io/f/xdayjged" method="POST">
+        <input type="hidden" name="_subject" value="SPU — Labor Management Committee Submission">
+        <div class="form-group"><label>Full Name</label><input type="text" name="name" placeholder="Your full name" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="Your email" required></div>
+        <div class="form-group"><label>Department / Work Location</label><input type="text" name="department" placeholder="Where do you work?"></div>
+        <div class="form-group"><label>Issue or Concern</label><textarea name="description" placeholder="Describe the workplace issue or topic you'd like the committee to address..." required></textarea></div>
+        <div class="form-group"><label>Preferred Outcome</label><textarea name="outcome" placeholder="What resolution are you hoping for?" style="min-height:75px;"></textarea></div>
+        <button type="submit" class="btn">Submit to Committee &rarr;</button>
+      </form>
+    </div>
+
+    <div class="form-card urgent">
+      <div class="form-card-title">Request Representation</div>
+      <p class="form-card-desc">Facing a disciplinary meeting or investigation? You have the right to union representation. Submit this form and a steward will contact you promptly.</p>
+      <form action="https://formspree.io/f/xdayjged" method="POST">
+        <input type="hidden" name="_subject" value="SPU — URGENT: Representation Request">
+        <div class="form-group"><label>Full Name</label><input type="text" name="name" placeholder="Your full name" required></div>
+        <div class="form-group"><label>Best Phone Number</label><input type="tel" name="phone" placeholder="We may need to reach you quickly" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="Your email" required></div>
+        <div class="form-group"><label>Department / Supervisor Name</label><input type="text" name="department" placeholder="Your department and supervisor"></div>
+        <div class="form-group"><label>Meeting Date & Time (if scheduled)</label><input type="text" name="meeting_time" placeholder="e.g. Monday May 6 at 2:00 PM"></div>
+        <div class="form-group"><label>Brief Description</label><textarea name="description" placeholder="What is the meeting about? Any details help us prepare..." required></textarea></div>
+        <button type="submit" class="btn btn-urgent">Request Representation Now &rarr;</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">SPU</div>
+    <div class="footer-tagline">Sunrise Professionals Unit &mdash; United We Stand</div>
+  </div>
+  <div class="footer-info">
+    Union Steward: <a href="mailto:kalanispusteward@gmail.com">kalanispusteward@gmail.com</a><br>
+    <span style="color:rgba(139,130,160,0.4);font-size:11px;">&copy; 2026 Sunrise Professionals Unit. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
