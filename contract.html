@@ -17,7 +17,12 @@
   .page-wrap{max-width:1000px;margin:0 auto;padding:6rem 2rem 4rem;}
   .page-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
   .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,60px);text-transform:uppercase;line-height:0.95;color:var(--white);margin-bottom:1rem;}
-  .page-sub{color:var(--gray-light);font-size:15px;font-weight:300;max-width:700px;line-height:1.8;margin-bottom:2rem;}
+  .page-sub{color:var(--gray-light);font-size:15px;font-weight:300;max-width:700px;line-height:1.8;margin-bottom:1rem;}
+
+  .download-actions{display:flex;flex-wrap:wrap;gap:10px;margin:0.25rem 0 2rem;}
+  .download-btn{display:inline-block;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:15px;letter-spacing:0.1em;text-transform:uppercase;padding:14px 24px;text-decoration:none;border:1px solid var(--gold);transition:opacity 0.2s;}
+  .download-btn:hover{opacity:0.9;}
+  .download-note{color:var(--gray);font-size:12px;line-height:1.6;margin-top:4px;width:100%;}
 
   /* ASK THE CONTRACT - LOCAL ARTICLE SUGGESTER */
   .ask-contract-wrap{background:linear-gradient(135deg,rgba(34,21,64,0.95),rgba(26,16,48,0.95));border:1px solid rgba(201,168,76,0.22);padding:1.5rem;margin-bottom:2rem;position:relative;overflow:hidden;}
@@ -76,7 +81,12 @@
   <div class="page-header">
     <div class="page-label">SEIU Local 1107 &mdash; Professionals Unit</div>
     <h1 class="page-title">Collective Bargaining<br>Agreement</h1>
-    <p class="page-sub">Sunrise Hospital &amp; Medical Center and Sunrise Children's Hospital &mdash; Effective October 3, 2025 through June 30, 2028. Browse by article or use the quick topic filters below.</p>
+    <p class="page-sub">Sunrise Hospital &amp; Medical Center and Sunrise Children's Hospital &mdash; Effective October 3, 2025 through June 30, 2028. Browse by article, use the quick topic filters, or download the full PDF below.</p>
+
+    <div class="download-actions">
+      <a href="CBA-Sunrise-Professionals-Oct-2025-June-2028.pdf" download class="download-btn">Download UNOFFICIAL Full CBA PDF</a>
+      <div class="download-note">PDF opens or downloads depending on the member's browser settings.</div>
+    </div>
   </div>
   <div class="ask-contract-wrap">
     <div class="ask-contract-title">Ask the Contract</div>
