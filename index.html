@@ -3,35 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunrise Professionals Unit</title>
+<title>Sunrise Professionals Unit - SEIU 1107</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #C9A84C;
-    --gold-light: #E2C97E;
-    --gold-dark: #A8883A;
-    --purple: #2D1B4E;
-    --purple-mid: #3D2666;
-    --purple-light: #4E3180;
-    --purple-pale: #1E1235;
-    --black: #0D0A14;
-    --white: #F5F0FF;
-    --gray: #8B82A0;
-    --gray-light: #C4BBDA;
-    --surface: #1A1030;
-    --surface2: #221540;
-    --border: rgba(201,168,76,0.15);
+    --gold: #C9A84C; --gold-light: #E2C97E; --gold-dark: #A8883A;
+    --purple: #2D1B4E; --purple-mid: #3D2666; --purple-light: #4E3180; --purple-pale: #1E1235;
+    --black: #0D0A14; --white: #F5F0FF; --gray: #8B82A0; --gray-light: #C4BBDA;
+    --surface: #1A1030; --surface2: #221540; --border: rgba(201,168,76,0.15);
+    --red: #C0392B; --red-dark: #8B1A1A;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,10,20,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,10,20,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
   .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: 0.06em; color: var(--gold); text-transform: uppercase; }
   .nav-logo span { color: var(--gray-light); font-weight: 400; font-size: 13px; letter-spacing: 0.08em; margin-left: 10px; }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
   .nav-links a { color: var(--gray); text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--gold); }
+  .nav-links .nav-urgent { background: var(--red); color: var(--white); padding: 7px 14px; font-size: 11px; letter-spacing: 0.1em; transition: background 0.2s; }
+  .nav-links .nav-urgent:hover { background: #a93226; color: var(--white); }
+
+  /* HAMBURGER */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(13,10,20,0.99); z-index: 98; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); flex-direction: column; gap: 0; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--gray-light); text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 0; border-bottom: 0.5px solid rgba(201,168,76,0.08); transition: color 0.2s; }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu .mobile-urgent { color: var(--white); background: var(--red); padding: 14px 20px; text-align: center; margin-top: 1rem; border-bottom: none; }
+
+  /* ALERT */
   .alert-banner { background: linear-gradient(90deg, var(--purple-mid), var(--purple-light), var(--purple-mid)); border-bottom: 1px solid var(--border); color: var(--gold-light); text-align: center; padding: 9px 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; position: fixed; top: 64px; left: 0; right: 0; z-index: 99; }
+
+  /* QUICK LINKS */
+  .quick-links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 3rem; }
+  .quick-link { display: inline-block; padding: 10px 20px; border: 1px solid rgba(201,168,76,0.3); color: var(--gold); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; }
+  .quick-link:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+  .quick-link.urgent { background: var(--red); border-color: var(--red); color: var(--white); }
+  .quick-link.urgent:hover { background: #a93226; border-color: #a93226; }
+
+  /* HERO */
   .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 5rem 5rem; position: relative; overflow: hidden; background: radial-gradient(ellipse at 80% 50%, rgba(78,49,128,0.25) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(45,27,78,0.3) 0%, transparent 50%); }
   .hero::after { content: 'SPU'; position: absolute; right: -40px; bottom: -80px; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 320px; color: rgba(201,168,76,0.04); line-height: 1; pointer-events: none; user-select: none; }
   .hero-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 2rem; width: fit-content; }
@@ -40,14 +58,27 @@
   .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(52px, 8.5vw, 110px); line-height: 0.92; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2.5rem; color: var(--white); }
   .hero h1 .accent { color: var(--gold); }
   .hero h1 .outline { -webkit-text-stroke: 1.5px var(--purple-light); color: transparent; }
-  .hero-sub { font-size: 17px; color: var(--gray-light); max-width: 520px; font-weight: 300; line-height: 1.8; margin-bottom: 3rem; }
-  .hero-mission { background: rgba(45,27,78,0.5); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1.75rem 2rem; max-width: 620px; font-size: 15px; font-style: italic; color: var(--gray-light); line-height: 1.9; }
+  .hero-sub { font-size: 17px; color: var(--gray-light); max-width: 520px; font-weight: 300; line-height: 1.8; margin-bottom: 2rem; }
+  .hero-mission { background: rgba(45,27,78,0.5); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1.75rem 2rem; max-width: 620px; font-size: 15px; font-style: italic; color: var(--gray-light); line-height: 1.9; margin-bottom: 3rem; }
   .hero-mission strong { display: block; font-style: normal; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+
+  /* SECTIONS */
   section { padding: 6rem 5rem; border-top: 1px solid rgba(201,168,76,0.08); }
   .section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
   .section-label::after { content: ''; display: block; width: 24px; height: 1px; background: var(--gold-dark); }
   .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px, 5vw, 58px); text-transform: uppercase; line-height: 0.95; margin-bottom: 2.5rem; color: var(--white); letter-spacing: -0.01em; }
   .section-intro { color: var(--gray-light); max-width: 600px; margin-bottom: 3rem; font-size: 15px; line-height: 1.8; font-weight: 300; }
+
+  /* EMERGENCY BANNER */
+  .emergency-strip { background: var(--red); padding: 1.5rem 5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; border-top: none; }
+  .emergency-strip-text { font-family: 'Barlow Condensed', sans-serif; }
+  .emergency-strip-text .e-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
+  .emergency-strip-text .e-title { font-size: 24px; font-weight: 900; text-transform: uppercase; color: var(--white); }
+  .emergency-strip-text .e-sub { font-size: 13px; color: rgba(255,255,255,0.8); margin-top: 4px; font-family: 'Barlow', sans-serif; font-weight: 300; }
+  .emergency-btn { display: inline-block; background: var(--white); color: var(--red); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; }
+  .emergency-btn:hover { opacity: 0.9; }
+
+  /* GRIEVANCES */
   .grievance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.08); }
   .grievance-card { background: var(--surface); padding: 2rem; transition: background 0.25s; position: relative; }
   .grievance-card:hover { background: var(--surface2); }
@@ -56,6 +87,30 @@
   .grievance-status { display: inline-block; background: rgba(201,168,76,0.12); color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 1rem; border: 1px solid rgba(201,168,76,0.2); }
   .grievance-type { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px; text-transform: uppercase; margin-bottom: 0.75rem; color: var(--white); }
   .grievance-desc { color: var(--gray); font-size: 14px; line-height: 1.7; }
+
+  /* KNOW YOUR RIGHTS */
+  .kyr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
+  .kyr-card { background: var(--surface); border: 0.5px solid rgba(201,168,76,0.1); border-radius: 0; overflow: hidden; }
+  .kyr-header { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; border-bottom: 0.5px solid rgba(201,168,76,0.08); }
+  .kyr-icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .kyr-icon.red { background: rgba(192,57,43,0.2); }
+  .kyr-icon.gold { background: rgba(201,168,76,0.15); }
+  .kyr-icon.green { background: rgba(39,174,96,0.15); }
+  .kyr-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; text-transform: uppercase; color: var(--white); margin: 0; }
+  .kyr-article { font-size: 10px; color: var(--gold); letter-spacing: 0.1em; margin: 2px 0 0; }
+  .kyr-body { padding: 1.25rem; }
+  .kyr-alert { background: rgba(192,57,43,0.15); border-left: 3px solid var(--red); padding: 10px 14px; margin-bottom: 1rem; font-size: 13px; color: #f1948a; line-height: 1.6; }
+  .kyr-points { list-style: none; padding: 0; margin: 0; }
+  .kyr-points li { font-size: 13px; color: var(--gray-light); line-height: 1.6; padding: 7px 0; border-bottom: 0.5px solid rgba(201,168,76,0.06); display: flex; gap: 10px; align-items: flex-start; }
+  .kyr-points li:last-child { border-bottom: none; padding-bottom: 0; }
+  .kyr-points li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--gold-dark); margin-top: 8px; flex-shrink: 0; }
+  .kyr-deadline { background: rgba(201,168,76,0.1); border-left: 3px solid var(--gold); padding: 10px 14px; margin-top: 10px; font-size: 12px; color: var(--gold-light); font-weight: 500; line-height: 1.5; }
+  .kyr-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 1rem; }
+  .kyr-stat { background: rgba(201,168,76,0.08); padding: 10px; text-align: center; }
+  .kyr-stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 900; color: var(--gold); line-height: 1; }
+  .kyr-stat-label { font-size: 10px; color: var(--gray); margin-top: 4px; line-height: 1.4; }
+
+  /* EVENTS */
   .events-list { display: flex; flex-direction: column; gap: 1px; }
   .event-item { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 2rem; background: var(--surface); padding: 1.5rem 2rem; border-left: 2px solid transparent; transition: all 0.2s; }
   .event-item:hover { background: var(--surface2); border-left-color: var(--gold); }
@@ -65,6 +120,8 @@
   .event-info .event-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 21px; text-transform: uppercase; margin-bottom: 4px; color: var(--white); }
   .event-info .event-detail { color: var(--gray); font-size: 13px; }
   .event-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(201,168,76,0.25); color: var(--gold); white-space: nowrap; background: rgba(201,168,76,0.06); }
+
+  /* OFFICERS */
   .officers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.08); }
   .officer-card { background: var(--surface); padding: 2rem; transition: background 0.2s; }
   .officer-card:hover { background: var(--surface2); }
@@ -72,10 +129,13 @@
   .officer-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 19px; text-transform: uppercase; margin-bottom: 3px; color: var(--white); }
   .officer-title { color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
   .officer-contact { color: var(--gray); font-size: 13px; }
+
+  /* FORMS */
   .forms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
   .form-card { background: var(--surface); border: 1px solid rgba(201,168,76,0.1); padding: 2.5rem; position: relative; overflow: hidden; }
   .form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark)); }
-  .form-card.urgent::before { background: linear-gradient(90deg, #8B1A1A, #C0392B, #8B1A1A); }
+  .form-card.urgent { border-color: rgba(192,57,43,0.3); }
+  .form-card.urgent::before { background: linear-gradient(90deg, var(--red-dark), var(--red), var(--red-dark)); }
   .form-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--white); }
   .form-card-desc { color: var(--gray); font-size: 13px; margin-bottom: 2rem; line-height: 1.7; font-weight: 300; }
   .form-group { margin-bottom: 1.1rem; }
@@ -88,35 +148,75 @@
   .btn { display: block; width: 100%; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border: none; cursor: pointer; margin-top: 1rem; transition: opacity 0.2s, transform 0.1s; }
   .btn:hover { opacity: 0.9; }
   .btn:active { transform: scale(0.99); }
-  .btn-urgent { background: linear-gradient(135deg, #8B1A1A, #C0392B); color: var(--white); }
+  .btn-urgent { background: linear-gradient(135deg, var(--red-dark), var(--red)); color: var(--white); }
+
+  /* FOOTER */
   footer { background: var(--purple-pale); border-top: 1px solid var(--border); padding: 3rem 5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
   .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 32px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); }
   .footer-tagline { font-size: 12px; color: var(--gray); letter-spacing: 0.06em; margin-top: 4px; }
   .footer-info { color: var(--gray); font-size: 13px; text-align: right; line-height: 1.8; }
   .footer-info a { color: var(--gold-light); text-decoration: none; }
+  .footer-updated { color: rgba(139,130,160,0.5); font-size: 11px; margin-top: 6px; }
+
+  /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   .hero-tag { animation: fadeUp 0.5s ease both; }
   .hero h1 { animation: fadeUp 0.5s ease 0.1s both; }
   .hero-sub { animation: fadeUp 0.5s ease 0.2s both; }
   .hero-mission { animation: fadeUp 0.5s ease 0.3s both; }
+  .quick-links { animation: fadeUp 0.5s ease 0.4s both; }
+
+  /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 0 1.5rem; } .nav-links { display: none; } .hero { padding: 8rem 1.5rem 4rem; } section { padding: 4rem 1.5rem; } footer { padding: 2rem 1.5rem; flex-direction: column; } .footer-info { text-align: left; } .event-item { grid-template-columns: 75px 1fr; } .event-badge { display: none; } .forms-grid { grid-template-columns: 1fr; } .hero::after { font-size: 160px; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .alert-banner { font-size: 11px; padding: 8px 1rem; top: 64px; }
+    .hero { padding: 8rem 1.5rem 4rem; }
+    .hero::after { font-size: 140px; }
+    section { padding: 4rem 1.5rem; }
+    .emergency-strip { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+    .emergency-btn { width: 100%; text-align: center; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; }
+    .footer-info { text-align: left; }
+    .event-item { grid-template-columns: 70px 1fr; gap: 1rem; padding: 1.25rem 1rem; }
+    .event-badge { display: none; }
+    .forms-grid { grid-template-columns: 1fr; }
+    .kyr-grid { grid-template-columns: 1fr; }
+    .kyr-stats { grid-template-columns: repeat(3,1fr); }
+    .quick-links { gap: 8px; }
+    .quick-link { font-size: 11px; padding: 8px 14px; }
+    .nav-logo span { display: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="alert-banner">&#9733; Member Alert — Next General Meeting Coming Soon &middot; Check Upcoming Dates Below &#9733;</div>
+<div class="alert-banner">&#9733; S5 Classification Zoom Meeting &mdash; April 29, 7:30 PM &middot; <a href="https://us02web.zoom.us/j/88520433044?pwd=8Z3WpSkjc5e88CawhPmTr250R76pew.1" target="_blank" style="color:var(--gold-light);text-decoration:underline;">Join Now &rarr;</a></div>
 
 <nav>
-  <div class="nav-logo">SPU <span>Sunrise Professionals Unit</span></div>
+  <div class="nav-logo">SPU <span>Sunrise Professionals Unit &mdash; SEIU 1107</span></div>
   <ul class="nav-links">
     <li><a href="#grievances">Grievances</a></li>
+    <li><a href="#rights">Your Rights</a></li>
     <li><a href="#events">Events</a></li>
     <li><a href="#officers">Officers</a></li>
     <li><a href="#forms">Submit</a></li>
+    <li><a href="#forms" class="nav-urgent">&#9888; Need Rep?</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#grievances" onclick="closeMenu()">Grievances</a>
+  <a href="#rights" onclick="closeMenu()">Know Your Rights</a>
+  <a href="#events" onclick="closeMenu()">Events &amp; Training</a>
+  <a href="#officers" onclick="closeMenu()">Officers</a>
+  <a href="#forms" onclick="closeMenu()">Submit a Request</a>
+  <a href="#forms" class="mobile-urgent" onclick="closeMenu()">&#9888; Need Representation? Tap Here</a>
+</div>
 
 <section class="hero">
   <div class="hero-tag"><span>Your Voice. Your Rights. Your Union.</span></div>
@@ -124,9 +224,25 @@
   <p class="hero-sub">Standing together to protect the rights, benefits, and dignity of every member we represent. Informed members are empowered members.</p>
   <blockquote class="hero-mission">
     <strong>Our Mission</strong>
-    The mission of the Sunrise Professionals Unit is to advocate for fair treatment, safe working conditions, and equitable compensation for all members — ensuring every voice is heard and every right is defended.
+    The mission of the Sunrise Professionals Unit is to advocate for the highest level of patient care, equitable compensation, and safe working conditions for all members. We are committed to promoting a Just Culture — a framework championed by The Joint Commission that balances accountability with learning, encourages the reporting of errors and concerns without fear of retaliation, and fosters an environment where every voice is heard and every right is defended.
   </blockquote>
+  <div class="quick-links">
+    <a href="#forms" class="quick-link urgent">&#9888; Request Representation</a>
+    <a href="#grievance-form" class="quick-link">Submit a Concern</a>
+    <a href="#rights" class="quick-link">Know Your Rights</a>
+    <a href="#events" class="quick-link">Upcoming Events</a>
+    <a href="#forms" class="quick-link">Labor Management</a>
+  </div>
 </section>
+
+<div class="emergency-strip">
+  <div class="emergency-strip-text">
+    <div class="e-label">Weingarten Rights &mdash; Article 42.5</div>
+    <div class="e-title">Called into a meeting? Stop. You have rights.</div>
+    <div class="e-sub">You are entitled to union representation before and during any investigatory meeting. Request it immediately.</div>
+  </div>
+  <a href="#forms" class="emergency-btn">Request a Steward Now &rarr;</a>
+</div>
 
 <section id="grievances">
   <div class="section-label">Know Your Rights</div>
@@ -150,51 +266,181 @@
     </div>
     <div class="grievance-card">
       <div class="grievance-status">Active</div>
-      <div class="grievance-type">Discrimination & Harassment</div>
+      <div class="grievance-type">Discrimination &amp; Harassment</div>
       <p class="grievance-desc">Issues involving unfair treatment, hostile work environment, or conduct that violates member rights under law or our collective bargaining agreement.</p>
     </div>
     <div class="grievance-card">
       <div class="grievance-status">Active</div>
-      <div class="grievance-type">Pay & Benefits</div>
+      <div class="grievance-type">Pay &amp; Benefits</div>
       <p class="grievance-desc">Discrepancies in wages, improper denial of benefits, overtime disputes, or failure to apply negotiated raises and step increases correctly.</p>
     </div>
     <div class="grievance-card">
       <div class="grievance-status">Monitoring</div>
-      <div class="grievance-type">Workload & Staffing</div>
+      <div class="grievance-type">Workload &amp; Staffing</div>
       <p class="grievance-desc">Situations where excessive workloads, understaffing, or mandatory overtime may violate contract provisions or create unsafe working conditions.</p>
     </div>
   </div>
 </section>
 
-<section id="events">
-  <div class="section-label">Stay Informed</div>
-  <h2 class="section-title">Upcoming Dates<br>& Events</h2>
-  <div class="events-list">
-    <div class="event-item">
-      <div class="event-date"><div class="month">May</div><div class="day">07</div></div>
-      <div class="event-info"><div class="event-title">General Membership Meeting</div><div class="event-detail">6:00 PM &middot; Location TBD &middot; All members welcome</div></div>
-      <div class="event-badge">Meeting</div>
+<section id="rights">
+  <div class="section-label">Your Contract — Plain English</div>
+  <h2 class="section-title">Know Your<br>Rights</h2>
+  <p class="section-intro">Every right below comes directly from your CBA with Sunrise Hospital, effective October 3, 2025 through June 30, 2028. Article numbers are listed so you can reference the exact language anytime.</p>
+  <div class="kyr-grid">
+
+    <div class="kyr-card">
+      <div class="kyr-header">
+        <div class="kyr-icon red">&#9888;</div>
+        <div><p class="kyr-card-title">Weingarten Rights</p><p class="kyr-article">Article 42.5 &amp; Article 9</p></div>
+      </div>
+      <div class="kyr-body">
+        <div class="kyr-alert">If you are called into a meeting you believe could result in discipline — STOP. Request a union steward before and during that meeting.</div>
+        <ul class="kyr-points">
+          <li>You have the right to a Shop Steward during any investigatory interview you believe may result in discipline.</li>
+          <li>You also have the right to a steward when discipline is actually being issued.</li>
+          <li>If your preferred steward is unavailable, you get up to one hour to find an alternate.</li>
+          <li>Management cannot proceed without delay for more than one hour if a steward is not available.</li>
+        </ul>
+        <div class="kyr-deadline">Say this: "I request union representation before this meeting proceeds."</div>
+      </div>
     </div>
-    <div class="event-item">
-      <div class="event-date"><div class="month">May</div><div class="day">14</div></div>
-      <div class="event-info"><div class="event-title">Steward Training — Know Your Contract</div><div class="event-detail">10:00 AM &middot; Virtual &middot; Open to all members</div></div>
-      <div class="event-badge">Training</div>
+
+    <div class="kyr-card">
+      <div class="kyr-header">
+        <div class="kyr-icon gold">&#128196;</div>
+        <div><p class="kyr-card-title">Grievance Deadlines</p><p class="kyr-article">Article 12</p></div>
+      </div>
+      <div class="kyr-body">
+        <div class="kyr-stats">
+          <div class="kyr-stat"><div class="kyr-stat-num">15</div><div class="kyr-stat-label">Days to file Step 1 from incident</div></div>
+          <div class="kyr-stat"><div class="kyr-stat-num">15</div><div class="kyr-stat-label">Days to appeal to Step 2</div></div>
+          <div class="kyr-stat"><div class="kyr-stat-num">30</div><div class="kyr-stat-label">Days to appeal to arbitration</div></div>
+        </div>
+        <ul class="kyr-points">
+          <li>Missing a deadline voids the grievance permanently. Never wait.</li>
+          <li>Management missing a deadline does NOT kill your grievance.</li>
+          <li>Weekends and holidays do not count toward time limits.</li>
+          <li>The union can file a grievance on behalf of one or more members.</li>
+        </ul>
+        <div class="kyr-deadline">When in doubt, file early. You can withdraw — you cannot un-miss a deadline.</div>
+      </div>
     </div>
-    <div class="event-item">
-      <div class="event-date"><div class="month">May</div><div class="day">21</div></div>
-      <div class="event-info"><div class="event-title">Labor Management Committee</div><div class="event-detail">2:00 PM &middot; Management Conference Room</div></div>
-      <div class="event-badge">LMC</div>
+
+    <div class="kyr-card">
+      <div class="kyr-header">
+        <div class="kyr-icon red">&#128683;</div>
+        <div><p class="kyr-card-title">Disciplinary Action</p><p class="kyr-article">Article 9</p></div>
+      </div>
+      <div class="kyr-body">
+        <ul class="kyr-points">
+          <li>Management may only discipline or discharge you for just cause.</li>
+          <li>Any written warning, suspension, or discharge of a non-probationary employee can be grieved.</li>
+          <li>Coaching sessions are NOT grievable on their own — but can be grieved as part of higher-level discipline.</li>
+          <li>Most discipline expires after 12 months. Final written warnings and suspensions may be used for up to 2 years.</li>
+          <li>If discipline is overturned, all references must be removed from your personnel file.</li>
+        </ul>
+      </div>
     </div>
-    <div class="event-item">
-      <div class="event-date"><div class="month">Jun</div><div class="day">04</div></div>
-      <div class="event-info"><div class="event-title">Grievance Procedure Training</div><div class="event-detail">11:00 AM &middot; Virtual &middot; Stewards & interested members</div></div>
-      <div class="event-badge">Training</div>
+
+    <div class="kyr-card">
+      <div class="kyr-header">
+        <div class="kyr-icon gold">&#128337;</div>
+        <div><p class="kyr-card-title">Attendance &amp; Occurrences</p><p class="kyr-article">Article 3</p></div>
+      </div>
+      <div class="kyr-body">
+        <ul class="kyr-points">
+          <li>One unscheduled absence = one occurrence if you called in at least 3 hours before your shift.</li>
+          <li>Arriving more than 5 minutes late = one-half occurrence.</li>
+          <li>Failing to call in properly adds an extra occurrence on top of the absence.</li>
+          <li>No call/no show = 3 occurrences. Two in 12 months = termination.</li>
+          <li>Discipline ladder (rolling 12 months): 5 = coaching, 6 = 1st warning, 7 = final warning, 8 = 2-day suspension, 9 = termination.</li>
+          <li>Approved leaves, on-the-job injuries, jury duty, and bereavement do NOT count as occurrences.</li>
+        </ul>
+        <div class="kyr-deadline">Always call your supervisor — not a coworker — at least 3 hours before your shift.</div>
+      </div>
     </div>
-    <div class="event-item">
-      <div class="event-date"><div class="month">Jun</div><div class="day">11</div></div>
-      <div class="event-info"><div class="event-title">General Membership Meeting</div><div class="event-detail">6:00 PM &middot; Location TBD &middot; All members welcome</div></div>
-      <div class="event-badge">Meeting</div>
+
+    <div class="kyr-card">
+      <div class="kyr-header">
+        <div class="kyr-icon green">&#128176;</div>
+        <div><p class="kyr-card-title">Mandatory Overtime</p><p class="kyr-article">Article 25</p></div>
+      </div>
+      <div class="kyr-body">
+        <ul class="kyr-points">
+          <li>Mandatory overtime is a last resort — management must first try volunteers, agency, and travelers.</li>
+          <li>No employee can be required to work more than 16 consecutive hours.</li>
+          <li>If you work beyond 16 hours voluntarily, you may request to delay your next shift start by up to 8 hours.</li>
+          <li>All mandatory overtime hours are paid at double time — regardless of whether you have hit 40 hours.</li>
+        </ul>
+      </div>
     </div>
+
+    <div class="kyr-card">
+      <div class="kyr-header">
+        <div class="kyr-icon gold">&#127774;</div>
+        <div><p class="kyr-card-title">Call-Off Procedure</p><p class="kyr-article">Article 5</p></div>
+      </div>
+      <div class="kyr-body">
+        <ul class="kyr-points">
+          <li>Call-off order: (1) Agency/travelers, (2) VSP on OT, (3) Part-time on OT, (4) Full-time on OT, (5) VSP, (6) Volunteers, (7) Part-time and full-time by seniority.</li>
+          <li>If called off, you may use PTO or voluntary unpaid leave — your choice.</li>
+          <li>Once called off, you are NOT required to stay available for the rest of the shift.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kyr-card">
+      <div class="kyr-header">
+        <div class="kyr-icon green">&#127968;</div>
+        <div><p class="kyr-card-title">PTO &amp; Scheduling</p><p class="kyr-article">Article 30</p></div>
+      </div>
+      <div class="kyr-body">
+        <ul class="kyr-points">
+          <li>Full-time accrual: 184 hrs/yr (0–4 yrs), 223 hrs/yr (5–9 yrs), 263 hrs/yr (10+ yrs).</li>
+          <li>Jan–Jun PTO: submit requests September 1–30 of prior year.</li>
+          <li>Jul–Dec PTO: submit requests March 1–31. Seniority determines priority.</li>
+          <li>You can cash out PTO over 80 hours twice per year at 90 cents on the dollar.</li>
+          <li>If you leave or reduce to VSP, all accrued PTO pays out at 100%.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kyr-card">
+      <div class="kyr-header">
+        <div class="kyr-icon gold">&#128200;</div>
+        <div><p class="kyr-card-title">Wages &amp; Differentials</p><p class="kyr-article">Articles 52 &amp; 53</p></div>
+      </div>
+      <div class="kyr-body">
+        <ul class="kyr-points">
+          <li>Year 2 wage scales take effect the first full pay period of July 2026.</li>
+          <li>Paycheck errors must be corrected no later than the next paycheck 5+ days after notification.</li>
+          <li>Evening differential: $1.50/hr (shifts 3–11 PM, minimum 4 consecutive hours).</li>
+          <li>Night differential: $2.10/hr full-time/part-time (shifts 7 PM–7 AM or 11 PM–7 AM).</li>
+          <li>Weekend differential: $1.50/hr (Friday 11 PM through Sunday 11 PM).</li>
+          <li>Holiday worked: time and one-half for recognized holidays (minimum 4 consecutive hours).</li>
+          <li>Charge/relief supervisor differential: 5% per hour for MTs, Pharmacists, OTs, PTs, SLPs.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="kyr-card">
+      <div class="kyr-header">
+        <div class="kyr-icon green">&#127891;</div>
+        <div><p class="kyr-card-title">Benefits You May Not Know</p><p class="kyr-article">Articles 13, 26</p></div>
+      </div>
+      <div class="kyr-body">
+        <ul class="kyr-points">
+          <li>Free parking — the hospital must provide it at no charge.</li>
+          <li>Free coffee and at least 20% cafeteria discount off visitor prices.</li>
+          <li>Free medical malpractice insurance from your first day.</li>
+          <li>Full-time employees and dependents: Aetna POS at no cost. Part-time with 3+ years also free.</li>
+          <li>HCA offers: 401(k) match, tuition reimbursement, student loan repayment, adoption assistance, childcare subsidy.</li>
+          <li>Bereavement: up to 24 hours paid (full-time) or 12 hours (part-time) within 30 days of a death in your immediate family.</li>
+          <li>You have the right to paid time off to vote if your schedule prevents it.</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -202,23 +448,51 @@
   <div class="section-label">Take Action</div>
   <h2 class="section-title">Submit a Grievance<br>Concern</h2>
   <div style="max-width:680px;">
-    <p style="color:var(--gray-light);font-size:15px;line-height:1.8;margin-bottom:2rem;font-weight:300;">
-      Think your rights under the contract may have been violated? Submit your concern to a union steward for assessment. All submissions are confidential. A steward will review your situation and follow up with you directly.
-    </p>
+    <p style="color:var(--gray-light);font-size:15px;line-height:1.8;margin-bottom:2rem;font-weight:300;">Think your rights under the contract may have been violated? Submit your concern to a union steward for assessment. A steward will review your situation and follow up with you directly.</p>
     <div style="background:var(--surface);border:1px solid rgba(201,168,76,0.15);padding:2.5rem;position:relative;overflow:hidden;">
       <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),var(--gold-dark));"></div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:24px;text-transform:uppercase;color:var(--white);margin-bottom:0.5rem;">Grievance Assessment Form</div>
       <p style="color:var(--gray);font-size:13px;line-height:1.7;margin-bottom:1.5rem;">This form goes directly to your stewards. You do not need to know if something is a grievance — just tell us what happened and we will assess it for you.</p>
       <ul style="list-style:none;padding:0;margin:0 0 2rem;">
-        <li style="font-size:13px;color:var(--gray-light);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--gold);font-weight:700;">&#10003;</span> Completely confidential</li>
         <li style="font-size:13px;color:var(--gray-light);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--gold);font-weight:700;">&#10003;</span> No obligation to file a formal grievance</li>
         <li style="font-size:13px;color:var(--gray-light);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--gold);font-weight:700;">&#10003;</span> A steward will follow up with you directly</li>
         <li style="font-size:13px;color:var(--gray-light);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--gold);font-weight:700;">&#10003;</span> You have 15 days from the incident to file — do not wait</li>
       </ul>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScokQybKshydabF_VbNNa___DoNED8-HNyBWmEsMj7lSycYlQ/viewform?usp=header" target="_blank" style="display:inline-block;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;text-decoration:none;">
-        Open the Form &rarr;
-      </a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScokQybKshydabF_VbNNa___DoNED8-HNyBWmEsMj7lSycYlQ/viewform?usp=header" target="_blank" style="display:inline-block;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;text-decoration:none;">Open the Form &rarr;</a>
       <p style="color:var(--gray);font-size:12px;margin-top:1rem;">Opens in a new tab &middot; Powered by Google Forms</p>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="section-label">Stay Informed</div>
+  <h2 class="section-title">Upcoming Dates<br>&amp; Events</h2>
+  <p style="color:var(--gray);font-size:13px;margin-bottom:2rem;">All steward trainings held at SEIU Local 1107 &middot; 2250 S. Rancho Drive #165, Las Vegas, NV 89102. <a href="https://seiunv.org/membership_trainings/" target="_blank" style="color:var(--gold);text-decoration:none;">View full training schedule &rarr;</a></p>
+  <div class="events-list">
+    <div class="event-item">
+      <div class="event-date"><div class="month">Apr</div><div class="day">29</div></div>
+      <div class="event-info"><div class="event-title">S5 Classification Meeting <span style="color:var(--gold);font-size:11px;font-weight:700;letter-spacing:0.1em;">PT / OT / SLP</span></div><div class="event-detail">7:30 PM &middot; 8:30 PM &middot; Zoom &middot; <a href="https://us02web.zoom.us/j/88520433044?pwd=8Z3WpSkjc5e88CawhPmTr250R76pew.1" target="_blank" style="color:var(--gold);text-decoration:none;">Join Zoom Meeting &rarr;</a></div></div>
+      <div class="event-badge">Zoom</div>
+    </div>
+    <div class="event-item">
+      <div class="event-date"><div class="month">May</div><div class="day">06</div></div>
+      <div class="event-info"><div class="event-title">Beginner Steward Training</div><div class="event-detail">1:00 PM &middot; 3:30 PM &middot; Intro to SEIU 1107, Role of a Steward, Weingarten Rights &middot; <a href="https://www.mobilize.us/seiunevada/event/873232/" target="_blank" style="color:var(--gold);text-decoration:none;">Sign Up &rarr;</a></div></div>
+      <div class="event-badge">Training</div>
+    </div>
+    <div class="event-item">
+      <div class="event-date"><div class="month">May</div><div class="day">21</div></div>
+      <div class="event-info"><div class="event-title">Intermediate Steward Training <span style="color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.1em;">REQUIRED</span></div><div class="event-detail">5:30 PM &middot; 8:00 PM &middot; Grievance Writing, 7 Steps of Just Cause, Disparate Treatment &middot; <a href="https://www.mobilize.us/seiunevada/event/873238/" target="_blank" style="color:var(--gold);text-decoration:none;">Sign Up &rarr;</a></div></div>
+      <div class="event-badge">Training</div>
+    </div>
+    <div class="event-item">
+      <div class="event-date"><div class="month">Jun</div><div class="day">03</div></div>
+      <div class="event-info"><div class="event-title">Beginner Steward Training</div><div class="event-detail">5:30 PM &middot; 8:00 PM &middot; Intro to SEIU 1107, Role of a Steward, Weingarten Rights &middot; <a href="https://www.mobilize.us/seiunevada/event/873232/" target="_blank" style="color:var(--gold);text-decoration:none;">Sign Up &rarr;</a></div></div>
+      <div class="event-badge">Training</div>
+    </div>
+    <div class="event-item">
+      <div class="event-date"><div class="month">Jun</div><div class="day">18</div></div>
+      <div class="event-info"><div class="event-title">Advanced Steward Training</div><div class="event-detail">3:30 PM &middot; 7:30 PM &middot; Arbitration, Advocacy Skills, Contract Interpretation, Step 2 Prep &middot; <a href="https://www.mobilize.us/seiunevada/event/873240/" target="_blank" style="color:var(--gold);text-decoration:none;">Sign Up &rarr;</a></div></div>
+      <div class="event-badge">Training</div>
     </div>
   </div>
 </section>
@@ -228,27 +502,9 @@
   <h2 class="section-title">Unit Officers</h2>
   <div class="officers-grid">
     <div class="officer-card">
-      <div class="officer-initial">MM</div>
-      <div class="officer-name">Michelle Maese</div>
-      <div class="officer-title">President</div>
-      <div class="officer-contact">&nbsp;</div>
-    </div>
-    <div class="officer-card">
       <div class="officer-initial">SB</div>
       <div class="officer-name">Sue Batchellar</div>
       <div class="officer-title">Vice President</div>
-      <div class="officer-contact">&nbsp;</div>
-    </div>
-    <div class="officer-card">
-      <div class="officer-initial">SS</div>
-      <div class="officer-name">Sharon Savoy</div>
-      <div class="officer-title">Vice President, Private Sector</div>
-      <div class="officer-contact">&nbsp;</div>
-    </div>
-    <div class="officer-card">
-      <div class="officer-initial">JD</div>
-      <div class="officer-name">Jody Domineck</div>
-      <div class="officer-title">Secretary-Treasurer, Private Sector</div>
       <div class="officer-contact">&nbsp;</div>
     </div>
     <div class="officer-card">
@@ -272,31 +528,6 @@
   <div class="forms-grid">
 
     <div class="form-card">
-      <div class="form-card-title">Grievance Consideration</div>
-      <p class="form-card-desc">Believe your rights under the contract have been violated? Submit your situation for steward review. All submissions are kept strictly confidential.</p>
-      <form action="https://formspree.io/f/xdayjged" method="POST">
-        <input type="hidden" name="_subject" value="SPU — Grievance Consideration Request">
-        <div class="form-group"><label>Full Name</label><input type="text" name="name" placeholder="Your full name" required></div>
-        <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="Your email" required></div>
-        <div class="form-group"><label>Department / Work Location</label><input type="text" name="department" placeholder="Where do you work?"></div>
-        <div class="form-group"><label>Grievance Category</label>
-          <select name="category">
-            <option value="">Select a category</option>
-            <option>Disciplinary Action</option>
-            <option>Contract Violation</option>
-            <option>Workplace Safety</option>
-            <option>Discrimination or Harassment</option>
-            <option>Pay or Benefits</option>
-            <option>Workload or Staffing</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Describe the Situation</label><textarea name="description" placeholder="Briefly describe what happened, when, and who was involved..." required></textarea></div>
-        <button type="submit" class="btn">Submit for Review &rarr;</button>
-      </form>
-    </div>
-
-    <div class="form-card">
       <div class="form-card-title">Labor Management Committee</div>
       <p class="form-card-desc">Have a workplace issue or suggestion you'd like raised at the Labor Management Committee? Submit it here for consideration at the next session.</p>
       <form action="https://formspree.io/f/xdayjged" method="POST">
@@ -311,15 +542,15 @@
     </div>
 
     <div class="form-card urgent">
-      <div class="form-card-title">Request Representation</div>
-      <p class="form-card-desc">Facing a disciplinary meeting or investigation? You have the right to union representation. Submit this form and a steward will contact you promptly.</p>
+      <div class="form-card-title">&#9888; Request Representation</div>
+      <p class="form-card-desc">Facing a disciplinary meeting or investigation? You have the right to union representation. Submit this form and a steward will contact you promptly. Do not wait.</p>
       <form action="https://formspree.io/f/xdayjged" method="POST">
         <input type="hidden" name="_subject" value="SPU — URGENT: Representation Request">
         <div class="form-group"><label>Full Name</label><input type="text" name="name" placeholder="Your full name" required></div>
         <div class="form-group"><label>Best Phone Number</label><input type="tel" name="phone" placeholder="We may need to reach you quickly" required></div>
         <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="Your email" required></div>
         <div class="form-group"><label>Department / Supervisor Name</label><input type="text" name="department" placeholder="Your department and supervisor"></div>
-        <div class="form-group"><label>Meeting Date & Time (if scheduled)</label><input type="text" name="meeting_time" placeholder="e.g. Monday May 6 at 2:00 PM"></div>
+        <div class="form-group"><label>Meeting Date &amp; Time (if scheduled)</label><input type="text" name="meeting_time" placeholder="e.g. Tuesday May 6 at 2:00 PM"></div>
         <div class="form-group"><label>Brief Description</label><textarea name="description" placeholder="What is the meeting about? Any details help us prepare..." required></textarea></div>
         <button type="submit" class="btn btn-urgent">Request Representation Now &rarr;</button>
       </form>
@@ -331,13 +562,27 @@
 <footer>
   <div>
     <div class="footer-logo">SPU</div>
-    <div class="footer-tagline">Sunrise Professionals Unit &mdash; United We Stand</div>
+    <div class="footer-tagline">Sunrise Professionals Unit &mdash; SEIU Local 1107 &mdash; United We Stand</div>
   </div>
   <div class="footer-info">
     Union Steward: <a href="mailto:kalanispusteward@gmail.com">kalanispusteward@gmail.com</a><br>
     <span style="color:rgba(139,130,160,0.4);font-size:11px;">&copy; 2026 Sunrise Professionals Unit. All rights reserved.</span>
+    <div class="footer-updated">Last updated: April 2026</div>
   </div>
 </footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+</script>
 
 </body>
 </html>
