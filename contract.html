@@ -7,86 +7,97 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold:#C9A84C;--gold-light:#E2C97E;--gold-dark:#A8883A;
-    --purple-mid:#3D2666;--purple-light:#4E3180;--purple-pale:#1E1235;
-    --black:#0D0A14;--white:#F5F0FF;--gray:#8B82A0;--gray-light:#C4BBDA;
-    --surface:#1A1030;--surface2:#221540;--border:rgba(201,168,76,0.15);
-    --red:#C0392B;
+    --gold: #C9A84C; --gold-light: #E2C97E; --gold-dark: #A8883A;
+    --purple-mid: #3D2666; --purple-light: #4E3180; --purple-pale: #1E1235;
+    --black: #0D0A14; --white: #F5F0FF; --gray: #8B82A0; --gray-light: #C4BBDA;
+    --surface: #1A1030; --surface2: #221540; --border: rgba(201,168,76,0.15);
+    --red: #C0392B;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;line-height:1.6;}
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,10,20,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
-  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:var(--gold);text-transform:uppercase;text-decoration:none;}
-  .nav-logo span{color:var(--gray-light);font-weight:400;font-size:13px;margin-left:10px;}
-  .back-link{color:var(--gray);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;}
-  .back-link:hover{color:var(--gold);}
-  .page-wrap{max-width:960px;margin:0 auto;padding:6rem 2rem 4rem;}
-  .page-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
-  .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,60px);text-transform:uppercase;line-height:0.95;color:var(--white);margin-bottom:1rem;}
-  .page-sub{color:var(--gray-light);font-size:15px;font-weight:300;max-width:600px;line-height:1.8;margin-bottom:2.5rem;}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; line-height: 1.6; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,10,20,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; color: var(--gold); text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 12px; }
+  .nav-logo span { color: var(--gray-light); font-weight: 400; font-size: 13px; }
+  .back-link { color: var(--gray); text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
+  .back-link:hover { color: var(--gold); }
+
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+
+  .page-header { margin-bottom: 3rem; }
+  .page-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .page-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px, 5vw, 60px); text-transform: uppercase; line-height: 0.95; color: var(--white); margin-bottom: 1rem; }
+  .page-sub { color: var(--gray-light); font-size: 15px; font-weight: 300; max-width: 600px; line-height: 1.8; }
+
+  /* AI Q&A BOX */
+  .ai-box { background: var(--surface); border: 1px solid var(--border); padding: 2rem; margin-bottom: 3rem; position: relative; overflow: hidden; }
+  .ai-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark)); }
+  .ai-box-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+  .ai-icon { width: 36px; height: 36px; background: rgba(201,168,76,0.15); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .ai-box-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; color: var(--white); }
+  .ai-box-desc { color: var(--gray); font-size: 13px; margin-bottom: 1.5rem; line-height: 1.7; }
+  .ai-disclaimer { background: rgba(201,168,76,0.08); border-left: 3px solid var(--gold-dark); padding: 10px 14px; font-size: 12px; color: var(--gray); margin-bottom: 1.5rem; line-height: 1.6; }
+  .ai-input-row { display: flex; gap: 10px; }
+  .ai-input { flex: 1; background: rgba(13,10,20,0.6); border: 1px solid rgba(201,168,76,0.2); color: var(--white); padding: 12px 16px; font-family: 'Barlow', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
+  .ai-input:focus { border-color: var(--gold); }
+  .ai-input::placeholder { color: rgba(139,130,160,0.5); }
+  .ai-btn { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 24px; border: none; cursor: pointer; white-space: nowrap; transition: opacity 0.2s; }
+  .ai-btn:hover { opacity: 0.9; }
+  .ai-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .ai-response { margin-top: 1.5rem; background: rgba(13,10,20,0.5); border: 1px solid rgba(201,168,76,0.1); padding: 1.25rem; display: none; }
+  .ai-response.visible { display: block; }
+  .ai-response-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+  .ai-response-text { color: var(--gray-light); font-size: 14px; line-height: 1.8; white-space: pre-wrap; }
+  .ai-loading { color: var(--gray); font-size: 13px; font-style: italic; }
+  .ai-example-questions { margin-top: 1rem; }
+  .ai-example-label { font-size: 11px; color: var(--gray); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .ai-examples { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ai-example { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); color: var(--gold-light); font-size: 12px; padding: 6px 12px; cursor: pointer; transition: background 0.2s; }
+  .ai-example:hover { background: rgba(201,168,76,0.15); }
 
   /* SEARCH */
-  .search-wrap{margin-bottom:1rem;}
-  .search-bar{display:flex;gap:0;margin-bottom:0.75rem;}
-  .search-input{flex:1;background:var(--surface);border:1px solid rgba(201,168,76,0.25);border-right:none;color:var(--white);padding:13px 18px;font-family:'Barlow',sans-serif;font-size:15px;outline:none;transition:border-color 0.2s;}
-  .search-input:focus{border-color:var(--gold);}
-  .search-input::placeholder{color:var(--gray);}
-  .search-clear{background:var(--surface2);border:1px solid rgba(201,168,76,0.25);border-right:none;color:var(--gray);padding:0 16px;cursor:pointer;font-size:18px;transition:color 0.2s;}
-  .search-clear:hover{color:var(--gold);}
-  .search-btn{background:var(--gold-dark);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;padding:13px 24px;border:none;cursor:pointer;transition:background 0.2s;}
-  .search-btn:hover{background:var(--gold);}
-  .search-count{font-size:13px;color:var(--gray);min-height:20px;padding:4px 0;}
-  mark{background:rgba(201,168,76,0.35);color:var(--gold-light);padding:1px 3px;border-radius:2px;}
-
-  /* ARTICLE INDEX */
-  .index-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-  .article-index{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;margin-bottom:3rem;}
-  .article-index-item{background:var(--surface);border:0.5px solid rgba(201,168,76,0.1);padding:9px 14px;text-decoration:none;color:var(--gray-light);font-size:12px;transition:all 0.2s;display:flex;align-items:center;gap:8px;line-height:1.3;}
-  .article-index-item:hover{background:var(--surface2);color:var(--gold);border-color:rgba(201,168,76,0.3);}
-  .article-index-item.hidden{display:none;}
-  .idx-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:var(--gold-dark);min-width:36px;flex-shrink:0;}
+  .search-bar { display: flex; gap: 0; margin-bottom: 2rem; }
+  .search-input { flex: 1; background: var(--surface); border: 1px solid rgba(201,168,76,0.2); border-right: none; color: var(--white); padding: 12px 18px; font-family: 'Barlow', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; }
+  .search-input:focus { border-color: var(--gold); }
+  .search-input::placeholder { color: var(--gray); }
+  .search-btn { background: var(--gold-dark); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 24px; border: none; cursor: pointer; }
+  .search-count { font-size: 13px; color: var(--gray); margin-bottom: 1.5rem; min-height: 20px; }
+  mark { background: rgba(201,168,76,0.3); color: var(--gold-light); padding: 1px 2px; }
 
   /* ARTICLES */
-  .contract-article{background:var(--surface);border-left:3px solid transparent;margin-bottom:2px;transition:border-color 0.2s;}
-  .contract-article:target{border-left-color:var(--gold);}
-  .contract-article.hidden{display:none;}
-  .article-header{padding:1.1rem 1.5rem;cursor:pointer;display:flex;align-items:center;gap:1rem;user-select:none;}
-  .article-header:hover{background:var(--surface2);}
-  .art-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold-dark);min-width:76px;flex-shrink:0;}
-  .art-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;color:var(--white);flex:1;}
-  .art-toggle{color:var(--gray);font-size:14px;transition:transform 0.2s;flex-shrink:0;}
-  .art-toggle.open{transform:rotate(180deg);}
-  .article-body{display:none;padding:0.25rem 1.5rem 1.5rem;border-top:0.5px solid rgba(201,168,76,0.08);}
-  .article-body.open{display:block;}
-  .article-body p{color:var(--gray-light);font-size:14px;line-height:1.85;margin-bottom:0.85rem;}
-  .article-body p:last-child{margin-bottom:0;}
-  .article-body h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;color:var(--gold);margin:1.1rem 0 0.4rem;letter-spacing:0.06em;}
-  .article-body ul{padding-left:1.4rem;margin-bottom:0.85rem;}
-  .article-body ul li{color:var(--gray-light);font-size:14px;line-height:1.85;margin-bottom:3px;}
-  .article-body .exact{font-style:italic;color:var(--gray);font-size:13px;border-left:2px solid var(--gold-dark);padding-left:12px;margin:10px 0;}
+  .article-index { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; margin-bottom: 3rem; }
+  .article-index-item { background: var(--surface); border: 0.5px solid rgba(201,168,76,0.1); padding: 10px 14px; text-decoration: none; color: var(--gray-light); font-size: 13px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+  .article-index-item:hover { background: var(--surface2); color: var(--gold); border-color: rgba(201,168,76,0.3); }
+  .article-index-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; color: var(--gold-dark); min-width: 32px; }
+  .article-index-item.hidden { display: none; }
 
-  /* ASK CLAUDE BOX */
-  .claude-box{background:var(--surface);border:1px solid var(--border);padding:2rem;margin-bottom:3rem;position:relative;overflow:hidden;}
-  .claude-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),var(--gold-dark));}
-  .claude-box-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;color:var(--white);margin-bottom:0.5rem;}
-  .claude-box-desc{color:var(--gray);font-size:13px;line-height:1.7;margin-bottom:1.25rem;}
-  .claude-btn{display:inline-block;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;text-decoration:none;transition:opacity 0.2s;}
-  .claude-btn:hover{opacity:0.9;}
-  .claude-note{color:var(--gray);font-size:12px;margin-top:10px;}
+  .contract-section { margin-bottom: 2px; }
+  .contract-article { background: var(--surface); border-left: 3px solid transparent; transition: border-color 0.2s; }
+  .contract-article.hidden { display: none; }
+  .contract-article:target { border-left-color: var(--gold); }
+  .article-header { padding: 1.25rem 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; user-select: none; }
+  .article-header:hover { background: var(--surface2); }
+  .article-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dark); min-width: 80px; }
+  .article-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; text-transform: uppercase; color: var(--white); flex: 1; }
+  .article-toggle { color: var(--gray); font-size: 18px; transition: transform 0.2s; flex-shrink: 0; }
+  .article-toggle.open { transform: rotate(180deg); }
+  .article-body { display: none; padding: 0 1.5rem 1.5rem; border-top: 0.5px solid rgba(201,168,76,0.08); }
+  .article-body.open { display: block; }
+  .article-body p { color: var(--gray-light); font-size: 14px; line-height: 1.8; margin-bottom: 1rem; }
+  .article-body p:last-child { margin-bottom: 0; }
+  .article-body h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; text-transform: uppercase; color: var(--gold); margin: 1.25rem 0 0.5rem; letter-spacing: 0.05em; }
+  .article-body ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+  .article-body ul li { color: var(--gray-light); font-size: 14px; line-height: 1.8; margin-bottom: 4px; }
 
-  /* FOOTER */
-  .page-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(201,168,76,0.08);color:var(--gray);font-size:12px;line-height:1.8;}
-  .page-footer a{color:var(--gold-light);text-decoration:none;}
-
-  @media(max-width:768px){
-    nav{padding:0 1.25rem;}
-    .page-wrap{padding:5rem 1.25rem 3rem;}
-    .search-bar{flex-direction:column;}
-    .search-input{border-right:1px solid rgba(201,168,76,0.25);}
-    .search-clear{display:none;}
-    .search-btn{width:100%;}
-    .article-index{grid-template-columns:1fr 1fr;}
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .page-wrap { padding: 5rem 1.25rem 3rem; }
+    .ai-input-row { flex-direction: column; }
+    .ai-btn { width: 100%; }
+    .search-bar { flex-direction: column; }
+    .search-btn { width: 100%; }
+    .article-index { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -102,508 +113,571 @@
   <div class="page-header">
     <div class="page-label">SEIU Local 1107 &mdash; Professionals Unit</div>
     <h1 class="page-title">Collective Bargaining<br>Agreement</h1>
-    <p class="page-sub">Sunrise Hospital &amp; Medical Center and Sunrise Children's Hospital &mdash; Effective October 3, 2025 through June 30, 2028. Search by keyword or browse by article below.</p>
+    <p class="page-sub">Sunrise Hospital &amp; Medical Center and Sunrise Children's Hospital &mdash; October 3, 2025 through June 30, 2028. Search the contract below or ask the AI assistant a question.</p>
   </div>
 
-  <!-- ASK CLAUDE -->
-  <div class="claude-box">
-    <div class="claude-box-title">&#129302; Have a Contract Question?</div>
-    <p class="claude-box-desc">Use the button below to open a Claude AI conversation with your contract question. Claude can search through the CBA and answer in plain English. This is for general information only — always contact your steward for your specific situation.</p>
-    <a href="https://claude.ai/new" target="_blank" class="claude-btn">Ask Claude About Your Contract &rarr;</a>
-    <p class="claude-note">Opens Claude.ai in a new tab. Paste your question and include: "This is from the SEIU Local 1107 SPU CBA between Sunrise Hospital and SEIU, effective October 3, 2025 through June 30, 2028."</p>
+  <!-- AI Q&A -->
+  <div class="ai-box">
+    <div class="ai-box-header">
+      <div class="ai-icon">&#129302;</div>
+      <div class="ai-box-title">Ask the Contract AI</div>
+    </div>
+    <p class="ai-box-desc">Type any question about your contract and the AI will search the CBA and answer in plain English. This is for general information only.</p>
+    <div class="ai-disclaimer">&#9888; This AI answers based on the contract text. It is not legal advice. For specific situations, always consult your union steward.</div>
+    <div class="ai-input-row">
+      <input type="text" class="ai-input" id="aiQuestion" placeholder="e.g. How many days do I have to file a grievance?" />
+      <button class="ai-btn" id="aiBtn" onclick="askAI()">Ask &rarr;</button>
+    </div>
+    <div class="ai-example-questions">
+      <div class="ai-example-label">Try asking:</div>
+      <div class="ai-examples">
+        <span class="ai-example" onclick="setQuestion('How many days do I have to file a grievance?')">Grievance deadline?</span>
+        <span class="ai-example" onclick="setQuestion('What are my Weingarten rights?')">Weingarten rights?</span>
+        <span class="ai-example" onclick="setQuestion('How is mandatory overtime handled?')">Mandatory overtime?</span>
+        <span class="ai-example" onclick="setQuestion('How does PTO accrual work?')">PTO accrual?</span>
+        <span class="ai-example" onclick="setQuestion('What is the call-off order?')">Call-off order?</span>
+        <span class="ai-example" onclick="setQuestion('What are the shift differentials?')">Shift differentials?</span>
+        <span class="ai-example" onclick="setQuestion('How does seniority work?')">Seniority?</span>
+        <span class="ai-example" onclick="setQuestion('What happens if I get a no call no show?')">No call no show?</span>
+      </div>
+    </div>
+    <div class="ai-response" id="aiResponse">
+      <div class="ai-response-label">Answer based on your CBA</div>
+      <div class="ai-response-text" id="aiResponseText"></div>
+    </div>
   </div>
 
   <!-- SEARCH -->
-  <div class="search-wrap">
-    <div class="search-bar">
-      <input type="text" class="search-input" id="searchInput" placeholder="Search the contract... e.g. overtime, PTO, seniority, grievance, bereavement" />
-      <button class="search-clear" onclick="clearSearch()" title="Clear search">&#215;</button>
-      <button class="search-btn" onclick="searchContract()">Search</button>
-    </div>
-    <div class="search-count" id="searchCount"></div>
+  <div class="search-bar">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search the contract... e.g. overtime, PTO, seniority, grievance" oninput="searchContract()" />
+    <button class="search-btn" onclick="searchContract()">Search</button>
   </div>
+  <div class="search-count" id="searchCount"></div>
 
-  <!-- INDEX -->
-  <div class="index-title">Jump to Article</div>
+  <!-- ARTICLE INDEX -->
   <div class="article-index" id="articleIndex">
-    <a href="#art1" class="article-index-item"><span class="idx-num">Art. 1</span>Absence from Work</a>
-    <a href="#art2" class="article-index-item"><span class="idx-num">Art. 2</span>Accommodation of Disability</a>
-    <a href="#art3" class="article-index-item"><span class="idx-num">Art. 3</span>Attendance</a>
-    <a href="#art4" class="article-index-item"><span class="idx-num">Art. 4</span>Bereavement Leave</a>
-    <a href="#art5" class="article-index-item"><span class="idx-num">Art. 5</span>Call Off Procedure</a>
-    <a href="#art6" class="article-index-item"><span class="idx-num">Art. 6</span>Change of Ownership</a>
-    <a href="#art7" class="article-index-item"><span class="idx-num">Art. 7</span>Charge/Relief Supervisory Differential</a>
-    <a href="#art8" class="article-index-item"><span class="idx-num">Art. 8</span>Complete Agreement</a>
-    <a href="#art9" class="article-index-item"><span class="idx-num">Art. 9</span>Disciplinary Action</a>
-    <a href="#art10" class="article-index-item"><span class="idx-num">Art. 10</span>Distribution of Union Literature</a>
-    <a href="#art11" class="article-index-item"><span class="idx-num">Art. 11</span>Drug and Alcohol Policy</a>
-    <a href="#art12" class="article-index-item"><span class="idx-num">Art. 12</span>Grievance and Arbitration</a>
-    <a href="#art13" class="article-index-item"><span class="idx-num">Art. 13</span>Health and Welfare / Fringe Benefits</a>
-    <a href="#art14" class="article-index-item"><span class="idx-num">Art. 14</span>Holidays</a>
-    <a href="#art15" class="article-index-item"><span class="idx-num">Art. 15</span>Hours of Work and Overtime</a>
-    <a href="#art16" class="article-index-item"><span class="idx-num">Art. 16</span>Individual Agreements</a>
-    <a href="#art17" class="article-index-item"><span class="idx-num">Art. 17</span>Job Descriptions</a>
-    <a href="#art18" class="article-index-item"><span class="idx-num">Art. 18</span>Jury / Court Duty</a>
-    <a href="#art19" class="article-index-item"><span class="idx-num">Art. 19</span>Labor-Management / Patient Care Committee</a>
-    <a href="#art20" class="article-index-item"><span class="idx-num">Art. 20</span>Layoff / Recall</a>
-    <a href="#art21" class="article-index-item"><span class="idx-num">Art. 21</span>Leaves of Absence &amp; Family Illness Pay</a>
-    <a href="#art22" class="article-index-item"><span class="idx-num">Art. 22</span>Liability Insurance</a>
-    <a href="#art23" class="article-index-item"><span class="idx-num">Art. 23</span>Lists of Employees</a>
-    <a href="#art24" class="article-index-item"><span class="idx-num">Art. 24</span>Management Rights</a>
-    <a href="#art25" class="article-index-item"><span class="idx-num">Art. 25</span>Mandatory Overtime</a>
-    <a href="#art26" class="article-index-item"><span class="idx-num">Art. 26</span>Miscellaneous Benefits</a>
-    <a href="#art27" class="article-index-item"><span class="idx-num">Art. 27</span>Mutual Respect and Commitment</a>
-    <a href="#art28" class="article-index-item"><span class="idx-num">Art. 28</span>No Strike / No Lockout</a>
-    <a href="#art29" class="article-index-item"><span class="idx-num">Art. 29</span>Non-Discrimination</a>
-    <a href="#art30" class="article-index-item"><span class="idx-num">Art. 30</span>Paid Time Off</a>
-    <a href="#art31" class="article-index-item"><span class="idx-num">Art. 31</span>Past Practices</a>
-    <a href="#art32" class="article-index-item"><span class="idx-num">Art. 32</span>Pay Check Errors</a>
-    <a href="#art33" class="article-index-item"><span class="idx-num">Art. 33</span>Personnel Files</a>
-    <a href="#art34" class="article-index-item"><span class="idx-num">Art. 34</span>Probationary Period</a>
-    <a href="#art35" class="article-index-item"><span class="idx-num">Art. 35</span>Recognition</a>
-    <a href="#art36" class="article-index-item"><span class="idx-num">Art. 36</span>Relocation of Bargaining Unit Work</a>
-    <a href="#art37" class="article-index-item"><span class="idx-num">Art. 37</span>Safety and Health</a>
-    <a href="#art38" class="article-index-item"><span class="idx-num">Art. 38</span>Savings Clause</a>
-    <a href="#art39" class="article-index-item"><span class="idx-num">Art. 39</span>Scheduling</a>
-    <a href="#art40" class="article-index-item"><span class="idx-num">Art. 40</span>Seniority</a>
-    <a href="#art41" class="article-index-item"><span class="idx-num">Art. 41</span>Shared Vision</a>
-    <a href="#art42" class="article-index-item"><span class="idx-num">Art. 42</span>Shop Stewards</a>
-    <a href="#art43" class="article-index-item"><span class="idx-num">Art. 43</span>Short-Term Disability Plan</a>
-    <a href="#art44" class="article-index-item"><span class="idx-num">Art. 44</span>Staff Development</a>
-    <a href="#art45" class="article-index-item"><span class="idx-num">Art. 45</span>Status of Employment</a>
-    <a href="#art46" class="article-index-item"><span class="idx-num">Art. 46</span>Subcontracting</a>
-    <a href="#art47" class="article-index-item"><span class="idx-num">Art. 47</span>Time Off to Vote</a>
-    <a href="#art48" class="article-index-item"><span class="idx-num">Art. 48</span>Transfers and Promotions</a>
-    <a href="#art49" class="article-index-item"><span class="idx-num">Art. 49</span>Union Access and Communications</a>
-    <a href="#art50" class="article-index-item"><span class="idx-num">Art. 50</span>Union Security and COPE Check-Off</a>
-    <a href="#art51" class="article-index-item"><span class="idx-num">Art. 51</span>Use of Hospital Electronic Communication</a>
-    <a href="#art52" class="article-index-item"><span class="idx-num">Art. 52</span>Wages</a>
-    <a href="#art53" class="article-index-item"><span class="idx-num">Art. 53</span>Weekend and Shift Differentials</a>
-    <a href="#art54" class="article-index-item"><span class="idx-num">Art. 54</span>Workload</a>
-    <a href="#art55" class="article-index-item"><span class="idx-num">Art. 55</span>Duration</a>
+    <a href="#art1" class="article-index-item" data-art="1"><span class="article-index-num">Art. 1</span>Absence from Work</a>
+    <a href="#art2" class="article-index-item" data-art="2"><span class="article-index-num">Art. 2</span>Accommodation of Disability</a>
+    <a href="#art3" class="article-index-item" data-art="3"><span class="article-index-num">Art. 3</span>Attendance</a>
+    <a href="#art4" class="article-index-item" data-art="4"><span class="article-index-num">Art. 4</span>Bereavement Leave</a>
+    <a href="#art5" class="article-index-item" data-art="5"><span class="article-index-num">Art. 5</span>Call Off Procedure</a>
+    <a href="#art6" class="article-index-item" data-art="6"><span class="article-index-num">Art. 6</span>Change of Ownership</a>
+    <a href="#art7" class="article-index-item" data-art="7"><span class="article-index-num">Art. 7</span>Charge/Relief Supervisory Differential</a>
+    <a href="#art8" class="article-index-item" data-art="8"><span class="article-index-num">Art. 8</span>Complete Agreement</a>
+    <a href="#art9" class="article-index-item" data-art="9"><span class="article-index-num">Art. 9</span>Disciplinary Action</a>
+    <a href="#art10" class="article-index-item" data-art="10"><span class="article-index-num">Art. 10</span>Distribution of Union Literature</a>
+    <a href="#art11" class="article-index-item" data-art="11"><span class="article-index-num">Art. 11</span>Drug and Alcohol Policy</a>
+    <a href="#art12" class="article-index-item" data-art="12"><span class="article-index-num">Art. 12</span>Grievance and Arbitration</a>
+    <a href="#art13" class="article-index-item" data-art="13"><span class="article-index-num">Art. 13</span>Health and Welfare/Fringe Benefits</a>
+    <a href="#art14" class="article-index-item" data-art="14"><span class="article-index-num">Art. 14</span>Holidays</a>
+    <a href="#art15" class="article-index-item" data-art="15"><span class="article-index-num">Art. 15</span>Hours of Work and Overtime</a>
+    <a href="#art16" class="article-index-item" data-art="16"><span class="article-index-num">Art. 16</span>Individual Agreements</a>
+    <a href="#art17" class="article-index-item" data-art="17"><span class="article-index-num">Art. 17</span>Job Descriptions</a>
+    <a href="#art18" class="article-index-item" data-art="18"><span class="article-index-num">Art. 18</span>Jury/Court Duty</a>
+    <a href="#art19" class="article-index-item" data-art="19"><span class="article-index-num">Art. 19</span>Labor-Management Committee</a>
+    <a href="#art20" class="article-index-item" data-art="20"><span class="article-index-num">Art. 20</span>Layoff/Recall</a>
+    <a href="#art21" class="article-index-item" data-art="21"><span class="article-index-num">Art. 21</span>Leaves of Absence</a>
+    <a href="#art22" class="article-index-item" data-art="22"><span class="article-index-num">Art. 22</span>Liability Insurance</a>
+    <a href="#art23" class="article-index-item" data-art="23"><span class="article-index-num">Art. 23</span>Lists of Employees</a>
+    <a href="#art24" class="article-index-item" data-art="24"><span class="article-index-num">Art. 24</span>Management Rights</a>
+    <a href="#art25" class="article-index-item" data-art="25"><span class="article-index-num">Art. 25</span>Mandatory Overtime</a>
+    <a href="#art26" class="article-index-item" data-art="26"><span class="article-index-num">Art. 26</span>Miscellaneous Benefits</a>
+    <a href="#art27" class="article-index-item" data-art="27"><span class="article-index-num">Art. 27</span>Mutual Respect</a>
+    <a href="#art28" class="article-index-item" data-art="28"><span class="article-index-num">Art. 28</span>No Strike / No Lockout</a>
+    <a href="#art29" class="article-index-item" data-art="29"><span class="article-index-num">Art. 29</span>Non-Discrimination</a>
+    <a href="#art30" class="article-index-item" data-art="30"><span class="article-index-num">Art. 30</span>Paid Time Off</a>
+    <a href="#art31" class="article-index-item" data-art="31"><span class="article-index-num">Art. 31</span>Past Practices</a>
+    <a href="#art32" class="article-index-item" data-art="32"><span class="article-index-num">Art. 32</span>Pay Check Errors</a>
+    <a href="#art33" class="article-index-item" data-art="33"><span class="article-index-num">Art. 33</span>Personnel Files</a>
+    <a href="#art34" class="article-index-item" data-art="34"><span class="article-index-num">Art. 34</span>Probationary Period</a>
+    <a href="#art35" class="article-index-item" data-art="35"><span class="article-index-num">Art. 35</span>Recognition</a>
+    <a href="#art36" class="article-index-item" data-art="36"><span class="article-index-num">Art. 36</span>Relocation of Bargaining Unit Work</a>
+    <a href="#art37" class="article-index-item" data-art="37"><span class="article-index-num">Art. 37</span>Safety and Health</a>
+    <a href="#art38" class="article-index-item" data-art="38"><span class="article-index-num">Art. 38</span>Savings Clause</a>
+    <a href="#art39" class="article-index-item" data-art="39"><span class="article-index-num">Art. 39</span>Scheduling</a>
+    <a href="#art40" class="article-index-item" data-art="40"><span class="article-index-num">Art. 40</span>Seniority</a>
+    <a href="#art41" class="article-index-item" data-art="41"><span class="article-index-num">Art. 41</span>Shared Vision</a>
+    <a href="#art42" class="article-index-item" data-art="42"><span class="article-index-num">Art. 42</span>Shop Stewards</a>
+    <a href="#art43" class="article-index-item" data-art="43"><span class="article-index-num">Art. 43</span>Short-Term Disability</a>
+    <a href="#art44" class="article-index-item" data-art="44"><span class="article-index-num">Art. 44</span>Staff Development</a>
+    <a href="#art45" class="article-index-item" data-art="45"><span class="article-index-num">Art. 45</span>Status of Employment</a>
+    <a href="#art46" class="article-index-item" data-art="46"><span class="article-index-num">Art. 46</span>Subcontracting</a>
+    <a href="#art47" class="article-index-item" data-art="47"><span class="article-index-num">Art. 47</span>Time Off to Vote</a>
+    <a href="#art48" class="article-index-item" data-art="48"><span class="article-index-num">Art. 48</span>Transfers and Promotions</a>
+    <a href="#art49" class="article-index-item" data-art="49"><span class="article-index-num">Art. 49</span>Union Access</a>
+    <a href="#art50" class="article-index-item" data-art="50"><span class="article-index-num">Art. 50</span>Union Security / Dues</a>
+    <a href="#art51" class="article-index-item" data-art="51"><span class="article-index-num">Art. 51</span>Electronic Communications</a>
+    <a href="#art52" class="article-index-item" data-art="52"><span class="article-index-num">Art. 52</span>Wages</a>
+    <a href="#art53" class="article-index-item" data-art="53"><span class="article-index-num">Art. 53</span>Weekend &amp; Shift Differentials</a>
+    <a href="#art54" class="article-index-item" data-art="54"><span class="article-index-num">Art. 54</span>Workload</a>
+    <a href="#art55" class="article-index-item" data-art="55"><span class="article-index-num">Art. 55</span>Duration</a>
   </div>
 
-  <!-- ARTICLES -->
+  <!-- CONTRACT ARTICLES -->
   <div id="contractBody">
 
-    <div class="contract-article" id="art1">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 1</span><span class="art-name">Absence from Work</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art1" data-text="absence from work report call in three hours advance notice illness injury physician certificate fitness for duty">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 1</span>
+        <span class="article-name">Absence from Work</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>1.1 Employees shall report any absence from their scheduled shift to their manager (or other member of supervision designated to receive such notice by the manager) three (3) hours in advance of the scheduled starting time of their shift, unless an emergency, clearly beyond the control of the employee, makes it impossible to do so.</p>
-        <p>1.2 Whenever an employee is absent due to personal illness or injury for three (3) or more successive shifts, the Hospital may require that the employee provide a physician's certificate confirming an illness, the dates of care, and the date the employee is expected to be sufficiently recovered to return to work. Such certification may also be required for a single day of absence, whenever an employee has received a written warning under the attendance policy during the prior six (6) months, or in the event of circumstances surrounding the absence which raise reasonable questions as to the validity of the absence. Employees shall have seven (7) days to obtain and produce such certificate if requested.</p>
-        <p>The Hospital reserves the right to require a fitness-for-duty certification from a physician whenever, in the good faith judgment of the Hospital, there is a question as to the fitness-of-duty of an employee seeking to return to work following an absence due to illness. If the Hospital removes an employee from his or her scheduled shifts pending a fitness-for-duty examination, the affected employee will be placed on paid administrative leave (at straight time pay) pending the examination, provided the employee will not be paid for any delay caused by the employee or the examination concludes the employee was not fit for duty.</p>
+        <p>Employees must report any absence to their manager at least <strong>3 hours before</strong> the scheduled start of their shift, unless an emergency makes this impossible.</p>
+        <h4>Doctor's Certificate</h4>
+        <p>After 3 or more consecutive missed shifts due to illness, the Hospital may require a physician's certificate confirming the illness, dates of care, and expected return date. Employees have 7 days to obtain and produce such a certificate if requested.</p>
+        <h4>Fitness for Duty</h4>
+        <p>The Hospital may require a fitness-for-duty exam when there is a good-faith question about an employee's ability to safely return to work. If removed pending such an exam, the employee is placed on paid administrative leave at straight time — unless the delay is caused by the employee or the exam shows the employee is not fit for duty.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art2">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 2</span><span class="art-name">Accommodation of Disability</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <p>In the event the Hospital, in order to comply with the Americans with Disabilities Act (ADA), restructures the job duties of a bargaining unit position, or permits an employee to transfer to a vacant bargaining unit position outside of the transfer procedure described in Article 48, in order to accommodate the disability of an employee or job applicant, such action shall not be a violation of this Agreement unless the Hospital's actions are shown to have been taken in bad faith or without any supportive documentation from a practicing physician attesting to and verifying the existence of any disability creating the need for the accommodation. The Hospital will meet and confer with the Union concerning the need for making an accommodation requiring waiver of some provision of this Agreement before implementing such accommodation.</p>
+    <div class="contract-section contract-article" id="art3" data-text="attendance occurrences unscheduled absence tardiness late no call no show discipline warning suspension termination occurrence count rolling twelve months coaching">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 3</span>
+        <span class="article-name">Attendance</span>
+        <span class="article-toggle">&#9660;</span>
       </div>
-    </div>
-
-    <div class="contract-article" id="art3">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 3</span><span class="art-name">Attendance</span><span class="art-toggle">&#9660;</span></div>
       <div class="article-body">
-        <p>3.1 All staff are expected to maintain regular and predictable attendance to meet performance requirements.</p>
-        <h4>3.3 Definitions</h4>
-        <p><strong>Scheduled Absence</strong> – Absence from work which has been approved by the employee's supervisor at least 23 hours prior to the beginning of the absence.</p>
-        <p><strong>Unscheduled Absence</strong> – Absence from work which is not a scheduled absence.</p>
-        <p><strong>Standard Occurrence</strong> – An unscheduled absence of one shift or the first three consecutive shifts will count as one occurrence if the required notification is given.</p>
-        <p><strong>Enhanced Occurrence</strong> – Extra occurrences added to a Standard Occurrence when the unscheduled absence occurs on a Holiday identified in Article 14 or a date immediately before or after a Holiday, or on one of nine (9) days identified by the Hospital at least sixty (60) days in advance. The total number of occurrences for absenteeism that can be applied to a single Standard Occurrence is four (4) in connection with a Holiday and three (3) in all other events.</p>
-        <p>If an employee reports to work but leaves prior to completing one-half of the shift without having received approval for the time off at least 23 hours prior to the time he or she leaves, the employee will be charged with one occurrence.</p>
-        <p><strong>Excused Absences</strong> – Absences due to approved leaves of absence, on-the-job injuries qualifying for workers' compensation, emergency medical procedures, jury duty, supervisory approved shift trade, bereavement leave, and absences from work due to symptoms of seasonal influenza (proper documentation may be required) occurring during any period when the Hospital has requested in writing that employees not attend work if they are feeling such symptoms, are not counted as occurrences.</p>
-        <p><strong>Occurrence of Tardiness</strong> – Failure to clock in at the employee's home department or designated location within 5 minutes of scheduled reporting time and report to work immediately thereafter counts as one-half occurrence.</p>
-        <p><strong>Notification</strong> – When an employee must be absent from work, the employee must call the supervisor as soon as possible, in no event less than three (3) hours prior to the beginning of the shift. A call to anyone other than the supervisor or designated individual is not proper notification. Failing to properly notify the supervisor (or designee) three (3) hours prior to the beginning of the shift will result in the employee being charged with one occurrence in addition to any occurrences for the absence.</p>
-        <h4>3.4 No Call / No Show</h4>
-        <p>An employee who fails to notify the supervisor (or designee) prior to the beginning of the shift and who fails to clock in and report to work within the first two (2) hours of the shift is a no call/no show and will be charged with three (3) occurrences. A no call/no show on two (2) occasions in a twelve (12) month period will result in termination, unless the employee is absent due to hospitalization and is unable to notify the Hospital.</p>
-        <h4>3.5 Disciplinary Procedures</h4>
-        <p>Occurrences shall be counted in rolling twelve (12) month periods.</p>
+        <h4>Occurrences</h4>
+        <p>One unscheduled absence = 1 occurrence (if called in properly at least 3 hours before shift). Leaving before completing half your shift without prior approval = 1 occurrence. Tardiness (over 5 minutes late) = ½ occurrence. Failing to call in properly adds an extra occurrence.</p>
+        <h4>No Call / No Show</h4>
+        <p>Failing to notify the supervisor before the shift AND failing to clock in within the first 2 hours = 3 occurrences. Two no call/no shows in a 12-month period = termination.</p>
+        <h4>Discipline Ladder (rolling 12-month period)</h4>
         <ul>
-          <li>Five occurrences within a twelve (12) month period will result in a coaching session.</li>
-          <li>Six occurrences within a twelve (12) month period will result in a first written warning.</li>
-          <li>Seven occurrences within a twelve (12) month period will result in a final written warning.</li>
-          <li>Eight occurrences within a twelve (12) month period will result in a two-day unpaid suspension.</li>
-          <li>Nine occurrences within a twelve (12) month period will result in termination and will constitute just cause for discharge.</li>
-          <li>Twelve (12) instances of tardiness in a twelve (12) month period will result in termination and will constitute just cause for discharge.</li>
+          <li>5 occurrences = Coaching session</li>
+          <li>6 occurrences = First written warning</li>
+          <li>7 occurrences = Final written warning</li>
+          <li>8 occurrences = 2-day unpaid suspension</li>
+          <li>9 occurrences = Termination (just cause)</li>
+          <li>12 instances of tardiness in 12 months = Termination</li>
         </ul>
+        <h4>Excused Absences (do NOT count as occurrences)</h4>
+        <p>Approved leaves of absence, on-the-job injuries (workers' comp), emergency medical procedures, jury duty, approved shift trades, bereavement leave.</p>
+        <h4>Holiday Enhanced Occurrences</h4>
+        <p>Absences on or immediately before/after recognized holidays may result in enhanced occurrences — up to 4 total for holiday-related incidents, 3 for other designated high call-out days.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art4">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 4</span><span class="art-name">Bereavement Leave</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art4" data-text="bereavement leave death family spouse parent child grandparent paid time off funeral">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 4</span>
+        <span class="article-name">Bereavement Leave</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>If a death occurs in an employee's immediate family, an allowance is made for time off with pay for up to twenty-four (24) hours for full-time employees and for up to twelve (12) hours for part-time employees during the thirty (30) days following the date of death.</p>
-        <p>Immediate family is defined as a spouse, parent, step-parent, legal guardian, grandparents, grandchildren, mother-in-law and father-in-law, children, step-children, legal ward, brother (including in-law), sister (including in-law), son-in-law, daughter-in-law, a domestic partner established pursuant to Nevada Revised Statutes 122A.100, and such domestic partner's relatives. If an employee experiences a miscarriage, stillbirth or similar outcome of a fetus, bereavement leave is available to the parents.</p>
-        <p>Bereavement pay will be at base hourly wage with no premium pay. It will not be counted as hours worked. Employees may request additional days of bereavement leave. If the employee has PTO available, the employee must utilize PTO for these additional days of bereavement leave.</p>
+        <p>If a death occurs in an employee's immediate family, paid time off is available for up to <strong>24 hours for full-time employees</strong> and <strong>12 hours for part-time employees</strong> within 30 days following the death.</p>
+        <h4>Immediate Family</h4>
+        <p>Spouse, parent, step-parent, legal guardian, grandparents, grandchildren, mother/father-in-law, children, step-children, legal ward, brother/sister (including in-law), son/daughter-in-law, domestic partner and their relatives. Miscarriage, stillbirth, or similar outcome is also covered.</p>
+        <p>Bereavement pay is at base hourly wage with no premium pay and does not count as hours worked. Additional bereavement days may be requested using PTO.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art5">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 5</span><span class="art-name">Call Off Procedure</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art5" data-text="call off called off low census census order VSP part time full time seniority volunteers agency travelers unpaid PTO on call">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 5</span>
+        <span class="article-name">Call Off Procedure</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>5.1 The Hospital's staffing patterns are variable. While the parties recognize that such variability is unavoidable, the Hospital will make every reasonable effort to avoid Call Offs.</p>
-        <h4>5.2 Call Off Mechanics</h4>
-        <p>When the Hospital determines that a Call Off is necessary, the Call Off shall apply to the classifications affected in the unit and shift in which the Call Off is taking place in the following order, by seniority, so long as the remaining employees are fully competent to care for the Hospital's actual or anticipated patients or perform the services needed:</p>
+        <h4>Call Off Order (by seniority within each group)</h4>
         <ul>
-          <li>1. Agency and Travelers (who have not been provided their guaranteed number of shifts)</li>
-          <li>2. VSP on overtime or other premium pay status</li>
-          <li>3. Part-time on overtime or other premium pay status</li>
-          <li>4. Full-time on overtime or other premium pay status</li>
+          <li>1. Agency and Travelers</li>
+          <li>2. VSP on overtime or other premium pay</li>
+          <li>3. Part-time on overtime or other premium pay</li>
+          <li>4. Full-time on overtime or other premium pay</li>
           <li>5. VSP</li>
-          <li>6. Solicited volunteers (the manager may choose to solicit volunteers at any earlier step of the call off procedure)</li>
+          <li>6. Solicited volunteers</li>
           <li>7. Part-time and full-time</li>
         </ul>
-        <h4>5.3 Employees Called Back from Call Off</h4>
-        <p>Employees called back from Call Off will be called in the reverse order of the above.</p>
-        <h4>5.4 Use of Unpaid Time or PTO for Call Off</h4>
-        <p>A full-time or part-time employee who is Called Off may use voluntary unpaid leave or Paid Time Off at the employee's discretion.</p>
-        <h4>5.5 Maintaining Contact</h4>
-        <p>Once an employee is Called Off, the employee shall not be required to maintain contact and availability with the Hospital for the remainder of the shift. This does not preclude the employee from volunteering to be placed On Call.</p>
+        <h4>Your Options When Called Off</h4>
+        <p>You may use voluntary unpaid leave or PTO — your choice. Once called off, you are NOT required to maintain contact or remain available for the rest of the shift.</p>
+        <p>Employees called back from call off will be called in the reverse of the above order.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art7">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 7</span><span class="art-name">Charge / Relief Supervisory Differential</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art9" data-text="disciplinary action discipline just cause written warning final written warning suspension discharge termination fire grievable non-probationary coaching progressive discipline personnel file purged">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 9</span>
+        <span class="article-name">Disciplinary Action</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>Medical Technologists, Sr. Medical Technologists, Speech Language Pathologists, Occupational Therapists, Physical Therapists, and Clinical Pharmacists, when assigned by the Hospital to substitute as charge or relief supervisor for a unit, will receive a differential of five percent (5%) per hour for all hours worked in such capacity. The Hospital shall have absolute discretion as to whether to assign any qualified employee such duties on any given shift or unit and as to which employee will be given the charge or relief supervisor assignment on any given day. Charge or relief supervisor assignments may be mandatory.</p>
+        <p>The Hospital may suspend, discharge, or otherwise discipline an employee for <strong>just cause only</strong>.</p>
+        <h4>Key Protections</h4>
+        <ul>
+          <li>Any written warning, suspension, or discharge of a non-probationary employee is grievable.</li>
+          <li>Coaching sessions (documented or not) are NOT considered discipline and are NOT grievable — but can be part of a grievance over higher-level discipline for the same conduct.</li>
+          <li>Disciplinary actions generally expire after <strong>12 months</strong>. Final written warnings and unpaid suspensions may be used for up to <strong>2 years</strong> for similar conduct.</li>
+          <li>Sexual harassment incidents have no expiration and may be considered in future discipline.</li>
+          <li>If discipline is overturned through arbitration or conceded by the Hospital, <strong>all references must be purged from your personnel file</strong>.</li>
+        </ul>
+        <h4>Right to Representation</h4>
+        <p>You may have a Union Steward present when questioned about potential discipline or when discipline is being issued. If your preferred steward is unavailable, you have up to 1 hour to find an alternate.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art9">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 9</span><span class="art-name">Disciplinary Action</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art12" data-text="grievance arbitration file deadline step 1 step 2 step 3 time limits fifteen days thirty days weekends holidays null void appeal mediation FMCS just cause">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 12</span>
+        <span class="article-name">Grievance and Arbitration</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>The Hospital may suspend, discharge, or otherwise discipline an employee for just cause. The Hospital in its discretion may utilize progressive discipline, including written warnings, final written warnings and suspensions.</p>
-        <p>Employees may have a Union Steward present when they are questioned by management concerning a matter which the employee reasonably believes may result in his or her discipline, and in the event that the employee is being issued discipline. If the Union Steward of employee's choice cannot be made immediately available at the time of the meeting due to operational needs, the employee will be given up to an hour to identify an alternate steward who is available.</p>
-        <p>Any written warning, suspension or other discipline of a non-probationary employee will be subject to the grievance and arbitration provisions of this Agreement. Coaching sessions, documented or otherwise, are not considered discipline and therefore are not grievable. A Coaching session will be grievable as part of any grievance over a higher level of discipline issued for the same or similar conduct.</p>
-        <p>Disciplinary actions may be considered in determining the appropriateness of progressive discipline for a period of twelve (12) months from the date of discipline. However, final written warnings and unpaid suspensions may be used as the basis for further discipline for a period of two (2) years in the event of a recurrence of conduct reasonably similar to that for which the final written warning was issued.</p>
-        <p>If the discipline is overturned through arbitration, or is otherwise conceded by the Hospital to have been issued without just cause, the employee's personnel file will be purged of all references to such discipline.</p>
+        <h4>What Is a Grievance?</h4>
+        <p>A dispute or disagreement about the interpretation, application, or compliance with specific provisions of the CBA, or whether discipline/discharge was for just cause.</p>
+        <h4>Critical Time Limits (weekends and holidays excluded)</h4>
+        <ul>
+          <li><strong>Step 1:</strong> Must be filed within <strong>15 days</strong> of the event (or when you knew/should have known). Meeting within 10 days, written response within 15 days.</li>
+          <li><strong>Step 2:</strong> Appeal within <strong>15 days</strong> of receiving Step 1 response. Meeting within 15 days, written response within 15 days.</li>
+          <li><strong>Step 3 (Arbitration):</strong> Appeal within <strong>30 days</strong> of Step 2 response.</li>
+        </ul>
+        <p><strong>Missing a deadline voids the grievance permanently.</strong> Management missing a deadline does NOT kill your grievance — you may still advance to the next step.</p>
+        <h4>Grievance Form</h4>
+        <p>Grievances must be submitted on the official Grievance Form (Appendix B). Failure to include all information does not automatically preclude the grievance, but the Hospital must notify the union of missing info in writing.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art12">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 12</span><span class="art-name">Grievance and Arbitration</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <h4>12.1 Definition of Grievance</h4>
-        <p>A grievance subject to arbitration is a dispute or disagreement involving the interpretation, application or compliance with specific provisions of this Agreement or a dispute or disagreement concerning whether or not discipline including discharge was for just cause. The Union may file a grievance on behalf of one or more bargaining unit members.</p>
-        <h4>12.2 Time Limits</h4>
-        <p>All grievances must be presented at the proper steps in accordance with the time limitations noted at the various Steps. Failure to adhere to these time limitations shall render the grievance null and void and it may not be pursued further, however, failure of Management to respond in a timely manner will not bar the grievance from being presented at the next step of the procedure. All time limits in this Article exclude weekends and holidays and may be extended by written mutual agreement of the parties.</p>
-        <h4>12.3 Grievance Procedure</h4>
-        <p><strong>Step 1.</strong> A grievance shall be filed in writing with the Director of Labor Relations or his or her designee within fifteen (15) days of the date of the event giving rise to the grievance or of the earliest date the grievant, the Union, or a Union Steward knows or should have known of the facts giving rise to the grievance. The grievance shall be submitted on the Grievance Form set out in Appendix B. The Hospital and the Union will conduct a meeting between the grievant and the employee's Department Manager/Director or designee and/or the Director of Labor Relations or his or her designee and a Shop Steward and/or Field Representative within ten (10) days. A written response to the grievance will be provided to the Union Steward within fifteen (15) days of receipt of the Step I grievance.</p>
-        <p><strong>Step 2.</strong> If the grievance is not resolved at Step 1 and the Union wishes to advance the grievance, the Union must request in writing that the grievance be moved to Step 2 by submitting such request to the Director of Labor Relations or his or her designee within fifteen (15) days from the date the Step 1 response was received by the Union Steward. The COO (or designee) will respond to the grievance in writing to the Field Representative within fifteen (15) days after the Step 2 meeting.</p>
-        <p><strong>Step 3 — Arbitration.</strong> If the grievance is not resolved on the basis of the Step 2 response, then within thirty (30) days from the date the Step 2 response was received by the Field Representative the grievance may be appealed to arbitration by the Union notifying the Director of Labor Relations or his or her designee in writing of its intention to arbitrate the dispute.</p>
+    <div class="contract-section contract-article" id="art14" data-text="holidays new years memorial day independence day labor day thanksgiving christmas holiday worked premium time and a half differential observed">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 14</span>
+        <span class="article-name">Holidays</span>
+        <span class="article-toggle">&#9660;</span>
       </div>
-    </div>
-
-    <div class="contract-article" id="art13">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 13</span><span class="art-name">Health and Welfare / Fringe Benefits</span><span class="art-toggle">&#9660;</span></div>
       <div class="article-body">
-        <p>13.1 The Hospital currently offers participation in the Medical and Vision Spending Accounts, Day Care Spending Account, and the HCA 401(k) plan, Life and AD&amp;D insurance, and Long Term Disability insurance, Met Life Dental Plan, Aetna POS Medical Plan, and in the HCA Smart Care PPO (with optional medical and prescription riders).</p>
-        <p>13.3 The Aetna POS will continue to be free for full-time employees and their dependents and for part-time employees with three (3) years of service and their dependents. The Hospital will continue to pay ninety percent (90%) of the cost of individual coverage and eighty-five percent (85%) of the cost of individual plus dependent coverage (based on premiums or premium equivalents) for medical coverage under the Aetna POS for part-time employees with less than three (3) years of service.</p>
-        <p>The Hospital will continue to pay the full cost of the existing Life &amp; AD&amp;D benefit, through the term of this agreement.</p>
-      </div>
-    </div>
-
-    <div class="contract-article" id="art14">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 14</span><span class="art-name">Holidays</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <h4>14.1 Holidays Observed</h4>
+        <h4>Recognized Holidays</h4>
         <ul>
           <li>New Year's Day</li>
           <li>Memorial Day</li>
-          <li>Independence Day</li>
+          <li>Independence Day (July 4)</li>
           <li>Labor Day</li>
           <li>Thanksgiving Day</li>
           <li>Christmas Day</li>
         </ul>
-        <h4>14.2 Holiday Worked Premium</h4>
-        <p>Full-time, part-time, temporary and VSP employees who are required to work on a recognized holiday shall be paid holiday pay of time and one-half their base hourly rate for the hours worked on the holiday. Holiday time begins at 11:00 p.m. the day before the official Holiday and ends at 11:00 p.m. on the day of the official holiday. In order to receive the holiday worked premium, the employee must work at least four (4) or more consecutive hours during the defined holiday hours, unless called off by the Hospital due to lack of work.</p>
-        <p>If the holiday falls on Saturday, the observed holiday will be Friday in departments that are scheduled to be open Monday through Friday. If the holiday falls on Sunday, the observed holiday will be Monday for departments that are scheduled to be open Monday through Friday.</p>
-        <p>Holiday differential shall not be an offset against overtime premiums due, but holiday differential shall not be included in the regular rate of pay for overtime purposes.</p>
+        <h4>Holiday Worked Premium</h4>
+        <p>Employees required to work on a recognized holiday receive <strong>time and one-half</strong> their base hourly rate for hours worked. Holiday hours run from 11:00 PM the day before the holiday through 11:00 PM on the day of the holiday. Must work at least 4 consecutive hours during holiday hours to qualify.</p>
+        <p>If the holiday falls on Saturday, the observed holiday for Mon–Fri departments is Friday. If it falls on Sunday, the observed holiday is Monday.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art15">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 15</span><span class="art-name">Hours of Work and Overtime</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art15" data-text="hours work overtime workweek overtime premium meal period rest break paid break lunch reporting pay travel time consecutive hours">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 15</span>
+        <span class="article-name">Hours of Work and Overtime</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>15.1 A workweek is a period of time consisting of seven (7) consecutive days. Nothing in this agreement shall be construed to constitute a guarantee or entitlement of hours of work per day or per week.</p>
-        <p>15.3 Only hours actually worked shall be considered hours worked for purposes of computing overtime pay. The Hospital shall ensure that an employee who has worked continuously for more than sixteen (16) hours straight will have at least eight (8) hours off before having to return to work as part of the regular schedule.</p>
-        <h4>15.5 Rest and Meal Periods</h4>
-        <p>Patient care needs permitting, employees will continue to receive one (1) thirty (30) minute unpaid meal period as well as two (2) fifteen (15) minute paid rest breaks per scheduled shift of at least eight (8) hours. Employees may not leave the Hospital's premises during rest breaks. In the event an employee has been directed to remain at his or her work station during a meal period the employee shall remain in paid status. If an employee works an additional four (4) hours beyond his/her regular shift, he/she shall be entitled to an additional paid rest break.</p>
-        <h4>15.6 Reporting Pay</h4>
-        <p>An employee who is instructed or scheduled to report to work, and who reports to work without prior notice that no work is available, shall perform any work assigned for which the employee is qualified and shall be guaranteed two (2) hours work or pay in lieu thereof at the employee's regular rate of pay.</p>
-        <h4>15.7 Travel Time</h4>
-        <p>An employee who after reporting for his or her scheduled shift is directed to travel to another Hospital work location during the same shift shall be paid for his or her reasonable travel time.</p>
+        <h4>Breaks and Meal Periods</h4>
+        <p>Employees on shifts of at least 8 hours receive one 30-minute unpaid meal period and two 15-minute paid rest breaks. If required to stay at your workstation during a meal period, you remain in paid status. An additional paid rest break is granted if you work 4+ hours beyond your regular shift.</p>
+        <h4>Consecutive Hours</h4>
+        <p>An employee who works more than 16 consecutive hours must have at least 8 hours off before returning to work on the regular schedule.</p>
+        <h4>Reporting Pay</h4>
+        <p>If you report to work without prior notice that no work is available, you are guaranteed at least 2 hours of work or pay at your regular rate.</p>
+        <h4>Travel Time</h4>
+        <p>If directed to travel to another Hospital location during your shift, you are paid for reasonable travel time.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art18">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 18</span><span class="art-name">Jury / Court Duty</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art18" data-text="jury duty court duty paid leave summons base rate">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 18</span>
+        <span class="article-name">Jury / Court Duty</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>18.1 Time lost from regularly scheduled hours in order to appear for legal proceedings at the request of the Hospital will be paid at the employee's base hourly rate and treated as hours worked for the purpose of calculating overtime.</p>
-        <p>18.2 Full-time and part-time employees will be paid their base hourly rate of pay for time lost from their regular schedule because of required jury duty. The employee must show evidence of the summons to the supervisor upon receipt. If the employee is not selected for jury duty or is released, he/she shall return/report to duty if the employee has been in the jury process for less than four (4) hours. If a night shift employee is required to report for jury duty on a day that he/she would have normally worked, he/she will be released from work the night prior to the appearance if the employee so requests, as well as the night shift on the day of the appearance.</p>
+        <p>Full-time and part-time employees are paid their base hourly rate for time missed due to required jury duty. Show your supervisor your summons upon receipt.</p>
+        <p>If not selected for jury duty or released after less than 4 hours, you must return to work for the remainder of your shift. Night shift employees required to appear for jury duty are released from their shift the night before the appearance if requested.</p>
+        <p>Time spent on court appearances at the Hospital's request (depositions, interviews, testimony) is paid at base rate and counts as hours worked for overtime purposes.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art19">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 19</span><span class="art-name">Labor-Management / Patient Care Committee</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art19" data-text="labor management committee LMC patient care staffing concerns quarterly meetings agenda spokesperson">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 19</span>
+        <span class="article-name">Labor-Management Committee</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>19.1 A Labor-Management Committee may review, discuss and attempt to resolve issues of mutual concern to the parties, including staffing concerns.</p>
-        <p>19.2 Meetings may, at the Union's request in accordance with 19.6, be held quarterly, unless mutually agreed otherwise and shall not exceed two (2) hours unless jointly agreed. The Labor-Management Committee established in accordance with this Article shall be comprised of no more than three (3) employer representatives and no more than three (3) union representatives (who shall be employees of the Hospital). In addition to these committee members, one (1) Human Resources representative and one (1) Union Staff Representative may attend the meetings. The committee will not discuss disciplinary matters, pending grievances, or issues relating to contract negotiations. This paragraph shall not prevent an employee, the Union or the Hospital from subsequently pursuing an otherwise grievable issue through Grievance and Arbitration. However, the parties agree this Article is the exclusive means to address staffing concerns.</p>
-        <p>19.3 Employees on the committee will be scheduled off for the shift on which the meeting is scheduled to take place, and time spent attending meetings shall be paid at the employee's base hourly rate and treated as hours worked for overtime purposes.</p>
-        <p>19.6 Meetings shall be scheduled at least sixty (60) days in advance unless otherwise mutually agreed.</p>
+        <p>The Labor-Management Committee (LMC) meets quarterly (at the union's request) to review and discuss issues of mutual concern, including staffing concerns. Meetings may not exceed 2 hours unless jointly agreed.</p>
+        <p>The committee includes up to 3 employer representatives and 3 union employee representatives, plus 1 HR representative and 1 Union Staff Representative. The LMC will not discuss disciplinary matters, pending grievances, or contract negotiation issues. It is the <strong>exclusive means to address staffing concerns</strong>.</p>
+        <p>Employees on the committee are scheduled off and paid at their base rate for time spent attending meetings, counted as hours worked for overtime.</p>
+        <p>Meetings must be scheduled at least 60 days in advance with a jointly agreed agenda.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art20">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 20</span><span class="art-name">Layoff / Recall</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art20" data-text="layoff recall reduction staffing seniority bumping displacement severance pay volunteers recall roster two weeks notice">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 20</span>
+        <span class="article-name">Layoff / Recall</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>20.1.1 The Hospital will make every reasonable effort to avoid displacing (i.e., laying off or permanently reducing the hours of) full-time and part-time bargaining unit members.</p>
-        <p>20.1.2 The Hospital will give affected employees at least two (2) weeks' notice of layoff or two (2) weeks' pay (based on regularly scheduled hours) in lieu of notice, or a combination thereof and will seek volunteers for layoff in the classification, department/cost center and shift affected.</p>
-        <h4>20.4 Severance Pay</h4>
-        <p>Full-time or part-time employees who volunteer (and are selected) for a layoff, or who are laid off pursuant to the provisions of this Article, shall be paid the following severance benefits:</p>
+        <p>The Hospital must make every reasonable effort to avoid layoffs, using attrition, retraining, and job matching first. At least 2 weeks notice (or 2 weeks pay) must be given before layoff.</p>
+        <h4>Layoff Order</h4>
+        <p>Temporaries and travelers first, then least senior employees in the affected classification/department/shift. Laid-off employees may bump less senior employees in their classification with up to 10 days of orientation.</p>
+        <h4>Severance Pay</h4>
         <ul>
-          <li>At least 91 days but less than 3 years: 80 hours (2 weeks)</li>
-          <li>3 years but less than 5 years: 120 hours (3 weeks)</li>
-          <li>5 years but less than 8 years: 160 hours (4 weeks)</li>
-          <li>8 years but less than 10 years: 200 hours (5 weeks)</li>
-          <li>10 years but less than 15 years: 320 hours (8 weeks)</li>
-          <li>15 years but less than 20 years: 400 hours (10 weeks)</li>
-          <li>20 years or more: 480 hours (12 weeks)</li>
+          <li>91 days–3 years: 2 weeks</li>
+          <li>3–5 years: 3 weeks</li>
+          <li>5–8 years: 4 weeks</li>
+          <li>8–10 years: 5 weeks</li>
+          <li>10–15 years: 8 weeks</li>
+          <li>15–20 years: 10 weeks</li>
+          <li>20+ years: 12 weeks</li>
         </ul>
-        <h4>20.2 Recall Roster</h4>
-        <p>Employees shall be placed on a recall roster for a period of 12 months (24 months for employees with five (5) or more years of service) from the date of layoff. A recalled employee must accept recall by 5:00 p.m. on the second weekday following the day on which notification of recall is served and return to work at the Hospital within fourteen (14) days of such service.</p>
+        <h4>Recall</h4>
+        <p>Employees remain on the recall roster for 12 months (24 months for employees with 5+ years of service). Recall is in inverse order of seniority. You must accept recall within 2 business days and return to work within 14 days of notification.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art21">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 21</span><span class="art-name">Leaves of Absence &amp; Family Illness Pay</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art25" data-text="mandatory overtime last resort double time emergency consecutive hours volunteers agency sixteen hours">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 25</span>
+        <span class="article-name">Mandatory Overtime</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>21.1 The Hospital will follow its existing Leaves of Absence policies. The Hospital shall have the right from time to time to amend its leave policies, so long as the revised policies are consistent with law.</p>
-        <h4>21.2 Union Leave</h4>
-        <p>If an employee is elected or appointed to a position in Local 1107, the employee will be granted a leave of absence not to exceed six (6) months upon request.</p>
-        <h4>21.3 Family Illness Pay</h4>
-        <p>Employees may be paid for up to fourteen (14) calendar days based on the employee's HRIS Norm Hours for qualifying events including caring for a spouse, domestic partner, son or daughter, or parent with a serious health condition; birth of a child; or placement with the employee of a child for adoption or foster care.</p>
-        <p>Family Illness Pay will be paid at the following percentage of an employee's base rate of pay and completed years of service:</p>
+        <p>Mandatory overtime is a last resort. The Hospital must first exhaust alternatives including volunteers, managers, agency/travelers before requiring mandatory overtime.</p>
+        <h4>Key Protections</h4>
         <ul>
-          <li>0–4 Years – 60% of Base Rate</li>
-          <li>5–9 Years – 80% of Base Rate</li>
-          <li>10+ Years – 100% of Base Rate</li>
+          <li>No employee may be required to work more than <strong>16 consecutive hours</strong>.</li>
+          <li>If you volunteer to work beyond 16 hours, you may request to delay your next shift start by up to 8 hours — the Hospital cannot unreasonably deny this.</li>
+          <li>All mandatory overtime hours are paid at <strong>double time</strong>, regardless of whether you have reached 40 hours in the workweek.</li>
         </ul>
       </div>
     </div>
 
-    <div class="contract-article" id="art22">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 22</span><span class="art-name">Liability Insurance</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <p>The Hospital will continue to carry medical malpractice insurance coverage on all employees involved in patient care, which provides coverage for employees when they are acting in the course and scope of their employment (as defined in the policy of insurance) with Sunrise Hospital, from the first day of employment.</p>
+    <div class="contract-section contract-article" id="art26" data-text="parking cafeteria discount coffee hospital services malpractice insurance benefits miscellaneous perks tuition scholarship 401k">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 26</span>
+        <span class="article-name">Miscellaneous Benefits</span>
+        <span class="article-toggle">&#9660;</span>
       </div>
-    </div>
-
-    <div class="contract-article" id="art25">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 25</span><span class="art-name">Mandatory Overtime</span><span class="art-toggle">&#9660;</span></div>
       <div class="article-body">
-        <p>The parties agree that safe and quality patient care is the determining factor for working overtime hours, but that mandatory overtime should be utilized only as a last resort. To the extent that time permits, the Hospital will make reasonable efforts to exhaust other alternatives (for example, including but not limited to, efforts to utilize qualified managers, volunteers from the staff or resources outside the Hospital, and agency, temporary, or travelers) before requiring mandatory overtime.</p>
-        <p>Emergency is defined as an unanticipated or unavoidable situation that has been determined to significantly impact patient care or the delivery of essential healthcare services which requires immediate action. In emergency circumstances where mandatory overtime is required, the Hospital may require employees to remain on duty.</p>
-        <p>No employee will be required to work more than 16 consecutive hours. Should an employee volunteer to work more than 16 consecutive hours, the employee may request to delay the employee's start time for the employee's next shift up to eight (8) hours from the time the employee clocked out. The Hospital will not unreasonably deny such request.</p>
-        <p>Volunteers or employees required to remain on duty due to an emergency will be paid double time for the mandatory overtime hours worked, regardless of whether the employee has exceeded 40 hours in the workweek.</p>
-      </div>
-    </div>
-
-    <div class="contract-article" id="art26">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 26</span><span class="art-name">Miscellaneous Benefits</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <p>26.2 <strong>Free Parking.</strong> The Hospital shall provide parking for employees, without charge.</p>
-        <p>26.3 <strong>Cafeteria Discounts.</strong> The Hospital shall continue to offer employees free coffee and at least a 20% discount off visitor prices in the cafeteria.</p>
-        <p>26.4 <strong>Hospital Services Discounts.</strong> The Hospital will continue the existing employee discount for hospital services at Sunrise Hospital.</p>
-        <p>26.5 The parties agree that the following benefits and programs available through the Hospital's parent company will continue to be offered: Banking Financial Services and Education Program; Day Care Spending Account; Medical/Vision Spending Account; HCA Scholarship Program; Adoption Assistance; Direct Deposit; Student Loan Repayment Program; Tuition Reimbursement Program; Child Care Subsidy; Employee Stock Purchase Plan; Certification Verification &amp; Renewal and Clinical Certification Support Program.</p>
-      </div>
-    </div>
-
-    <div class="contract-article" id="art29">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 29</span><span class="art-name">Non-Discrimination</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <p>The Hospital and the Union agree that neither party shall discriminate against any employee covered by this Agreement on account of race, color, religion, national origin, age, sex, sexual orientation, gender identity, genetic information, protected veteran status, disability, union activity, or union membership, and as required by local, state, or federal law.</p>
-        <p>Alleged violations of the foregoing shall be subject to the grievance procedure set forth in Article 12, but no grievance will be referred to arbitration. Nothing herein shall prevent any party or any employee from seeking redress and obtaining relief from outside the grievance process, including but not limited to filing charges or claims with courts or administrative agencies.</p>
-      </div>
-    </div>
-
-    <div class="contract-article" id="art30">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 30</span><span class="art-name">Paid Time Off</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <h4>30.1 Accrual Rates — Full-Time</h4>
         <ul>
-          <li>0–4 years: 7.08 hours/pay period — 184.08 hours/year — Max accrual 276 hours</li>
-          <li>5–9 years: 8.60 hours/pay period — 223.60 hours/year — Max accrual 336 hours</li>
-          <li>10+ years: 10.15 hours/pay period — 263.90 hours/year — Max accrual 396 hours</li>
+          <li><strong>Free Parking:</strong> The Hospital must provide parking at no charge.</li>
+          <li><strong>Cafeteria:</strong> Free coffee and at least 20% discount off visitor prices.</li>
+          <li><strong>Hospital Services:</strong> Employee discount on hospital services at Sunrise.</li>
+          <li><strong>HCA Programs:</strong> Banking services, Day Care Spending Account, Medical/Vision Spending Account, HCA Scholarship Program, Adoption Assistance, Direct Deposit, Student Loan Repayment, Tuition Reimbursement, Child Care Subsidy, Employee Stock Purchase Plan, Certification Support.</li>
         </ul>
-        <h4>30.1 Accrual Rates — Part-Time</h4>
+      </div>
+    </div>
+
+    <div class="contract-section contract-article" id="art29" data-text="non-discrimination discrimination race color religion national origin age sex sexual orientation gender identity disability union activity protected class">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 29</span>
+        <span class="article-name">Non-Discrimination</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
+      <div class="article-body">
+        <p>Neither the Hospital nor the Union shall discriminate against any employee on account of race, color, religion, national origin, age, sex, sexual orientation, gender identity, genetic information, protected veteran status, disability, union activity, or union membership.</p>
+        <p>Alleged violations are subject to the grievance procedure (Article 12), but will not be referred to arbitration. Employees retain the right to seek relief from outside the grievance process, including courts and administrative agencies.</p>
+      </div>
+    </div>
+
+    <div class="contract-section contract-article" id="art30" data-text="PTO paid time off vacation accrual cash out schedule request seniority maximum balance donation hardship round one round two round three">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 30</span>
+        <span class="article-name">Paid Time Off (PTO)</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
+      <div class="article-body">
+        <h4>Full-Time Accrual Rates</h4>
         <ul>
-          <li>0–4 years: 3.54 hours/pay period — 92.04 hours/year — Max accrual 138 hours</li>
-          <li>5–9 years: 4.30 hours/pay period — 111.80 hours/year — Max accrual 168 hours</li>
-          <li>10+ years: 5.08 hours/pay period — 132.08 hours/year — Max accrual 198 hours</li>
+          <li>0–4 years: 184 hours/year (7.08 hrs/pay period), max 276 hours</li>
+          <li>5–9 years: 223 hours/year (8.60 hrs/pay period), max 336 hours</li>
+          <li>10+ years: 263 hours/year (10.15 hrs/pay period), max 396 hours</li>
         </ul>
-        <p>30.2 Once an employee's PTO reaches the maximum accrual, PTO will cease accruing until the accrual is reduced below the maximum.</p>
-        <p>30.3 <strong>Voluntary Cash Out.</strong> Employees may cash out accrued PTO in excess of eighty (80) hours twice per calendar year, at $0.90 on the dollar. Minimum cash out is eight (8) hours.</p>
-        <p>30.4 <strong>Automatic Cash Out.</strong> An employee who, after three months of employment, terminates employment or reduces status to VSP, will be paid for all accrued PTO at one hundred percent (100%) of the value of the PTO.</p>
-        <p>30.6 PTO may not be used during the first ninety (90) days of employment, except for holidays.</p>
-        <h4>30.7.4 January through June PTO Requests</h4>
-        <p>Requests to use PTO during the first six (6) months of the year (January 2nd – June) may be submitted between September 1st and September 30th of the prior calendar year. The unit or department will post its semi-annual PTO calendar by November 1st of the prior calendar year.</p>
-        <h4>30.7.5 July through December PTO Requests</h4>
-        <p>Requests to use PTO during the second six months (July – December) may be submitted between March 1st and March 31st of the current calendar year. The unit or department will post its semi-annual PTO calendar by May 1st of each calendar year.</p>
-        <p>30.8 <strong>Donation of PTO.</strong> Vacation time (in increments of no less than one (1) hour) can be transferred from one employee to another employee who is experiencing a hardship situation. A bona fide hardship is limited to situations of illness or injury to the recipient employee, or illness or injury of an immediate family member. Employees who wish to donate vacation must have a minimum of forty (40) hours remaining in their balance after the donation. Employees may not donate more than fifty percent (50%) of their accrued vacation balance.</p>
+        <h4>Cash Out</h4>
+        <p>You may cash out PTO over 80 hours twice per year at <strong>$0.90 on the dollar</strong>. Minimum cash-out is 8 hours. If you leave or reduce to VSP, all PTO is paid out at 100%.</p>
+        <h4>Scheduling — Jan–Jun</h4>
+        <p>Submit requests September 1–30 of the prior year. Seniority-based priority in three rounds, then first-come first-served after the deadline.</p>
+        <h4>Scheduling — Jul–Dec</h4>
+        <p>Submit requests March 1–31 of the current year. Same seniority-based round system applies.</p>
+        <h4>PTO Donation</h4>
+        <p>Employees may donate PTO (minimum 1 hour) to a coworker experiencing hardship due to illness/injury of themselves or an immediate family member. Donor must retain at least 40 hours after the donation and may not donate more than 50% of their balance.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art32">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 32</span><span class="art-name">Pay Check Errors</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art32" data-text="paycheck errors underpayment correction next paycheck five days">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 32</span>
+        <span class="article-name">Pay Check Errors</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>Errors resulting in underpayments to employees shall be corrected and an additional check for the underpayment shall be issued to the employee as soon as possible, but no later than the next paycheck distributed five (5) or more days after the Hospital is notified of the error via a paycheck discrepancy form or other written method.</p>
+        <p>Underpayment errors must be corrected and an additional check issued no later than the next paycheck distributed <strong>5 or more days after the Hospital is notified</strong> of the error via a paycheck discrepancy form or other written method.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art33">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 33</span><span class="art-name">Personnel Files</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art33" data-text="personnel files records inspection copy right to respond dispute accuracy purge union access">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 33</span>
+        <span class="article-name">Personnel Files</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>Each employee shall have the right to inspect electronic copies of his/her personnel file (not including references received from former employers) through the Hospital's web portal, HR Answers, and to make their own copies, at no charge, using the computer in Human Resources. Copies of documents in personnel files (other than reference responses from former employers) will be provided upon written request of the employee at the charge of $.60 per page.</p>
-        <p>Union representatives shall be allowed to inspect such records in connection with a potential or pending grievance, if authorized in writing by the grievant. All such inspections will be conducted in the presence of the Director of Labor Relations or his or her designee at a location selected by the Hospital during normal office hours.</p>
-        <p>If an employee disputes the accuracy of materials placed in the employee's file, the employee shall have the option of responding to the disputed materials and the response will be attached to the materials.</p>
+        <p>Employees have the right to inspect electronic copies of their personnel file through the HR Answers portal and to make their own copies at no charge using the computer in Human Resources.</p>
+        <p>If you dispute the accuracy of materials in your file, you may submit a response which will be attached to the disputed materials. Union representatives may inspect records in connection with a potential or pending grievance, if authorized in writing by the grievant.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art34">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 34</span><span class="art-name">Probationary Period</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art37" data-text="safety health unsafe conditions hazard report retaliation harassment assault infectious disease vaccination hepatitis flu covid TB communicable">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 37</span>
+        <span class="article-name">Safety and Health</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>All regular full-time employees hired after the effective date of this Agreement shall be considered as probationary employees until they have worked for the Hospital for ninety (90) calendar days in a bargaining unit position. The probationary period for part-time and VSP employees shall be four hundred and sixty-eight (468) hours or ninety (90) calendar days, whichever is longer. Probationary employees have no seniority status, and may be disciplined or discharged without recourse to the grievance and arbitration procedures. At the completion of the probationary period, seniority shall date from the initial date of hire.</p>
+        <p>The Hospital must comply with all state and federal workplace safety laws. Employees cannot be required to work in conditions that are hazardous in violation of law.</p>
+        <h4>Retaliation Prohibited</h4>
+        <p>No employee will be disciplined or retaliated against for reporting unsafe conditions. If the Hospital fails to remedy a safety issue within a reasonable time, the employee or union may contact appropriate state or federal agencies.</p>
+        <h4>Free Vaccinations and Testing Provided</h4>
+        <p>Hepatitis B &amp; C testing (following exposure), titer testing, vaccines for measles/mumps/chicken pox/rubella/rubeola, TB screening, HIV testing (following exposure), flu vaccines, COVID-19 vaccine, and any other vaccination required by the Hospital — all at no cost to employees.</p>
+        <h4>Harassment</h4>
+        <p>The Hospital does not tolerate unlawful harassment or threats of physical harm. Complaints should first go to your immediate supervisor. If unresolved, submit in writing to the Director of Labor Relations within 14 calendar days of the occurrence.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art35">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 35</span><span class="art-name">Recognition</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art39" data-text="scheduling schedule posted advance notice shift change weekends days off request rotation four weeks">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 39</span>
+        <span class="article-name">Scheduling</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>35.1 The Hospital recognizes the Union as the sole and exclusive bargaining representative of the employees in the following classifications as certified by the National Labor Relations Board in Case No. 28-RC-330552: All full-time, regular part-time, and VSP employees employed by the Hospital at its facilities located at Sunrise Hospital &amp; Medical Center main campus and Sunrise Children's Hospital (3186 S. Maryland Parkway, Las Vegas, NV and 3131 La Canada Street, Las Vegas, NV) and the ER at Boulder's Edge (1501 Wagon Wheel Drive, Henderson, NV) in the following classifications: Clinical Pharmacist, Medical Technologist, Physical Therapist, Occupational Therapist, Social Worker, and Speech Language Pathologist.</p>
+        <p>Schedules covering at least 4 weeks must normally be posted at least <strong>13 days in advance</strong>. Employees may submit written requests for days off. Conflicting requests are resolved by rotating seniority.</p>
+        <h4>Weekends</h4>
+        <p>Full-time day shift employees: the Hospital will make every reasonable effort not to require more than 4 weekend shifts per 4-week schedule. Full-time night shift: not more than 6 weekend shifts per 4-week schedule. Part-time employees must work at least 2 weekend days or 3 weekend night shifts per 4-week schedule.</p>
+        <h4>Schedule Changes After Posting</h4>
+        <p>The Hospital must first seek mutual agreement. If no agreement, shift rotation is applied equitably starting with the least senior qualified employee.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art37">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 37</span><span class="art-name">Safety and Health</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <p>37.1 The Hospital shall comply with all state and federal laws and regulations concerning workplace safety. No employee shall be required to work under conditions that would be hazardous to the employee's safety in violation of state or federal law. No employee will be disciplined or retaliated against for reporting such conditions. If the Hospital does not remedy a safety issue within a reasonable period of time, the employee or the union shall be free to contact the appropriate state or federal agencies concerning the matter.</p>
-        <p>37.2 The Hospital shall continue to maintain a program of infectious and communicable disease control. The Hospital will continue to provide Hepatitis B &amp; C testing (following workplace exposure), titer testing (as required) and vaccines (if needed) for measles, mumps, chicken pox, rubella and rubeola, TB screening or testing (on employment, annually and following workplace exposure), HIV testing (following workplace exposure), flu vaccines (during flu season), COVID-19 vaccine (as recommended by the CDC), the Hepatitis B vaccine series (as required or upon request), and any other vaccination required by the Hospital at no cost to employees.</p>
-        <p>37.3 The Hospital does not tolerate unlawful harassment or threats of physical harm to or by its employees. Complaints of such conduct should first be directed to the employee's immediate supervisor. If the immediate supervisor's response fails to resolve the matter within a reasonable time, the employee should reduce the complaint to writing within fourteen (14) calendar days of the occurrence and submit the complaint to the Director of Labor Relations or his or her designee for review and investigation.</p>
+    <div class="contract-section contract-article" id="art40" data-text="seniority hospital classification definition break in service termination layoff VSP transfer length of service date of hire">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 40</span>
+        <span class="article-name">Seniority</span>
+        <span class="article-toggle">&#9660;</span>
       </div>
-    </div>
-
-    <div class="contract-article" id="art39">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 39</span><span class="art-name">Scheduling</span><span class="art-toggle">&#9660;</span></div>
       <div class="article-body">
-        <p>39.1 Schedules shall be made out according to the needs of the department or unit. The Hospital agrees to continue the practice of permitting full-time and part-time employees, in departments which do not have fixed or rotating schedules, to submit timely written requests to the employee's department manager (or designee) indicating their preference for days off. Conflicting requests for a given day off on file in the department or unit at the time the schedule is being prepared will be resolved by granting the requests on a rotating basis, beginning with the most senior of the requesters.</p>
-        <p>39.2 <strong>Weekends.</strong> Except for employees who are hired into, or who bid into, a position calling for a more frequent weekend schedule, the Hospital will make every reasonable effort not to require full-time day shift employees to work more than four (4), or full-time night shift employees work more than six (6), weekend shifts in any given four (4) week schedule. Part-time employees in such units will be required to work at least two (2) weekend days or three (3) weekend night shifts per four (4) week schedule.</p>
-        <p>39.3 <strong>Posting of Schedules.</strong> Schedules for all employees, covering a period of at least four (4) weeks, will normally be posted at least thirteen (13) days in advance of the beginning of the schedule, unless a shortage of staff precludes that amount of notice.</p>
-      </div>
-    </div>
-
-    <div class="contract-article" id="art40">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 40</span><span class="art-name">Seniority</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <p>40.1 <strong>Hospital-wide seniority</strong> shall be defined as an employee's unbroken length of service with the Hospital since the most recent date of hire into a full-time or part-time position. <strong>Classification seniority</strong> shall be defined as an employee's unbroken length of service within their current classification as a full-time or part-time employee.</p>
-        <p>40.2 During the first eighteen (18) months following a voluntary change in classification or department/cost center, seniority in the new job classification or department/cost center will apply for purposes of vacation request, holiday rotation, and bidding on available shift assignments. After an employee has been in a classification or department/cost center for eighteen (18) months, Hospital seniority will apply for all purposes.</p>
-        <h4>40.3 Termination of Seniority / Break in Service</h4>
-        <p>An employee's seniority and employment relationship with the Hospital shall terminate upon the occurrence of any of the following:</p>
+        <p><strong>Hospital-wide seniority:</strong> unbroken length of service since your most recent hire into a full-time or part-time position.</p>
+        <p><strong>Classification seniority:</strong> unbroken length of service within your current classification as full-time or part-time.</p>
+        <h4>Seniority Terminates Upon</h4>
         <ul>
-          <li>Resignation, unless the employee returns to a full-time or part-time position within ninety (90) calendar days</li>
+          <li>Resignation (unless returning within 90 days)</li>
           <li>Discharge for just cause</li>
-          <li>For employees with less than five (5) years of service, layoff or a period of twelve (12) months from the date of layoff</li>
-          <li>For employees with five (5) or more years of service, layoff for a period of twenty-four (24) months from the date of layoff</li>
+          <li>Layoff for 12 months (less than 5 years service) or 24 months (5+ years service)</li>
         </ul>
+        <p>During the first 18 months after a voluntary classification/department change, classification seniority applies for vacation requests, holiday rotation, and shift bidding. After 18 months, hospital seniority applies for all purposes.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art42">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 42</span><span class="art-name">Shop Stewards</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art42" data-text="shop stewards weingarten rights investigatory meeting representation steward training negotiating committee release paid time off grievance investigate">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 42</span>
+        <span class="article-name">Shop Stewards</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>42.2 Shop Stewards are responsible for informing bargaining unit employees of their rights and responsibilities under this Agreement, to ascertain that the terms and conditions of this Agreement are being observed, and to investigate and assist in the processing of grievances. If Shop Stewards attend meetings or investigate grievances during working time, they will seek permission from the Hospital which will not arbitrarily be denied. The Steward will not suffer any loss of pay for attending grievance meetings or for investigating grievances.</p>
-        <p>42.3 Upon advance written request, the Hospital will make reasonable efforts to provide up to five (5) days without pay per calendar year to Shop Stewards for the purpose of participating in Union educational programs, provided that coverage can be obtained without the need for premium pay or registry.</p>
-        <h4>42.5 Weingarten Rights</h4>
-        <p>In connection with investigatory interviews required by the Hospital which an employee reasonably believes will result in disciplinary action being taken against the employee, an employee, upon the employee's request, shall be entitled to have a Shop Steward or field representative present, provided that such investigatory interviews will not be delayed if a Shop Steward or field representative will not be available within twenty-four (24) hours. It is understood that the role of the Shop Steward or field representative shall be strictly limited to the rights accorded such representatives by the NLRB.</p>
+        <h4>Weingarten Rights (Section 42.5)</h4>
+        <p>In any investigatory interview you reasonably believe could result in discipline, you have the right to request a Shop Steward or field representative. If a steward will not be available within 24 hours, the interview may proceed without further delay.</p>
+        <p><strong>What to say:</strong> "I request union representation before this meeting proceeds."</p>
+        <h4>Steward Duties</h4>
+        <p>Stewards inform members of their rights, ensure the contract is being observed, and investigate and assist in processing grievances. If stewards attend grievance meetings or investigate during working time, they must seek permission from the Hospital (which cannot be arbitrarily denied). Stewards do not lose pay for attending grievance meetings or investigations.</p>
+        <h4>Training and Leave</h4>
+        <p>Upon advance written request, stewards may receive up to 5 days without pay per calendar year for union educational programs, provided coverage can be obtained without premium pay.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art45">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 45</span><span class="art-name">Status of Employment</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art45" data-text="status employment full time part time VSP variable staffing pool temporary traveler reclassification probationary hours per pay period schedule">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 45</span>
+        <span class="article-name">Status of Employment</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>45.1 <strong>Regular Full-Time Employees.</strong> A regular full-time employee is an employee who is scheduled to work a minimum of sixty-four (64) hours per pay period on a regularly scheduled basis, in a non-relief and non-temporary capacity.</p>
-        <p>45.2 <strong>Regular Part-Time Employees.</strong> A regular part-time employee is an employee who is scheduled to work at least forty (40) hours but less than sixty-four (64) hours per pay period on a regularly scheduled basis, in a non-relief and non-temporary capacity.</p>
-        <p>45.3 <strong>Variable Staffing Pool (VSP) Employees.</strong> Variable Staffing Pool employees are scheduled to work variable hours based on the needs of the Hospital. VSP employees must: (a) work a minimum of three (3) shifts per schedule, if desired by the Hospital; (b) work one (1) weekend shift per month, if needed; (c) work at least one (1) "major" holiday (Thanksgiving, Christmas or New Year's Day), if needed; and (d) work at least one (1) "minor" holiday (Memorial Day, Independence Day or Labor Day) if needed. VSP employees are ineligible for fringe benefits except as outlined in Appendix C.</p>
-        <p>45.6 <strong>Reclassification.</strong> A VSP employee who is working a regular schedule of at least forty (40) hours per pay period or a regular part-time or VSP employee who is working a regular schedule of at least sixty-four (64) hours per pay period, in a non-relief capacity, for twelve (12) of fifteen (15), or eighteen (18) of twenty-six (26), consecutive pay periods, will, upon written request, be reclassified on a prospective basis to part-time or full-time status (as the case may be) effective the first pay period following receipt of the request.</p>
+        <h4>Full-Time</h4>
+        <p>Scheduled to work a minimum of 64 hours per pay period on a regular basis in a non-relief, non-temporary capacity.</p>
+        <h4>Part-Time</h4>
+        <p>Scheduled to work at least 40 but less than 64 hours per pay period on a regular basis.</p>
+        <h4>VSP (Variable Staffing Pool)</h4>
+        <p>Variable hours based on Hospital needs. Must work minimum 3 shifts per schedule (if desired), 1 weekend shift/month, 1 major holiday (Thanksgiving, Christmas, or New Year's), and 1 minor holiday per year as needed. VSP employees are ineligible for most fringe benefits.</p>
+        <h4>Reclassification</h4>
+        <p>A VSP employee working a regular schedule of 40+ hours/pay period for 12 of 15 consecutive pay periods may request reclassification to part-time. A part-time or VSP working 64+ hours/pay period may request reclassification to full-time.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art47">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 47</span><span class="art-name">Time Off to Vote</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art47" data-text="vote voting time off election paid federal state county city">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 47</span>
+        <span class="article-name">Time Off to Vote</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>Employees who, because of their work schedule, do not have sufficient time to vote in a federal, state, county, or city election, will have their hours of work adjusted or will be granted time off with pay to give them sufficient time to vote. Employees should request such time off sufficiently in advance of the day of the election to allow time for the manager responsible for the work area to obtain coverage. For purposes of this policy, sufficient time to vote will be as set forth in Title 24, Nev. Rev. Stat. Ann. Sec. 293.463.</p>
+        <p>If your work schedule does not give you sufficient time to vote in a federal, state, county, or city election, the Hospital will adjust your hours or give you paid time off to vote. Request this in advance so your manager can arrange coverage.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art48">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 48</span><span class="art-name">Transfers and Promotions</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <p>48.1 Whenever a job opening occurs in the bargaining unit and the Hospital intends to fill the opening, notice of the vacancy will be posted on the Hospital website for at least seven (7) calendar days.</p>
-        <p>48.2 In filling vacancies in bargaining unit positions, the Hospital shall select the internal applicant who is, in the good-faith judgment of the Hospital, the best qualified for the position. In evaluating internal applicants, the Hospital will consider the applicant's experience, skill, ability, knowledge, performance in current position, and disciplinary record (if any). Employees with any discipline within six (6) months of the date the vacancy is posted or who are on a Final Written Warning will not be eligible for consideration.</p>
+    <div class="contract-section contract-article" id="art52" data-text="wages pay scale step grade year one year two year three ratification July 2026 July 2027 increase lump sum bonus experience years">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 52</span>
+        <span class="article-name">Wages</span>
+        <span class="article-toggle">&#9660;</span>
       </div>
-    </div>
-
-    <div class="contract-article" id="art52">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 52</span><span class="art-name">Wages</span><span class="art-toggle">&#9660;</span></div>
       <div class="article-body">
-        <h4>52.1 Wage Step and Grade Implementation</h4>
-        <p>The first full pay period after ratification (Year 1): Employees will be brought up to target step on the Year 1 Scales or receive an increase of up to seven percent (7.0%), whichever is less. Employees whose wage rates are, at the time of implementation, above or within two percent (2.0%) of the applicable step will receive a two percent (2.0%) increase in the form of a rate increase with the remainder in the form of a lump sum bonus.</p>
-        <p>The first full pay period of July 2026 (Year 2): Same process applied to Year 2 Scales.</p>
-        <p>The first full pay period of July 2027 (Year 3): Employees will be brought up to target step on the Year 3 Scales.</p>
-        <h4>Grade Key</h4>
+        <h4>Wage Implementation Schedule</h4>
         <ul>
-          <li>S1 — Social Worker BSW</li>
-          <li>S2 — Social Worker MSW</li>
-          <li>S3 — Medical Technologist</li>
-          <li>S4 — Sr. Medical Technologist</li>
-          <li>S5 — Occupational Therapist, Physical Therapist, Speech Language Pathologist</li>
-          <li>S6 — Clinical Pharmacist</li>
+          <li><strong>Year 1:</strong> First full pay period after ratification (October 2025) — employees brought up to target step or receive up to 7% increase, whichever is less.</li>
+          <li><strong>Year 2:</strong> First full pay period of July 2026 — same process applied to Year 2 scales.</li>
+          <li><strong>Year 3:</strong> First full pay period of July 2027 — same process applied to Year 3 scales.</li>
         </ul>
-        <p>52.5 All hours worked in the ED by Clinical Pharmacists shall receive a 5% hourly differential.</p>
+        <p>Employees whose rate is at or within 2% of the applicable step receive a 2% increase plus the remainder as a lump sum bonus.</p>
+        <h4>Grade Classifications</h4>
+        <ul>
+          <li>S1: Social Worker BSW</li>
+          <li>S2: Social Worker MSW</li>
+          <li>S3: Medical Technologist</li>
+          <li>S4: Senior Medical Technologist</li>
+          <li>S5: Occupational Therapist, Physical Therapist, Speech Language Pathologist</li>
+          <li>S6: Clinical Pharmacist</li>
+        </ul>
+        <p>Clinical Pharmacists working in the ED receive an additional 5% hourly differential for all ED hours worked.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art53">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 53</span><span class="art-name">Weekend and Shift Differentials</span><span class="art-toggle">&#9660;</span></div>
+    <div class="contract-section contract-article" id="art53" data-text="shift differential evening night weekend premium pay hours worked four consecutive hours pay rate 1.50 2.10">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 53</span>
+        <span class="article-name">Weekend and Shift Differentials</span>
+        <span class="article-toggle">&#9660;</span>
+      </div>
       <div class="article-body">
-        <p>53.1 <strong>Evening Shift Differential.</strong> An employee who works at least four (4) consecutive hours of a shift scheduled for 3:00 p.m. – 11:00 p.m. is eligible for an Evening Shift Differential for hours worked on the shift. The Evening Shift Differential is $1.50 per hour and applies only to productive hours worked.</p>
-        <p>53.2 <strong>Night Shift Differential.</strong> An employee who works at least four (4) consecutive hours of a shift scheduled for 7:00 p.m. – 7:00 a.m. or 11:00 p.m. – 7:00 a.m. is eligible for a Night Shift Differential for hours worked on the shift. The Night Shift Differential is $2.10 per hour for regular full-time or regular part-time employees and $1.50 per hour for VSP employees. The Night Shift Differential applies only to productive hours worked.</p>
-        <p>53.3 <strong>Weekend Shift Differential.</strong> An employee who works at least four (4) consecutive hours of a shift scheduled to commence on or after 11:00 p.m. Friday and end on or before 11:00 p.m. Sunday is eligible for a Weekend Shift Differential for hours worked on the shift. The Weekend Shift Differential is $1.50 per hour and applies only to productive hours worked.</p>
-        <p>53.5 <strong>No Pyramiding.</strong> There shall be no pyramiding of differentials except (1) Evening Shift Differential and Night Shift Differential will be paid in combination with Weekend Shift Differential and (2) Evening Shift Differential, Night Shift Differential, and Weekend Shift Differential will be paid in combination with applicable holiday differentials.</p>
+        <h4>Evening Shift Differential — $1.50/hr</h4>
+        <p>Shifts scheduled 3:00 PM – 11:00 PM. Must work at least 4 consecutive hours to qualify.</p>
+        <h4>Night Shift Differential — $2.10/hr (full-time/part-time) / $1.50/hr (VSP)</h4>
+        <p>Shifts scheduled 7:00 PM – 7:00 AM or 11:00 PM – 7:00 AM. Must work at least 4 consecutive hours.</p>
+        <h4>Weekend Shift Differential — $1.50/hr</h4>
+        <p>Shifts commencing on or after 11:00 PM Friday and ending on or before 11:00 PM Sunday. Must work at least 4 consecutive hours.</p>
+        <p>Evening and night differentials may be combined with weekend differential. All three may be combined with holiday differentials. Differentials apply only to productive hours worked.</p>
       </div>
     </div>
 
-    <div class="contract-article" id="art54">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 54</span><span class="art-name">Workload</span><span class="art-toggle">&#9660;</span></div>
-      <div class="article-body">
-        <p>The Hospital is committed to the goal of equitable distribution of workload during a shift. An employee may immediately raise the issue with his or her supervisor or manager who will evaluate the issue and, where appropriate, redistribute the work. Continued concerns of inequitable distribution of work will be reviewed by the Director of Labor Relations or his or her designee and will be appropriate for consideration by the Labor Management/Patient Care Committee.</p>
-        <p>Nothing contained in this Article shall limit the Union's ability to raise concerns regarding workload distribution among different shifts with the Labor Management/Patient Care Committee.</p>
+    <div class="contract-section contract-article" id="art55" data-text="duration effective date expiration term October 2025 June 2028 renewal automatic">
+      <div class="article-header" onclick="toggleArticle(this)">
+        <span class="article-num">Article 55</span>
+        <span class="article-name">Duration</span>
+        <span class="article-toggle">&#9660;</span>
       </div>
-    </div>
-
-    <div class="contract-article" id="art55">
-      <div class="article-header" onclick="toggleArticle(this)"><span class="art-num">Article 55</span><span class="art-name">Duration</span><span class="art-toggle">&#9660;</span></div>
       <div class="article-body">
-        <p>This Agreement shall be effective October 3, 2025, and shall continue in effect without change, addition or amendment through June 30, 2028. This Agreement shall be automatically renewed and extended from year to year thereafter unless either party serves notice in writing on the other party at least ninety (90) days prior to the expiration date of this Agreement, or any subsequent anniversary date of same, of its intention to terminate or amend this Agreement.</p>
+        <p>This Agreement is effective <strong>October 3, 2025</strong> and continues in effect through <strong>June 30, 2028</strong>. It automatically renews year to year unless either party gives written notice of intent to terminate or amend at least <strong>90 days before</strong> the expiration date.</p>
       </div>
     </div>
 
   </div>
 
-  <div class="page-footer">
-    <p>This page contains key articles from the Collective Bargaining Agreement between Sunrise Hospital &amp; Medical Center, Sunrise Children's Hospital, and Nevada Service Employees Union, SEIU Local 1107 (Professionals Unit), effective October 3, 2025 through June 30, 2028. Articles not shown in full may be obtained from your union steward.</p>
-    <p style="margin-top:8px;">Questions? Contact <a href="mailto:kalanispusteward@gmail.com">kalanispusteward@gmail.com</a> &middot; Last updated: April 2026</p>
+  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(201,168,76,0.08);color:var(--gray);font-size:12px;line-height:1.8;">
+    <p>This page contains key articles from the CBA between Sunrise Hospital &amp; Medical Center, Sunrise Children's Hospital, and SEIU Local 1107 (Professionals Unit), effective October 3, 2025 through June 30, 2028. Not all articles are shown in full. For the complete contract, contact your union steward.</p>
+    <p style="margin-top:8px;">Last updated: April 2026 &middot; Questions? Contact <a href="mailto:kalanispusteward@gmail.com" style="color:var(--gold-light);text-decoration:none;">kalanispusteward@gmail.com</a></p>
   </div>
 
 </div>
@@ -611,106 +685,208 @@
 <script>
 function toggleArticle(header) {
   const body = header.nextElementSibling;
-  const toggle = header.querySelector('.art-toggle');
-  const isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  toggle.classList.toggle('open', !isOpen);
-}
-
-document.getElementById('searchInput').addEventListener('keyup', function(e) {
-  if (e.key === 'Enter') searchContract();
-});
-
-function clearSearch() {
-  document.getElementById('searchInput').value = '';
-  searchContract();
+  const toggle = header.querySelector('.article-toggle');
+  body.classList.toggle('open');
+  toggle.classList.toggle('open');
 }
 
 function searchContract() {
-  const raw = document.getElementById('searchInput').value;
-  const query = raw.trim().toLowerCase();
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
   const articles = document.querySelectorAll('.contract-article');
   const indexItems = document.querySelectorAll('.article-index-item');
   const countEl = document.getElementById('searchCount');
 
-  clearHighlights();
-
   if (!query) {
-    articles.forEach(a => {
-      a.classList.remove('hidden');
-      const body = a.querySelector('.article-body');
-      const toggle = a.querySelector('.art-toggle');
-      body.classList.remove('open');
-      toggle.classList.remove('open');
-    });
-    indexItems.forEach(i => i.classList.remove('hidden'));
+    articles.forEach(a => { a.classList.remove('hidden'); });
+    indexItems.forEach(i => { i.classList.remove('hidden'); });
     countEl.textContent = '';
+    clearHighlights();
     return;
   }
 
   let visible = 0;
-  const artIds = [];
-
   articles.forEach(article => {
-    const searchableText = article.innerText.toLowerCase();
-    const matches = searchableText.includes(query);
+    const text = (article.dataset.text + ' ' + article.textContent).toLowerCase();
+    const matches = text.includes(query);
     article.classList.toggle('hidden', !matches);
     if (matches) {
       visible++;
       const body = article.querySelector('.article-body');
-      const toggle = article.querySelector('.art-toggle');
+      const toggle = article.querySelector('.article-toggle');
       body.classList.add('open');
       toggle.classList.add('open');
-      artIds.push(article.id);
     }
   });
 
   indexItems.forEach(item => {
-    const href = item.getAttribute('href').replace('#', '');
-    item.classList.toggle('hidden', !artIds.includes(href));
+    const artNum = item.dataset.art;
+    const article = document.getElementById('art' + artNum);
+    item.classList.toggle('hidden', article ? article.classList.contains('hidden') : true);
   });
 
-  if (visible === 0) {
-    countEl.textContent = 'No articles found for "' + raw + '". Try a different keyword.';
-  } else {
-    countEl.textContent = visible + ' article' + (visible === 1 ? '' : 's') + ' found for "' + raw + '"';
-    highlightAll(query);
-  }
+  countEl.textContent = visible === 0 ? 'No articles found for "' + query + '"' : visible + ' article' + (visible === 1 ? '' : 's') + ' found for "' + query + '"';
+  highlightText(query);
 }
 
-function highlightAll(query) {
-  const bodies = document.querySelectorAll('.article-body.open');
+function highlightText(query) {
+  clearHighlights();
+  if (!query) return;
+  const bodies = document.querySelectorAll('.article-body');
   bodies.forEach(body => {
+    if (!body.classList.contains('open')) return;
     highlightNode(body, query);
   });
 }
 
 function highlightNode(node, query) {
-  if (node.nodeType === Node.TEXT_NODE) {
-    const lower = node.textContent.toLowerCase();
-    const idx = lower.indexOf(query);
+  if (node.nodeType === 3) {
+    const idx = node.textContent.toLowerCase().indexOf(query);
     if (idx >= 0) {
-      const before = document.createTextNode(node.textContent.substring(0, idx));
-      const match = document.createElement('mark');
-      match.textContent = node.textContent.substring(idx, idx + query.length);
-      const after = document.createTextNode(node.textContent.substring(idx + query.length));
-      const parent = node.parentNode;
-      parent.insertBefore(before, node);
-      parent.insertBefore(match, node);
-      parent.insertBefore(after, node);
-      parent.removeChild(node);
+      const span = document.createElement('span');
+      span.innerHTML = node.textContent.substring(0, idx) + '<mark>' + node.textContent.substring(idx, idx + query.length) + '</mark>' + node.textContent.substring(idx + query.length);
+      node.parentNode.replaceChild(span, node);
     }
-  } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'MARK' && node.tagName !== 'SCRIPT' && node.tagName !== 'STYLE') {
+  } else if (node.nodeType === 1 && node.tagName !== 'MARK') {
     Array.from(node.childNodes).forEach(child => highlightNode(child, query));
   }
 }
 
 function clearHighlights() {
   document.querySelectorAll('mark').forEach(m => {
-    const text = document.createTextNode(m.textContent);
-    m.parentNode.replaceChild(text, m);
+    m.replaceWith(document.createTextNode(m.textContent));
   });
-  document.normalize();
+}
+
+function setQuestion(q) {
+  document.getElementById('aiQuestion').value = q;
+  document.getElementById('aiQuestion').focus();
+}
+
+document.getElementById('aiQuestion').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') askAI();
+});
+
+const CONTRACT_TEXT = `COLLECTIVE BARGAINING AGREEMENT - Sunrise Hospital & Medical Center and Sunrise Children's Hospital and SEIU Local 1107 (Professionals Unit) - October 3, 2025 through June 30, 2028.
+
+ARTICLE 1 - ABSENCE FROM WORK: Employees must report any absence to their manager at least 3 hours before the scheduled start of their shift. After 3+ consecutive missed shifts due to illness, the Hospital may require a physician's certificate. Employees have 7 days to obtain this certificate.
+
+ARTICLE 3 - ATTENDANCE: One unscheduled absence = 1 occurrence if called in at least 3 hours before shift. Leaving before completing half your shift = 1 occurrence. Tardiness over 5 minutes late = 0.5 occurrence. Failing to call in properly adds an extra occurrence. No call/no show = 3 occurrences. Two no call/no shows in 12 months = termination. Discipline ladder (rolling 12 months): 5 occurrences = coaching, 6 = first written warning, 7 = final written warning, 8 = 2-day unpaid suspension, 9 = termination. 12 tardiness instances in 12 months = termination. Excused absences (do NOT count): approved leaves, on-the-job injuries, emergency medical procedures, jury duty, approved shift trades, bereavement leave. Holiday absences may result in enhanced occurrences - up to 4 for holiday-related incidents.
+
+ARTICLE 4 - BEREAVEMENT LEAVE: Up to 24 hours paid for full-time, 12 hours for part-time within 30 days of a death in immediate family. Immediate family includes spouse, parent, step-parent, legal guardian, grandparents, grandchildren, in-laws, children, step-children, siblings, domestic partner.
+
+ARTICLE 5 - CALL OFF PROCEDURE: Call-off order: (1) Agency/Travelers, (2) VSP on overtime, (3) Part-time on overtime, (4) Full-time on overtime, (5) VSP, (6) Volunteers, (7) Part-time and full-time by seniority. Once called off, you may use PTO or unpaid leave at your choice. You are NOT required to maintain contact or remain available after being called off.
+
+ARTICLE 7 - CHARGE/RELIEF SUPERVISORY DIFFERENTIAL: Medical Technologists, Sr. Medical Technologists, Speech Language Pathologists, Occupational Therapists, Physical Therapists, and Clinical Pharmacists assigned to charge or relief supervisor receive 5% per hour differential for all hours worked in that capacity.
+
+ARTICLE 9 - DISCIPLINARY ACTION: The Hospital may only discipline for just cause. Any written warning, suspension, or discharge of a non-probationary employee is grievable. Coaching sessions are NOT grievable on their own but can be part of a grievance over higher-level discipline. Most disciplinary actions expire after 12 months. Final written warnings and suspensions may be used for up to 2 years for similar conduct. If discipline is overturned, all references must be purged from the personnel file. You have the right to a steward when questioned about potential discipline or when discipline is being issued.
+
+ARTICLE 12 - GRIEVANCE AND ARBITRATION: A grievance is any dispute about the interpretation or application of the CBA, or whether discipline was for just cause. TIME LIMITS (weekends and holidays excluded): Step 1 must be filed within 15 days of the event. Meeting within 10 days, written response within 15 days. Step 2 appeal within 15 days of Step 1 response. Step 3 arbitration appeal within 30 days of Step 2 response. Missing a deadline VOIDS the grievance permanently. Management missing a deadline does NOT void the grievance. Grievances must be filed on the official Grievance Form (Appendix B).
+
+ARTICLE 13 - HEALTH AND WELFARE: Full-time employees and their dependents receive the Aetna POS medical plan at no cost. Part-time employees with 3+ years of service also receive it free. Hospital pays 90% of individual coverage and 85% of dependent coverage for part-time with less than 3 years.
+
+ARTICLE 14 - HOLIDAYS: Recognized holidays: New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving Day, Christmas Day. Holiday worked premium: time and one-half base rate. Holiday hours run from 11PM the day before through 11PM on the holiday. Must work at least 4 consecutive hours to qualify.
+
+ARTICLE 15 - HOURS OF WORK AND OVERTIME: Employees on shifts of 8+ hours receive one 30-minute unpaid meal period and two 15-minute paid rest breaks. If required to stay at workstation during meal period, employee remains in paid status. Additional paid rest break if working 4+ hours beyond regular shift. Employees who work more than 16 consecutive hours must have at least 8 hours off before returning. Reporting pay: if you report without prior notice that no work is available, you are guaranteed 2 hours of work or pay at your regular rate.
+
+ARTICLE 18 - JURY/COURT DUTY: Full-time and part-time employees are paid base hourly rate for time missed due to jury duty. If not selected for jury duty or released after less than 4 hours, you must return to work. Night shift employees are released from their shift the night before jury appearance if requested.
+
+ARTICLE 19 - LABOR-MANAGEMENT COMMITTEE: Meets quarterly at union's request. Addresses issues of mutual concern including staffing concerns. Cannot discuss disciplinary matters, pending grievances, or contract negotiations. The LMC is the exclusive means to address staffing concerns. Employees on the committee are paid and meetings count as hours worked.
+
+ARTICLE 20 - LAYOFF/RECALL: Hospital must make every reasonable effort to avoid layoffs. At least 2 weeks notice or 2 weeks pay must be given. Severance pay: 91 days-3 years = 2 weeks; 3-5 years = 3 weeks; 5-8 years = 4 weeks; 8-10 years = 5 weeks; 10-15 years = 8 weeks; 15-20 years = 10 weeks; 20+ years = 12 weeks. Recall roster: 12 months (24 months for 5+ years service). Must accept recall within 2 business days and return within 14 days.
+
+ARTICLE 21 - LEAVES OF ABSENCE: Union leave up to 6 months available. Family Illness Pay: up to 14 calendar days paid for caring for spouse, domestic partner, child, or parent with serious health condition, or for birth/adoption. Rates: 0-4 years = 60% of base rate; 5-9 years = 80%; 10+ years = 100%.
+
+ARTICLE 22 - LIABILITY INSURANCE: Hospital carries medical malpractice insurance on all employees involved in patient care from the first day of employment.
+
+ARTICLE 25 - MANDATORY OVERTIME: Mandatory overtime is a last resort - Hospital must first try volunteers, managers, agency, travelers. No employee may be required to work more than 16 consecutive hours. If you volunteer beyond 16 hours, you may request to delay your next shift start by up to 8 hours. All mandatory overtime is paid at DOUBLE TIME regardless of whether you've hit 40 hours in the workweek.
+
+ARTICLE 26 - MISCELLANEOUS BENEFITS: Free parking. Free coffee and at least 20% cafeteria discount. Hospital services employee discount. HCA programs: 401(k) match, tuition reimbursement, student loan repayment, adoption assistance, childcare subsidy, scholarship program, employee stock purchase plan, certification support.
+
+ARTICLE 29 - NON-DISCRIMINATION: No discrimination based on race, color, religion, national origin, age, sex, sexual orientation, gender identity, genetic information, protected veteran status, disability, union activity, or union membership.
+
+ARTICLE 30 - PAID TIME OFF: Full-time accrual: 0-4 years = 184 hrs/year (max 276); 5-9 years = 223 hrs/year (max 336); 10+ years = 263 hrs/year (max 396). Part-time accrual is half the full-time rate. Cash out: may cash out PTO over 80 hours twice per year at $0.90 on the dollar (minimum 8 hours). If you leave or reduce to VSP, all PTO pays out at 100%. PTO scheduling Jan-Jun: submit September 1-30 prior year, seniority-based priority. PTO scheduling Jul-Dec: submit March 1-31, same seniority system. PTO Donation: may donate PTO to coworkers with hardship due to illness/injury. Donor must retain 40 hours minimum.
+
+ARTICLE 32 - PAYCHECK ERRORS: Underpayment errors must be corrected and additional check issued no later than the next paycheck distributed 5 or more days after the Hospital is notified of the error.
+
+ARTICLE 33 - PERSONNEL FILES: Employees have the right to inspect their personnel file through HR Answers portal. May dispute accuracy and submit a response to be attached to disputed materials. Union reps may inspect records in connection with a potential grievance if authorized in writing.
+
+ARTICLE 34 - PROBATIONARY PERIOD: Full-time employees: 90 calendar days. Part-time and VSP: 468 hours or 90 calendar days, whichever is longer. Probationary employees have no seniority and may be disciplined or discharged without recourse to the grievance procedure.
+
+ARTICLE 37 - SAFETY AND HEALTH: Hospital must comply with all safety laws. No employee required to work in hazardous conditions violating law. No retaliation for reporting unsafe conditions. If Hospital fails to remedy safety issues, employee or union may contact state/federal agencies. Free vaccinations and testing provided at no cost: Hepatitis B & C, titer testing, measles/mumps/chicken pox/rubella vaccines, TB screening, HIV testing (post-exposure), flu vaccines, COVID-19 vaccine. Harassment complaints: first go to supervisor, if unresolved submit in writing to Director of Labor Relations within 14 calendar days.
+
+ARTICLE 39 - SCHEDULING: Schedules must be posted at least 13 days in advance. Employees may request days off; conflicting requests resolved by rotating seniority. Full-time day shift: no more than 4 weekend shifts per 4-week schedule. Full-time night shift: no more than 6 weekend shifts per 4-week schedule. Part-time must work at least 2 weekend days or 3 weekend nights per 4-week schedule.
+
+ARTICLE 40 - SENIORITY: Hospital-wide seniority = unbroken service since most recent hire into FT or PT position. Classification seniority = unbroken service in your current classification. Seniority terminates upon resignation (unless returning within 90 days), discharge for just cause, or layoff for 12 months (24 months for 5+ years service). After 18 months in a new classification/department, hospital seniority applies for all purposes.
+
+ARTICLE 42 - SHOP STEWARDS AND WEINGARTEN RIGHTS: In any investigatory interview you believe could result in discipline, you have the right to request a Shop Steward or field representative. Say: "I request union representation before this meeting proceeds." If a steward will not be available within 24 hours, the interview may proceed. Stewards may attend grievance meetings and investigate grievances during working time with management permission (which cannot be arbitrarily denied) without loss of pay. Stewards may receive up to 5 days without pay per year for union educational programs.
+
+ARTICLE 43 - SHORT-TERM DISABILITY: Hospital provides the same STD plan as offered to non-bargaining unit employees for the term of this agreement.
+
+ARTICLE 45 - STATUS OF EMPLOYMENT: Full-time = minimum 64 hours per pay period. Part-time = at least 40 but less than 64 hours per pay period. VSP = variable hours; must work minimum 3 shifts/schedule, 1 weekend/month, 1 major holiday, 1 minor holiday per year. VSP ineligible for most benefits. Reclassification from VSP to PT or PT to FT possible after 12 of 15 consecutive pay periods at qualifying hours.
+
+ARTICLE 47 - TIME OFF TO VOTE: If your schedule prevents you from having sufficient time to vote in a federal, state, county, or city election, the Hospital will adjust your hours or give you paid time off to vote.
+
+ARTICLE 48 - TRANSFERS AND PROMOTIONS: Job openings must be posted on the Hospital website for at least 7 days. Hospital selects the best qualified internal applicant based on experience, skill, ability, knowledge, performance, and disciplinary record. Employees with discipline within 6 months of posting or on a Final Written Warning are not eligible for consideration.
+
+ARTICLE 50 - UNION SECURITY AND DUES: Hospital deducts union dues from employee wages upon signed written authorization. Dues deduction is irrevocable for one year and automatically renewed annually.
+
+ARTICLE 52 - WAGES: Year 1 scales: first full pay period after ratification (October 2025). Year 2 scales: first full pay period of July 2026. Year 3 scales: first full pay period of July 2027. Grade S1=Social Worker BSW, S2=Social Worker MSW, S3=Medical Technologist, S4=Senior Medical Technologist, S5=Occupational Therapist/Physical Therapist/Speech Language Pathologist, S6=Clinical Pharmacist. Clinical Pharmacists in ED receive additional 5% hourly differential.
+
+ARTICLE 53 - SHIFT AND WEEKEND DIFFERENTIALS: Evening differential: $1.50/hr for shifts 3PM-11PM (minimum 4 consecutive hours). Night differential: $2.10/hr for FT/PT, $1.50/hr for VSP for shifts 7PM-7AM or 11PM-7AM (minimum 4 consecutive hours). Weekend differential: $1.50/hr for shifts from Friday 11PM through Sunday 11PM (minimum 4 consecutive hours). Differentials may be combined - evening/night with weekend, and all with holiday differentials.
+
+ARTICLE 54 - WORKLOAD: Hospital committed to equitable workload distribution. Employees may immediately raise workload concerns with their supervisor. Continued concerns may be reviewed by the Director of Labor Relations and are appropriate for the Labor Management Committee.
+
+ARTICLE 55 - DURATION: Agreement effective October 3, 2025 through June 30, 2028. Automatically renews year to year unless either party gives written notice of intent to terminate at least 90 days before expiration.`;
+
+async function askAI() {
+  const question = document.getElementById('aiQuestion').value.trim();
+  if (!question) return;
+
+  const btn = document.getElementById('aiBtn');
+  const responseDiv = document.getElementById('aiResponse');
+  const responseText = document.getElementById('aiResponseText');
+
+  btn.disabled = true;
+  btn.textContent = 'Searching...';
+  responseDiv.classList.add('visible');
+  responseText.innerHTML = '<span class="ai-loading">Reading the contract and preparing your answer...</span>';
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: `You are a helpful union contract assistant for the Sunrise Professionals Unit, SEIU Local 1107. You answer questions about the Collective Bargaining Agreement (CBA) between Sunrise Hospital & Medical Center / Sunrise Children's Hospital and SEIU Local 1107 for the Professionals unit (effective October 3, 2025 through June 30, 2028).
+
+IMPORTANT RULES:
+- Only answer based on the contract text provided. Do not make up information.
+- Answer in plain, clear English that any worker can understand. No legal jargon.
+- Always cite the specific Article number when referencing contract language.
+- If a question is about a specific personal situation, remind the member to contact their steward.
+- Keep answers focused and concise — 3 to 8 sentences for most questions.
+- End every answer with: "For your specific situation, always contact your union steward at kalanispusteward@gmail.com"
+- DISCLAIMER: This is general contract information only, not legal advice.
+
+Here is the full contract text:
+${CONTRACT_TEXT}`,
+        messages: [{ role: 'user', content: question }]
+      })
+    });
+
+    const data = await response.json();
+    if (data.content && data.content[0]) {
+      responseText.textContent = data.content[0].text;
+    } else {
+      responseText.textContent = 'Sorry, there was an issue getting a response. Please try again or contact your steward directly at kalanispusteward@gmail.com';
+    }
+  } catch (err) {
+    responseText.textContent = 'Unable to connect to the AI assistant right now. Please try again later or contact your steward at kalanispusteward@gmail.com';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Ask →';
 }
 </script>
 
