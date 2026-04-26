@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Step Scale - Sunrise Professionals Unit</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#C9A84C;--gold-light:#E2C97E;--gold-dark:#A8883A;
+    --purple-mid:#3D2666;--purple-light:#4E3180;--purple-pale:#1E1235;
+    --black:#0D0A14;--white:#F5F0FF;--gray:#8B82A0;--gray-light:#C4BBDA;
+    --surface:#1A1030;--surface2:#221540;--border:rgba(201,168,76,0.15);
+    --red:#C0392B;--green:#69B36D;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;line-height:1.6;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,10,20,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:var(--gold);text-transform:uppercase;text-decoration:none;}
+  .nav-logo span{color:var(--gray-light);font-weight:400;font-size:13px;margin-left:10px;}
+  .back-link{color:var(--gray);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;}
+  .back-link:hover{color:var(--gold);}
+  .page-wrap{max-width:980px;margin:0 auto;padding:6rem 2rem 4rem;}
+  .page-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+  .page-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(42px,7vw,76px);text-transform:uppercase;line-height:0.9;color:var(--white);margin-bottom:1rem;}
+  .page-sub{color:var(--gray-light);font-size:15px;font-weight:300;max-width:720px;line-height:1.8;margin-bottom:2rem;}
+  .tool-card{background:var(--surface);border:1px solid var(--border);padding:1.5rem;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+  .tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold-light),var(--gold-dark));}
+  .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;}
+  label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.35rem;}
+  select,input{width:100%;background:var(--surface2);border:1px solid rgba(201,168,76,0.25);color:var(--white);padding:13px 14px;font-family:'Barlow',sans-serif;font-size:15px;outline:none;}
+  select:focus,input:focus{border-color:var(--gold);}
+  .hint{color:var(--gray);font-size:12px;margin-top:6px;}
+  .button-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.2rem;}
+  button,.btn-link{background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.1em;text-transform:uppercase;padding:13px 22px;border:none;text-decoration:none;cursor:pointer;transition:opacity .2s;}
+  button:hover,.btn-link:hover{opacity:.9;}
+  .secondary{background:transparent;color:var(--gold-light);border:1px solid rgba(201,168,76,0.35);}
+  .result{display:none;background:var(--surface);border:1px solid var(--border);padding:1.5rem;margin-bottom:1.5rem;}
+  .result.show{display:block;}
+  .result-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:1rem;}
+  .result-box{background:var(--surface2);border:1px solid rgba(201,168,76,0.15);padding:1rem;}
+  .result-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;color:var(--gray);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
+  .result-value{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;color:var(--gold-light);line-height:1.05;}
+  .big-rate{font-size:42px;color:var(--gold);}
+  .result-note{color:var(--gray-light);font-size:13px;line-height:1.7;margin-top:1rem;}
+  .warning{border-left:3px solid var(--gold);padding-left:12px;color:var(--gray-light);}
+  .rate-table-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--border);padding:1rem;margin-top:1.5rem;}
+  .rate-table-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+  table{width:100%;border-collapse:collapse;min-width:720px;}
+  th,td{border-bottom:1px solid rgba(201,168,76,0.1);padding:8px 10px;text-align:right;font-size:13px;color:var(--gray-light);}
+  th{font-family:'Barlow Condensed',sans-serif;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;background:rgba(201,168,76,0.04);}
+  th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--surface);}
+  .footer-note{margin-top:2rem;color:var(--gray);font-size:12px;line-height:1.8;}
+  .footer-note a{color:var(--gold-light);text-decoration:none;}
+  @media(max-width:768px){
+    nav{padding:0 1.25rem;}
+    .nav-logo span{display:none;}
+    .page-wrap{padding:5rem 1.25rem 3rem;}
+    .form-grid{grid-template-columns:1fr;}
+    .result-grid{grid-template-columns:1fr 1fr;}
+    .big-rate{font-size:36px;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">SPU <span>Sunrise Professionals Unit</span></a>
+  <a href="index.html" class="back-link">&#8592; Back to CBA</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-label">Appendix A - Wage Scales</div>
+    <h1 class="page-title">Step Scale</h1>
+    <p class="page-sub">Select a profession, employment status, effective wage scale year, and credited years of experience. The calculator rounds down to the nearest available step on the CBA wage scale.</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="form-grid">
+      <div>
+        <label for="profession">Profession</label>
+        <select id="profession">
+          <option value="S1">BSW - Social Worker BSW</option>
+          <option value="S2">MSW - Social Worker MSW</option>
+          <option value="S3">Lab Med Tech - Medical Technologist</option>
+          <option value="S4">Senior Lab Med Tech - Sr Medical Technologist</option>
+          <option value="S5">PT / OT / SLP</option>
+          <option value="S6">Pharmacist - Clinical Pharmacist</option>
+        </select>
+        <div class="hint">Grade map: BSW=S1, MSW=S2, Lab Med Tech=S3, Senior Lab Med Tech=S4, PT/OT/SLP=S5, Pharmacist=S6.</div>
+      </div>
+
+      <div>
+        <label for="status">Status</label>
+        <select id="status">
+          <option value="FTPT">Full-time / Part-time</option>
+          <option value="PRN">PRN / VSP</option>
+        </select>
+        <div class="hint">PRN/VSP uses the contract PRN rule.</div>
+      </div>
+
+      <div>
+        <label for="yoe">Credited Years of Experience</label>
+        <input id="yoe" type="number" min="0" max="60" step="0.1" placeholder="Example: 7.5" />
+        <div class="hint">For full-time/part-time, this rounds down to the nearest available YOE step.</div>
+      </div>
+
+      <div>
+        <label for="scaleYear">Effective Scale</label>
+        <select id="scaleYear">
+          <option value="year1">Year 1 - FFPP after Ratification</option>
+          <option value="year2">Year 2 - FFPP July 2026</option>
+          <option value="year3">Year 3 - FFPP July 2027</option>
+        </select>
+        <div class="hint">Choose the wage scale that applies to the date you are checking.</div>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button onclick="calculateStep()">Calculate Step</button>
+      <button class="secondary" onclick="resetForm()">Reset</button>
+      <a class="btn-link secondary" href="CBA-Sunrise-Professionals-Oct-2025-June-2028.pdf" download>Download CBA PDF</a>
+    </div>
+  </div>
+
+  <div class="result" id="resultBox">
+    <div class="page-label">Result</div>
+    <div class="result-grid">
+      <div class="result-box">
+        <div class="result-label">Grade</div>
+        <div class="result-value" id="outGrade">-</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">Matched Step</div>
+        <div class="result-value" id="outStep">-</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">Scale</div>
+        <div class="result-value" id="outYear">-</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">Hourly Rate</div>
+        <div class="result-value big-rate" id="outRate">-</div>
+      </div>
+    </div>
+    <p class="result-note warning" id="outNote"></p>
+  </div>
+
+  <div class="rate-table-wrap">
+    <div class="rate-table-title">Current Selected Scale Table</div>
+    <table id="rateTable"></table>
+  </div>
+
+  <p class="footer-note">This tool is an informational calculator based on Appendix A wage scales. Always verify final wage placement against the official CBA and any applicable HR/Union implementation rules.</p>
+</div>
+
+<script>
+const steps = [0, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 35];
+const stepLabels = {
+  0: 'Step 0', 0.5: 'Step 6mo', 1: 'Step 1', 2: 'Step 2', 3: 'Step 3', 4: 'Step 4', 5: 'Step 5', 6: 'Step 6', 7: 'Step 7', 8: 'Step 8', 9: 'Step 9', 10: 'Step 10', 11: 'Step 11', 12: 'Step 12', 13: 'Step 13', 14: 'Step 14', 15: 'Step 15', 16: 'Step 16', 17: 'Step 17', 18: 'Step 18', 19: 'Step 19', 20: 'Step 20', 25: 'Step 25', 35: 'Step 35'
+};
+const gradeNames = {
+  S1: 'Social Worker BSW',
+  S2: 'Social Worker MSW',
+  S3: 'Medical Technologist',
+  S4: 'Sr Medical Technologist',
+  S5: 'OT / PT / SLP',
+  S6: 'Clinical Pharmacist'
+};
+const yearNames = {
+  year1: 'Year 1',
+  year2: 'Year 2',
+  year3: 'Year 3'
+};
+
+const wageData = {
+  year1: {
+    0:[32.69,35.16,35.50,37.45,45.26,64.84], 0.5:[33.21,35.72,36.07,37.99,45.94,65.81], 1:[33.72,36.26,36.63,38.61,46.63,66.81], 2:[34.75,37.37,37.73,39.74,48.03,68.80],
+    3:[35.74,38.48,38.87,40.98,49.47,70.88], 4:[36.82,39.60,39.99,42.16,50.95,73.01], 5:[37.92,40.79,41.18,43.45,52.48,75.21], 6:[39.08,42.03,42.44,44.75,54.05,77.46],
+    7:[39.84,42.84,43.27,45.65,55.14,79.00], 8:[40.62,43.72,44.15,46.54,56.24,80.58], 9:[41.47,44.61,45.04,47.44,57.36,82.20], 10:[42.28,45.48,45.93,48.44,58.51,83.86],
+    11:[42.72,45.95,46.41,48.89,59.10,84.67], 12:[43.11,46.39,46.87,49.40,59.69,85.55], 13:[43.54,46.89,47.37,49.89,60.28,86.36], 14:[44.02,47.30,47.76,50.39,60.89,87.26],
+    15:[44.44,47.80,48.26,50.90,61.50,88.12], 16:[44.91,48.25,48.72,51.38,62.11,88.96], 17:[45.34,48.72,49.20,51.94,62.73,89.89], 18:[45.79,49.23,49.71,52.41,63.36,90.80],
+    19:[46.25,49.71,50.20,52.94,63.99,91.69], 20:[46.72,50.20,50.71,53.46,64.63,92.61], 25:[47.65,51.23,51.75,54.55,65.92,94.48], 35:[49.09,52.78,53.28,56.15,67.90,97.29]
+  },
+  year2: {
+    0:[33.34,35.86,36.21,38.20,46.17,66.14], 0.5:[33.88,36.43,36.79,38.75,46.86,67.13], 1:[34.39,36.99,37.36,39.38,47.56,68.15], 2:[35.44,38.12,38.49,40.54,48.99,70.18],
+    3:[36.46,39.25,39.64,41.80,50.46,72.30], 4:[37.56,40.39,40.79,43.00,51.97,74.47], 5:[38.68,41.61,42.01,44.32,53.53,76.72], 6:[39.87,42.87,43.28,45.64,55.14,79.01],
+    7:[40.64,43.70,44.13,46.56,56.24,80.58], 8:[41.43,44.59,45.03,47.47,57.36,82.19], 9:[42.30,45.50,45.94,48.39,58.51,83.84], 10:[43.12,46.39,46.85,49.41,59.68,85.54],
+    11:[43.57,46.87,47.33,49.87,60.28,86.37], 12:[43.98,47.32,47.80,50.39,60.88,87.26], 13:[44.41,47.83,48.32,50.89,61.49,88.08], 14:[44.90,48.25,48.71,51.39,62.10,89.01],
+    15:[45.33,48.76,49.23,51.92,62.72,89.88], 16:[45.81,49.22,49.70,52.41,63.35,90.74], 17:[46.25,49.69,50.19,52.98,63.99,91.69], 18:[46.71,50.21,50.71,53.45,64.63,92.62],
+    19:[47.17,50.70,51.20,54.00,65.27,93.52], 20:[47.65,51.20,51.72,54.53,65.92,94.47], 25:[48.60,52.25,52.78,55.64,67.24,96.36], 35:[50.08,53.84,54.35,57.27,69.26,99.24]
+  },
+  year3: {
+    0:[33.84,36.40,36.75,38.77,46.86,67.13], 0.5:[34.39,36.98,37.34,39.33,47.56,68.13], 1:[34.91,37.54,37.92,39.97,48.27,69.17], 2:[35.97,38.69,39.07,41.14,49.72,71.23],
+    3:[37.00,39.84,40.24,42.43,51.21,73.39], 4:[38.12,41.00,41.40,43.65,52.75,75.59], 5:[39.26,42.23,42.64,44.99,54.33,77.87], 6:[40.46,43.51,43.93,46.32,55.96,80.20],
+    7:[41.25,44.35,44.80,47.26,57.08,81.79], 8:[42.05,45.26,45.71,48.18,58.22,83.42], 9:[42.94,46.18,46.63,49.12,59.39,85.10], 10:[43.77,47.09,47.56,50.15,60.58,86.82],
+    11:[44.22,47.57,48.04,50.62,61.18,87.66], 12:[44.64,48.03,48.52,51.15,61.79,88.57], 13:[45.08,48.55,49.04,51.65,62.41,89.40], 14:[45.57,48.97,49.44,52.17,63.04,90.34],
+    15:[46.01,49.49,49.96,52.70,63.67,91.23], 16:[46.50,49.95,50.44,53.20,64.30,92.10], 17:[46.94,50.44,50.94,53.77,64.95,93.06], 18:[47.41,50.97,51.47,54.26,65.59,94.01],
+    19:[47.88,51.46,51.97,54.81,66.25,94.93], 20:[48.36,51.97,52.50,55.35,66.91,95.88], 25:[49.33,53.04,53.58,56.47,68.25,97.81], 35:[50.83,54.64,55.16,58.13,70.30,100.73]
+  }
+};
+
+function gradeIndex(grade){ return ['S1','S2','S3','S4','S5','S6'].indexOf(grade); }
+
+function floorToStep(yoe){
+  let matched = steps[0];
+  for (const step of steps) {
+    if (yoe >= step) matched = step;
+  }
+  return matched;
+}
+
+function prnStepForGrade(grade){
+  // Appendix A PRN rule: Step 10 of applicable grade, except S2 is Step 13 and S5 is Step 35.
+  if (grade === 'S2') return 13;
+  if (grade === 'S5') return 35;
+  return 10;
+}
+
+function calculateStep(){
+  const grade = document.getElementById('profession').value;
+  const status = document.getElementById('status').value;
+  const scaleYear = document.getElementById('scaleYear').value;
+  const yoeRaw = parseFloat(document.getElementById('yoe').value || '0');
+  const yoe = Number.isFinite(yoeRaw) && yoeRaw >= 0 ? yoeRaw : 0;
+  let matchedStep;
+  let note;
+
+  if(status === 'PRN'){
+    matchedStep = prnStepForGrade(grade);
+    note = `PRN/VSP selected. Appendix A PRN rule applied: Step 10 of the applicable grade, except S2 is Step 13 and S5 is Step 35. The entered credited years were not used for PRN/VSP placement.`;
+  } else {
+    matchedStep = floorToStep(yoe);
+    note = `Full-time/part-time selected. Credited YOE ${yoe} was rounded down to ${stepLabels[matchedStep]} for ${grade} - ${gradeNames[grade]}.`;
+  }
+
+  const rate = wageData[scaleYear][matchedStep][gradeIndex(grade)];
+  document.getElementById('outGrade').innerText = `${grade}`;
+  document.getElementById('outStep').innerText = stepLabels[matchedStep];
+  document.getElementById('outYear').innerText = yearNames[scaleYear];
+  document.getElementById('outRate').innerText = `$${rate.toFixed(2)}`;
+  document.getElementById('outNote').innerText = note;
+  document.getElementById('resultBox').classList.add('show');
+}
+
+function resetForm(){
+  document.getElementById('profession').value = 'S1';
+  document.getElementById('status').value = 'FTPT';
+  document.getElementById('yoe').value = '';
+  document.getElementById('scaleYear').value = 'year1';
+  document.getElementById('resultBox').classList.remove('show');
+  renderTable();
+}
+
+function renderTable(){
+  const scaleYear = document.getElementById('scaleYear').value;
+  const table = document.getElementById('rateTable');
+  let html = '<thead><tr><th>YOE Step</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th></tr></thead><tbody>';
+  steps.forEach(step => {
+    const row = wageData[scaleYear][step];
+    html += `<tr><td>${stepLabels[step]}</td>${row.map(v => `<td>$${v.toFixed(2)}</td>`).join('')}</tr>`;
+  });
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+document.getElementById('scaleYear').addEventListener('change', renderTable);
+document.getElementById('status').addEventListener('change', () => {
+  const status = document.getElementById('status').value;
+  document.getElementById('yoe').disabled = status === 'PRN';
+  document.getElementById('yoe').placeholder = status === 'PRN' ? 'Not needed for PRN/VSP' : 'Example: 7.5';
+});
+renderTable();
+</script>
+</body>
+</html>
