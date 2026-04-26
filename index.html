@@ -2,68 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunrise Professionals Unit - Independent Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --electric: #00D2FF; --coral: #FF6B6B; --happy-bg: #F8FAFC; 
-    --slate: #1E293B; --disclaimer-bg: #FEF2F2; --disclaimer-text: #991B1B;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--happy-bg); color: var(--slate); font-family: 'Barlow', sans-serif; line-height: 1.6; }
-
-  .global-disclaimer { 
-    background: var(--disclaimer-bg); color: var(--disclaimer-text); padding: 14px; 
-    font-size: 14px; font-weight: 800; text-align: center; border-bottom: 4px solid var(--coral); 
-    position: sticky; top: 0; z-index: 200; text-transform: uppercase;
-  }
-
-  nav { background: var(--slate); color: white; padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
-  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 24px; color: var(--electric); text-decoration: none; text-transform: uppercase; }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a { color: white; text-decoration: none; font-size: 13px; font-weight: 600; text-transform: uppercase; }
-
-  .hero { padding: 8rem 2rem 10rem; background: linear-gradient(135deg, var(--slate) 0%, #334155 100%); color: white; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-  .tagline { color: var(--coral); font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; }
-  .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(40px, 8vw, 90px); line-height: 0.85; text-transform: uppercase; }
+  :root { --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --disclaimer-bg: #FEF2F2; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: #F8FAFC; color: var(--slate); font-family: 'Barlow', sans-serif; }
   
-  .btn-action { display: inline-block; background: var(--electric); color: var(--slate); padding: 14px 28px; text-decoration: none; font-weight: 800; border-radius: 6px; margin: 10px; font-family: 'Barlow Condensed'; text-transform: uppercase; }
-  .btn-action.urgent { background: var(--coral); color: white; }
+  .global-disclaimer { 
+    background: var(--disclaimer-bg); color: #991B1B; padding: 12px; font-weight: 800; 
+    text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase;
+  }
 
-  .kyr-card { background: white; padding: 2rem; border-radius: 12px; border-top: 6px solid var(--electric); box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin: 2rem auto; max-width: 800px; }
+  nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  .nav-logo { font-family: 'Barlow Condensed'; font-weight: 900; font-size: 24px; color: var(--electric); text-decoration: none; }
+  .nav-links a { color: white; text-decoration: none; margin-left: 1.5rem; font-weight: 600; text-transform: uppercase; font-size: 13px; }
+
+  .hero { padding: 6rem 2rem; background: linear-gradient(135deg, var(--slate) 0%, #334155 100%); color: white; text-align: center; }
+  .tagline { color: var(--coral); font-family: 'Barlow Condensed'; font-size: 24px; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .hero h1 { font-family: 'Barlow Condensed'; font-weight: 900; font-size: 80px; line-height: 0.85; text-transform: uppercase; }
+  
+  .btn { display: inline-block; padding: 14px 30px; border-radius: 4px; text-decoration: none; font-weight: 800; font-family: 'Barlow Condensed'; text-transform: uppercase; margin: 10px; }
+  .btn-electric { background: var(--electric); color: var(--slate); }
+  .btn-coral { background: var(--coral); color: white; }
+
+  .section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
+  .form-card { background: white; padding: 2rem; border-radius: 8px; border-top: 6px solid var(--coral); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+  input, textarea { width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #E2E8F0; border-radius: 4px; }
 </style>
 </head>
 <body>
-
-<div class="global-disclaimer">
-  IMPORTANT: This site is independently maintained by a union member. It is not affiliated with or endorsed by SEIU Local 1107 or Sunrise Hospital. Content reflects the views of individual members.
-</div>
+<div class="global-disclaimer">THIS SITE IS INDEPENDENTLY MAINTAINED BY A UNION MEMBER. IT IS NOT AFFILIATED WITH OR ENDORSED BY SEIU LOCAL 1107 OR SUNRISE HOSPITAL. CONTENT REFLECTS THE VIEWS OF INDIVIDUAL MEMBERS.</div>
 
 <nav>
-  <a href="index.html" class="nav-logo">SPU Independent</a>
-  <ul class="nav-links">
-    <li><a href="contract.html">Contract Hub</a></li>
-    <li><a href="step-scale.html">Wage Calculator</a></li>
-  </ul>
+  <a href="index.html" class="nav-logo">SPU INDEPENDENT</a>
+  <div class="nav-links">
+    <a href="contract.html">CBA Contract</a>
+    <a href="step-scale.html">Wage Calculator</a>
+  </div>
 </nav>
 
 <section class="hero">
   <div class="tagline">By Members. For Members. We are the Union!</div>
   <h1>SUNRISE<br><span style="color:var(--electric)">PROFESSIONALS</span></h1>
-  <div style="margin-top: 3rem;">
-    <a href="contract.html" class="btn-action">Ask the Contract</a>
-    <a href="step-scale.html" class="btn-action">Check Step Scale</a>
-    <a href="https://act.seiu.org/onlineactions/KvGLQqa-D0GMiYvWpNKxEA2" target="_blank" class="btn-action urgent">Sign Membership Card</a>
+  <div style="margin-top: 2rem;">
+    <a href="step-scale.html" class="btn btn-electric">Check My Pay</a>
+    <a href="#request" class="btn btn-coral">Request Steward</a>
   </div>
 </section>
 
-<section style="padding: 4rem 2rem;">
-  <div class="kyr-card">
-    <h3 style="font-family:'Barlow Condensed'; font-size: 28px; text-transform: uppercase;">Weingarten Rights</h3>
-    <p>If a meeting could lead to discipline, you have the legal right to representation. Stop and say: <strong>"I request a union steward be present."</strong></p>
+<div class="section" id="request">
+  <div class="form-card">
+    <h2 style="font-family:'Barlow Condensed'; margin-bottom: 1rem;">REQUEST REPRESENTATION</h2>
+    <p style="margin-bottom: 1.5rem;">If you are facing an investigatory meeting that could lead to discipline, you have a right to a steward[cite: 172, 895].</p>
+    <form>
+      <label>Name</label><input type="text">
+      <label>Department</label><input type="text">
+      <label>Issue Description</label><textarea rows="4"></textarea>
+      <button class="btn btn-coral" style="width:100%; border:none; cursor:pointer;">Submit Request</button>
+    </form>
   </div>
-</section>
-
+</div>
 </body>
 </html>
