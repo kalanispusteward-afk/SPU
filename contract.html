@@ -2,43 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Contract Ask - SPU Independent</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBA Contract — Sunrise Professionals Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; }
-  body { font-family: 'Barlow', sans-serif; background: #F8FAFC; margin: 0; }
-  .global-disclaimer { background: #FEF2F2; color: #991B1B; padding: 14px; font-weight: 800; text-align: center; border-bottom: 4px solid var(--coral); text-transform: uppercase; }
+  :root {
+    --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --white: #F8FAFC;
+    --surface: #FFFFFF; --border: rgba(0, 210, 255, 0.15); --disclaimer-bg: #FEF2F2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F1F5F9; color: var(--slate); font-family: 'Barlow', sans-serif; line-height: 1.6; }
+
+  /* STICKY MANDATORY DISCLAIMER */
+  .global-disclaimer { 
+    background: var(--disclaimer-bg); color: #991B1B; padding: 12px; font-weight: 800; 
+    text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase; font-size: 13px;
+  }
+
+  nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; color: var(--electric); text-decoration: none; text-transform: uppercase; }
+
   .hero-search { background: var(--slate); color: white; padding: 4rem 2rem; text-align: center; }
-  .article-card { background: white; max-width: 800px; margin: 1.5rem auto; padding: 2rem; border-left: 6px solid var(--electric); border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+  .search-box { max-width: 600px; margin: 2rem auto; display: flex; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-radius: 4px; overflow: hidden; }
+  .search-box input { flex: 1; padding: 18px; border: none; font-size: 16px; outline: none; }
+  .search-box button { background: var(--electric); border: none; padding: 0 30px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-family: 'Barlow Condensed'; }
+
+  .quick-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 3rem; }
+  .filter-btn { background: white; border: 1px solid var(--border); padding: 8px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 12px; text-transform: uppercase; transition: 0.2s; }
+  .filter-btn.active { background: var(--electric); border-color: var(--electric); }
+
+  .article-card { background: white; margin-bottom: 1.5rem; padding: 2rem; border-left: 6px solid var(--electric); border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+  .article-card h2 { font-family: 'Barlow Condensed'; font-size: 28px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--slate); }
+  .hidden { display: none; }
 </style>
 </head>
 <body>
-<div class="global-disclaimer">INDEPENDENT MEMBER SITE: NOT AFFILIATED WITH SEIU 1107 OR SUNRISE HOSPITAL.</div>
+<div class="global-disclaimer">THIS SITE IS INDEPENDENTLY MAINTAINED BY A UNION MEMBER. IT IS NOT AFFILIATED WITH OR ENDORSED BY SEIU LOCAL 1107 OR SUNRISE HOSPITAL. CONTENT REFLECTS THE VIEWS OF INDIVIDUAL MEMBERS.</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">SPU HUB</a>
+  <a href="index.html" style="color:white; text-decoration:none; font-size:12px; font-weight:700;">BACK TO HOME</a>
+</nav>
 
 <div class="hero-search">
-  <h1 style="font-family:'Barlow Condensed'; font-size: 56px; text-transform: uppercase;">Ask The Contract</h1>
-  <p>Guides for the Professional Bargaining Unit Agreement[cite: 7].</p>
+  <div style="text-transform:uppercase; font-weight:700; color:var(--coral); letter-spacing:2px; margin-bottom:10px;">Contract Resource Hub</div>
+  <h1 style="font-family:'Barlow Condensed'; font-size: 60px; line-height:0.9;">ASK THE CONTRACT</h1>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search by keyword (e.g. PTO, Discipline, OT)...">
+    <button onclick="performSearch()">Find</button>
+  </div>
 </div>
 
-<div style="padding: 2rem;">
-  <div class="article-card">
-    <h3 style="font-family:'Barlow Condensed'; text-transform: uppercase;">Absence Notification</h3>
-    <p>Employees must report absences to management at least three (3) hours prior to their shift start[cite: 28].</p>
+<div style="max-width:900px; margin: 3rem auto; padding: 0 1.5rem;">
+  <div class="quick-filters">
+    <button class="filter-btn active" onclick="filterBy('all', this)">All Articles</button>
+    <button class="filter-btn" onclick="filterBy('discipline', this)">Discipline</button>
+    <button class="filter-btn" onclick="filterBy('pay', this)">Pay & Wages</button>
+    <button class="filter-btn" onclick="filterBy('pto', this)">PTO & Leave</button>
   </div>
-  <div class="article-card">
-    <h3 style="font-family:'Barlow Condensed'; text-transform: uppercase;">Attendance Discipline</h3>
-    <p>Discipline levels for occurrences in a rolling 12-month period include [cite: 86-91]:
-      <ul style="margin-left: 20px;">
-        <li>6 Occurrences: First Written Warning</li>
-        <li>7 Occurrences: Final Written Warning</li>
-        <li>8 Occurrences: Two-day unpaid suspension</li>
-        <li>9 Occurrences: Just cause for termination</li>
-      </ul>
-    </p>
-  </div>
-  <div class="article-card">
-    <h3 style="font-family:'Barlow Condensed'; text-transform: uppercase;">Mandatory Overtime</h3>
-    <p>Mandatory overtime is paid at <strong>Double Time</strong>, regardless of total hours worked in the week[cite: 553]. No employee is required to work more than 16 consecutive hours[cite: 549].</p>
-  </div>
-</div>
-</body>
-</html>
+
+  <div id="articlesList">
+    <div class="article-card" data-topics="discipline schedule">
+      <h2>Article 3: Attendance</h2>
+      <p>Standard occurrence is an unscheduled absence of one shift or the first three consecutive shifts. Discipline levels are counted in rolling 12-month periods.</p>
+      <ul style="margin: 10px 0 0
