@@ -2,33 +2,45 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunrise Professionals Unit - Independent Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --disclaimer-bg: #FEF2F2; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { background: #F8FAFC; color: var(--slate); font-family: 'Barlow', sans-serif; }
-  
+  :root {
+    --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --white: #F8FAFC;
+    --surface: #FFFFFF; --border: rgba(0, 210, 255, 0.15); --disclaimer-bg: #FEF2F2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F1F5F9; color: var(--slate); font-family: 'Barlow', sans-serif; line-height: 1.6; }
+
+  /* STICKY MANDATORY DISCLAIMER */
   .global-disclaimer { 
     background: var(--disclaimer-bg); color: #991B1B; padding: 12px; font-weight: 800; 
-    text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase;
+    text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase; font-size: 13px;
   }
 
-  nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
-  .nav-logo { font-family: 'Barlow Condensed'; font-weight: 900; font-size: 24px; color: var(--electric); text-decoration: none; }
+  nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px; position: relative; }
+  .nav-logo { font-family: 'Barlow Condensed'; font-weight: 900; font-size: 24px; color: var(--electric); text-decoration: none; text-transform: uppercase; }
+  
+  .nav-links { display: flex; list-style: none; }
   .nav-links a { color: white; text-decoration: none; margin-left: 1.5rem; font-weight: 600; text-transform: uppercase; font-size: 13px; }
 
-  .hero { padding: 6rem 2rem; background: linear-gradient(135deg, var(--slate) 0%, #334155 100%); color: white; text-align: center; }
+  .hero { padding: 8rem 2rem; background: linear-gradient(135deg, var(--slate) 0%, #334155 100%); color: white; text-align: center; }
   .tagline { color: var(--coral); font-family: 'Barlow Condensed'; font-size: 24px; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; }
-  .hero h1 { font-family: 'Barlow Condensed'; font-weight: 900; font-size: 80px; line-height: 0.85; text-transform: uppercase; }
+  .hero h1 { font-family: 'Barlow Condensed'; font-weight: 900; font-size: clamp(50px, 10vw, 90px); line-height: 0.85; text-transform: uppercase; }
   
-  .btn { display: inline-block; padding: 14px 30px; border-radius: 4px; text-decoration: none; font-weight: 800; font-family: 'Barlow Condensed'; text-transform: uppercase; margin: 10px; }
+  .btn { display: inline-block; padding: 16px 32px; border-radius: 4px; text-decoration: none; font-weight: 800; font-family: 'Barlow Condensed'; text-transform: uppercase; margin: 10px; transition: 0.2s; }
   .btn-electric { background: var(--electric); color: var(--slate); }
-  .btn-coral { background: var(--coral); color: white; }
+  .btn-urgent { background: var(--coral); color: white; }
 
-  .section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-  .form-card { background: white; padding: 2rem; border-radius: 8px; border-top: 6px solid var(--coral); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-  input, textarea { width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #E2E8F0; border-radius: 4px; }
+  .section { padding: 5rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+  .form-card { background: white; padding: 3rem; border-radius: 8px; border-top: 8px solid var(--coral); box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+  .form-group { margin-bottom: 1.5rem; }
+  label { display: block; font-weight: 700; text-transform: uppercase; font-size: 12px; margin-bottom: 8px; color: var(--slate); }
+  input, textarea { width: 100%; padding: 14px; border: 1px solid #E2E8F0; border-radius: 4px; font-family: 'Barlow'; }
+
+  footer { background: var(--slate); color: white; padding: 4rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+  .footer-logo { font-family: 'Barlow Condensed'; font-weight: 900; font-size: 32px; color: var(--electric); }
 </style>
 </head>
 <body>
@@ -45,23 +57,4 @@
 <section class="hero">
   <div class="tagline">By Members. For Members. We are the Union!</div>
   <h1>SUNRISE<br><span style="color:var(--electric)">PROFESSIONALS</span></h1>
-  <div style="margin-top: 2rem;">
-    <a href="step-scale.html" class="btn btn-electric">Check My Pay</a>
-    <a href="#request" class="btn btn-coral">Request Steward</a>
-  </div>
-</section>
-
-<div class="section" id="request">
-  <div class="form-card">
-    <h2 style="font-family:'Barlow Condensed'; margin-bottom: 1rem;">REQUEST REPRESENTATION</h2>
-    <p style="margin-bottom: 1.5rem;">If you are facing an investigatory meeting that could lead to discipline, you have a right to a steward[cite: 172, 895].</p>
-    <form>
-      <label>Name</label><input type="text">
-      <label>Department</label><input type="text">
-      <label>Issue Description</label><textarea rows="4"></textarea>
-      <button class="btn btn-coral" style="width:100%; border:none; cursor:pointer;">Submit Request</button>
-    </form>
-  </div>
-</div>
-</body>
-</html>
+  <div style="margin-top: 3rem;">
