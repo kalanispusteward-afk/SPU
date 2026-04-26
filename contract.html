@@ -2,42 +2,136 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Contract Resource Center — SPU Independent</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBA Contract — Sunrise Professionals Unit</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --disclaimer-bg: #FEF2F2; }
-  body { background: #F8FAFC; color: var(--slate); font-family: 'Barlow', sans-serif; margin: 0; }
-  .global-disclaimer { background: var(--disclaimer-bg); color: #991B1B; padding: 12px; font-weight: 800; text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase; }
-  .search-hero { background: var(--slate); color: white; padding: 4rem 2rem; text-align: center; }
-  .filter-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 2rem; }
-  .filter-btn { background: white; border: 1px solid var(--electric); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 11px; text-transform: uppercase; }
-  .filter-btn.active { background: var(--electric); }
-  .article-card { background: white; max-width: 800px; margin: 1rem auto; padding: 2rem; border-left: 6px solid var(--electric); border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+  :root {
+    --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --white: #F8FAFC;
+    --surface: #FFFFFF; --border: rgba(0, 210, 255, 0.15); --disclaimer-bg: #FEF2F2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--slate); font-family: 'Barlow', sans-serif; line-height: 1.6; }
+
+  /* STICKY MANDATORY DISCLAIMER */
+  .global-disclaimer { 
+    background: var(--disclaimer-bg); color: #991B1B; padding: 12px 2rem; font-size: 13px; font-weight: 800; 
+    text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase;
+  }
+
+  nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; color: var(--electric); text-decoration: none; text-transform: uppercase; }
+
+  .hero-search { background: var(--slate); color: white; padding: 4rem 2rem; text-align: center; }
+  .search-box { max-width: 600px; margin: 2rem auto; display: flex; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  .search-box input { flex: 1; padding: 18px; border: none; font-size: 16px; outline: none; }
+  .search-box button { background: var(--electric); border: none; padding: 0 30px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-family: 'Barlow Condensed'; }
+
+  .filter-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 2rem 0; padding: 0 1rem; }
+  .filter-btn { background: white; border: 1px solid var(--border); padding: 8px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 11px; text-transform: uppercase; transition: 0.2s; }
+  .filter-btn.active { background: var(--electric); border-color: var(--electric); }
+
+  .contract-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 250px 1fr; gap: 2rem; padding: 0 1.5rem 5rem; }
+  .article-nav { position: sticky; top: 120px; height: calc(100vh - 150px); overflow-y: auto; font-size: 13px; }
+  .article-nav a { display: block; padding: 6px 0; color: #64748B; text-decoration: none; border-bottom: 1px solid #E2E8F0; }
+  .article-nav a:hover { color: var(--electric); }
+
+  .article-card { background: white; margin-bottom: 2rem; padding: 2.5rem; border-radius: 4px; border-left: 6px solid var(--electric); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+  .article-card h2 { font-family: 'Barlow Condensed'; font-size: 32px; text-transform: uppercase; margin-bottom: 1rem; }
   .hidden { display: none; }
 </style>
 </head>
 <body>
-<div class="global-disclaimer">THIS SITE IS INDEPENDENTLY MAINTAINED BY A UNION MEMBER. IT IS NOT AFFILIATED WITH OR ENDORSED BY SEIU LOCAL 1107 OR SUNRISE HOSPITAL.</div>
-<div class="search-hero"><h1 style="font-family:'Barlow Condensed'; font-size: 60px; text-transform: uppercase;">Ask The Contract</h1></div>
+
+<div class="global-disclaimer">
+  THIS SITE IS INDEPENDENTLY MAINTAINED BY A UNION MEMBER. IT IS NOT AFFILIATED WITH OR ENDORSED BY SEIU LOCAL 1107 OR SUNRISE HOSPITAL.
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">SPU HUB</a>
+  <a href="index.html" style="color:white; text-decoration:none; font-size:12px; font-weight:700;">BACK TO HUB</a>
+</nav>
+
+<div class="hero-search">
+  <h1 style="font-family:'Barlow Condensed'; font-size: 64px; line-height:0.9;">ASK THE CONTRACT</h1>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search articles by keyword (e.g. PTO, Pay, Weingarten)...">
+    <button onclick="performSearch()">Find</button>
+  </div>
+</div>
+
 <div class="filter-bar">
   <button class="filter-btn active" onclick="filterBy('all', this)">All</button>
   <button class="filter-btn" onclick="filterBy('discipline', this)">Discipline</button>
   <button class="filter-btn" onclick="filterBy('pay', this)">Pay</button>
   <button class="filter-btn" onclick="filterBy('pto', this)">PTO</button>
+  <button class="filter-btn" onclick="filterBy('schedule', this)">Scheduling</button>
 </div>
-<div id="articlesList">
-  <div class="article-card" data-topics="discipline"><h2>Article 3: Attendance</h2><p>Rolling 12-month periods[cite: 86]. 6 occurrences result in warning[cite: 88].</p></div>
-  <div class="article-card" data-topics="pay"><h2>Article 25: Mandatory OT</h2><p>Paid at <strong>Double Time</strong>[cite: 553].</p></div>
+
+<div class="contract-grid">
+  <aside class="article-nav" id="sideNav">
+    <a href="#art1">Art 1: Absence</a>
+    <a href="#art3">Art 3: Attendance</a>
+    <a href="#art9">Art 9: Discipline</a>
+    <a href="#art15">Art 15: Overtime</a>
+    <a href="#art25">Art 25: Mandatory OT</a>
+    <a href="#art30">Art 30: PTO</a>
+    <a href="#art42">Art 42: Stewards</a>
+    <a href="#art52">Art 52: Wages</a>
+  </aside>
+
+  <main id="articlesList">
+    <div id="art3" class="article-card" data-topics="discipline schedule">
+      <h2>Article 3: Attendance</h2>
+      <p>Occurrences are counted in rolling 12-month periods.</p>
+      <ul>
+        <li>6 Occurrences: First Written Warning [cite: 88]</li>
+        <li>9 Occurrences: Just Cause for Termination [cite: 91]</li>
+      </ul>
+    </div>
+
+    <div id="art25" class="article-card" data-topics="pay schedule">
+      <h2>Article 25: Mandatory Overtime</h2>
+      <p>Mandatory OT should be a last resort[cite: 545]. All mandatory OT hours are paid at <strong>Double Time</strong>.</p>
+    </div>
+
+    <div id="art52" class="article-card" data-topics="pay">
+      <h2>Article 52: Wages</h2>
+      <p> Standardized wage scales and bonus structures are in effect through June 30, 2028[cite: 1107, 1162].</p>
+    </div>
+  </main>
 </div>
+
 <script>
-// RESTORED FILTER LOGIC 
+// RESTORED TOPIC MAP LOGIC
+const topicMap = {
+  all: [],
+  discipline: ['art3','art9','art12','art33','art42'],
+  pay: ['art7','art15','art25','art52','art53'],
+  pto: ['art4','art14','art21','art30'],
+  schedule: ['art3','art5','art15','art25','art39']
+};
+
 function filterBy(topic, btn) {
   const articles = document.querySelectorAll('.article-card');
   const buttons = document.querySelectorAll('.filter-btn');
-  buttons.forEach(b => b.classList.remove('active')); btn.classList.add('active');
-  articles.forEach(a => {
-    if (topic === 'all' || a.getAttribute('data-topics').includes(topic)) a.classList.remove('hidden');
-    else a.classList.add('hidden');
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  articles.forEach(article => {
+    if (topic === 'all' || article.getAttribute('data-topics').includes(topic)) {
+      article.classList.remove('hidden');
+    } else {
+      article.classList.add('hidden');
+    }
+  });
+}
+
+function performSearch() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.article-card').forEach(article => {
+    article.classList.toggle('hidden', !article.innerText.toLowerCase().includes(query));
   });
 }
 </script>
