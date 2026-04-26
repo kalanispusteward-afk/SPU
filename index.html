@@ -19,37 +19,35 @@
     text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase; font-size: 13px;
   }
 
-  nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px; position: relative; }
+  nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 70px; }
   .nav-logo { font-family: 'Barlow Condensed'; font-weight: 900; font-size: 24px; color: var(--electric); text-decoration: none; text-transform: uppercase; }
-  
   .nav-links { display: flex; list-style: none; }
   .nav-links a { color: white; text-decoration: none; margin-left: 1.5rem; font-weight: 600; text-transform: uppercase; font-size: 13px; }
 
-  .hero { padding: 8rem 2rem; background: linear-gradient(135deg, var(--slate) 0%, #334155 100%); color: white; text-align: center; }
+  .hero { padding: 6rem 2rem; background: linear-gradient(135deg, var(--slate) 0%, #334155 100%); color: white; text-align: center; }
   .tagline { color: var(--coral); font-family: 'Barlow Condensed'; font-size: 24px; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; }
   .hero h1 { font-family: 'Barlow Condensed'; font-weight: 900; font-size: clamp(50px, 10vw, 90px); line-height: 0.85; text-transform: uppercase; }
   
-  .btn { display: inline-block; padding: 16px 32px; border-radius: 4px; text-decoration: none; font-weight: 800; font-family: 'Barlow Condensed'; text-transform: uppercase; margin: 10px; transition: 0.2s; }
+  .btn { display: inline-block; padding: 16px 32px; border-radius: 4px; text-decoration: none; font-weight: 800; font-family: 'Barlow Condensed'; text-transform: uppercase; margin: 10px; }
   .btn-electric { background: var(--electric); color: var(--slate); }
   .btn-urgent { background: var(--coral); color: white; }
 
   .section { padding: 5rem 2.5rem; max-width: 1100px; margin: 0 auto; }
   .form-card { background: white; padding: 3rem; border-radius: 8px; border-top: 8px solid var(--coral); box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
   .form-group { margin-bottom: 1.5rem; }
-  label { display: block; font-weight: 700; text-transform: uppercase; font-size: 12px; margin-bottom: 8px; color: var(--slate); }
+  label { display: block; font-weight: 700; text-transform: uppercase; font-size: 12px; margin-bottom: 8px; }
   input, textarea { width: 100%; padding: 14px; border: 1px solid #E2E8F0; border-radius: 4px; font-family: 'Barlow'; }
 
   footer { background: var(--slate); color: white; padding: 4rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-  .footer-logo { font-family: 'Barlow Condensed'; font-weight: 900; font-size: 32px; color: var(--electric); }
 </style>
 </head>
 <body>
 <div class="global-disclaimer">THIS SITE IS INDEPENDENTLY MAINTAINED BY A UNION MEMBER. IT IS NOT AFFILIATED WITH OR ENDORSED BY SEIU LOCAL 1107 OR SUNRISE HOSPITAL. CONTENT REFLECTS THE VIEWS OF INDIVIDUAL MEMBERS.</div>
 
 <nav>
-  <a href="index.html" class="nav-logo">SPU INDEPENDENT</a>
+  <a href="index.html" class="nav-logo">SPU Hub</a>
   <div class="nav-links">
-    <a href="contract.html">CBA Contract</a>
+    <a href="contract.html">Contract</a>
     <a href="step-scale.html">Wage Calculator</a>
   </div>
 </nav>
@@ -58,3 +56,34 @@
   <div class="tagline">By Members. For Members. We are the Union!</div>
   <h1>SUNRISE<br><span style="color:var(--electric)">PROFESSIONALS</span></h1>
   <div style="margin-top: 3rem;">
+    <a href="contract.html" class="btn btn-electric">Ask the Contract</a>
+    <a href="step-scale.html" class="btn btn-electric">Check Step Scale</a>
+    <a href="#request" class="btn btn-urgent">Request Steward</a>
+  </div>
+</section>
+
+<div class="section" id="request">
+  <div class="form-card">
+    <h2 style="font-family:'Barlow Condensed'; font-size: 36px; text-transform: uppercase; margin-bottom: 1.5rem;">Representation Request</h2>
+    <form action="https://formspree.io/f/YOUR_ID" method="POST">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
+        <div class="form-group"><label>Employee ID</label><input type="text" name="eid"></div>
+      </div>
+      <div class="form-group"><label>Department & Supervisor</label><input type="text" name="department"></div>
+      <div class="form-group"><label>Meeting Date/Time</label><input type="text" name="meeting_time"></div>
+      <div class="form-group"><label>Issue Description</label><textarea name="description" rows="5" required></textarea></div>
+      <button type="submit" class="btn btn-urgent" style="width:100%; border:none; cursor:pointer;">Submit Request &rarr;</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div><div style="font-family:'Barlow Condensed'; font-weight:900; font-size:32px; color:var(--electric);">SPU</div></div>
+  <div style="text-align: right;">
+    <div>Steward: <a href="mailto:kalanispusteward@gmail.com" style="color:var(--electric); text-decoration:none;">kalanispusteward@gmail.com</a></div>
+    <div style="font-size: 11px; opacity: 0.5;">Last updated: April 2026</div>
+  </div>
+</footer>
+</body>
+</html>
