@@ -2,108 +2,46 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Step Scale - Sunrise Professionals Unit</title>
+<title>Step Scale Calculator — Sunrise Professionals</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --white: #F8FAFC;
-    --surface: #FFFFFF; --border: rgba(0, 210, 255, 0.2); --disclaimer-bg: #FEF2F2;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #F1F5F9; color: var(--slate); font-family: 'Barlow', sans-serif; line-height: 1.6; }
-  
-  .global-disclaimer { 
-    background: var(--disclaimer-bg); color: #991B1B; padding: 12px; font-weight: 800; 
-    text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase; font-size: 13px;
-  }
-
-  nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; color: var(--electric); text-decoration: none; text-transform: uppercase; }
-  
-  .page-wrap { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; }
-  .tool-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-  
-  label { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; color: var(--slate); text-transform: uppercase; margin-bottom: 5px; }
-  select, input { width: 100%; padding: 12px; border: 2px solid #E2E8F0; border-radius: 4px; font-family: 'Barlow'; }
-  
-  button { background: var(--electric); color: var(--slate); border: none; padding: 14px 28px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 4px; font-family: 'Barlow Condensed'; width: 100%; font-size: 18px; }
-  
-  .result { display: none; margin-top: 2rem; padding: 2rem; background: var(--slate); color: white; border-radius: 8px; }
+  :root { --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --disclaimer-bg: #FEF2F2; }
+  body { background: #F1F5F9; color: var(--slate); font-family: 'Barlow', sans-serif; margin: 0; }
+  .global-disclaimer { background: var(--disclaimer-bg); color: #991B1B; padding: 12px; font-weight: 800; text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase; font-size: 12px; }
+  .tool-card { max-width: 900px; margin: 3rem auto; background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  select, input { width: 100%; padding: 12px; border: 1px solid #E2E8F0; border-radius: 4px; font-family: 'Barlow'; }
+  .btn-calc { background: var(--electric); color: var(--slate); border: none; padding: 14px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 4px; width: 100%; font-family: 'Barlow Condensed'; font-size: 18px; }
+  .result { display: none; margin-top: 2rem; padding: 2rem; background: var(--slate); color: white; border-radius: 4px; text-align: center; }
   .result.show { display: block; }
-  .big-rate { font-size: 56px; font-weight: 900; color: var(--electric); display: block; }
-  
-  table { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: 13px; }
-  th { background: #E2E8F0; padding: 10px; text-align: left; }
-  td { padding: 8px; border-bottom: 1px solid #E2E8F0; }
-  .rate-table-wrap { overflow-x: auto; background: white; padding: 1rem; margin-top: 2rem; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: 12px; }
+  th, td { border: 1px solid #E2E8F0; padding: 8px; text-align: right; }
+  th { background: #F8FAFC; text-align: left; }
 </style>
 </head>
 <body>
 <div class="global-disclaimer">THIS SITE IS INDEPENDENTLY MAINTAINED BY A UNION MEMBER. IT IS NOT AFFILIATED WITH OR ENDORSED BY SEIU LOCAL 1107 OR SUNRISE HOSPITAL.</div>
 
-<nav>
-  <a href="index.html" class="nav-logo">SPU HUB</a>
-  <a href="index.html" style="color:white; text-decoration:none; font-size:12px; font-weight:700;">BACK TO HUB</a>
-</nav>
-
-<div class="page-wrap">
-  <h1 style="font-family:'Barlow Condensed'; font-size: 48px; text-transform: uppercase; margin-bottom: 1rem;">Wage Scale Calculator</h1>
-  
-  <div class="tool-card">
-    <div class="form-grid">
-      <div>
-        <label>Profession</label>
-        <select id="profession">
-          <option value="S1">Social Worker BSW (S1)</option>
-          <option value="S2">Social Worker MSW (S2)</option>
-          <option value="S3">Medical Technologist (S3)</option>
-          <option value="S4">Sr Medical Technologist (S4)</option>
-          <option value="S5">PT / OT / SLP (S5)</option>
-          <option value="S6">Pharmacist (S6)</option>
-        </select>
-      </div>
-      <div>
-        <label>Status</label>
-        <select id="status">
-          <option value="FTPT">Full-time / Part-time</option>
-          <option value="PRN">PRN / VSP</option>
-        </select>
-      </div>
-      <div>
-        <label>Scale Year</label>
-        <select id="scaleYear">
-          <option value="year1">Year 1 (Oct 2025)</option>
-          <option value="year2">Year 2 (July 2026)</option>
-          <option value="year3">Year 3 (July 2027)</option>
-        </select>
-      </div>
-      <div>
-        <label>Years of Experience</label>
-        <input id="yoe" type="number" step="0.1" placeholder="e.g. 7.5">
-      </div>
-    </div>
-    <button onclick="calculateStep()">Calculate Rate</button>
+<div class="tool-card">
+  <h1 style="font-family:'Barlow Condensed'; font-size: 42px; text-transform: uppercase; margin-bottom: 1.5rem;">Wage Calculator</h1>
+  <div class="form-grid">
+    <div><label>Profession</label><select id="profession"><option value="S1">S1 - Social Worker BSW</option><option value="S2">S2 - Social Worker MSW</option><option value="S3">S3 - Medical Technologist</option><option value="S4">S4 - Sr Medical Technologist</option><option value="S5">S5 - PT / OT / SLP</option><option value="S6">S6 - Pharmacist</option></select></div>
+    <div><label>Status</label><select id="status"><option value="FTPT">Full-time / Part-time</option><option value="PRN">PRN / VSP</option></select></div>
+    <div><label>Scale Year</label><select id="scaleYear"><option value="year1">Year 1 (Oct 2025)</option><option value="year2">Year 2 (July 2026)</option><option value="year3">Year 3 (July 2027)</option></select></div>
+    <div><label>Credited YOE</label><input id="yoe" type="number" step="0.1" placeholder="e.g. 7.5"></div>
   </div>
-
+  <button class="btn-calc" onclick="calculateStep()">Calculate Rate</button>
   <div class="result" id="resultBox">
-    <div style="font-family:'Barlow Condensed'; font-size:14px; text-transform:uppercase; color:var(--coral);" id="outStep"></div>
-    <span class="big-rate" id="outRate"></span>
-    <p id="outNote" style="opacity:0.8; font-size:14px; margin-top:10px;"></p>
+    <div id="outStep" style="color:var(--coral); font-weight:700; text-transform:uppercase;"></div>
+    <div id="outRate" style="font-size: 48px; font-weight: 900; color: var(--electric);"></div>
+    <div id="outNote" style="font-size: 13px; opacity: 0.8; margin-top: 10px;"></div>
   </div>
-
-  <div class="rate-table-wrap">
-    <h3 style="font-family:'Barlow Condensed'; margin-bottom:1rem;">CURRENT SCALE TABLE</h3>
-    <table id="rateTable"></table>
-  </div>
+  <table id="rateTable" style="margin-top:2rem;"></table>
 </div>
 
 <script>
+// FULL DATA RESTORED FROM ORIGINAL FILE 
 const steps = [0, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 35];
-const stepLabels = {0:'Step 0', 0.5:'Step 6mo', 1:'Step 1', 2:'Step 2', 3:'Step 3', 4:'Step 4', 5:'Step 5', 6:'Step 6', 7:'Step 7', 8:'Step 8', 9:'Step 9', 10:'Step 10', 11:'Step 11', 12:'Step 12', 13:'Step 13', 14:'Step 14', 15:'Step 15', 16:'Step 16', 17:'Step 17', 18:'Step 18', 19:'Step 19', 20:'Step 20', 25:'Step 25', 35:'Step 35'};
-
-// RESTORED COMPLETE WAGE DATA FROM YOUR ORIGINAL FILE
 const wageData = {
   year1: {
     0:[32.69,35.16,35.50,37.45,45.26,64.84], 0.5:[33.21,35.72,36.07,37.99,45.94,65.81], 1:[33.72,36.26,36.63,38.61,46.63,66.81], 2:[34.75,37.37,37.73,39.74,48.03,68.80],
@@ -134,43 +72,20 @@ const wageData = {
 function calculateStep() {
   const grade = document.getElementById('profession').value;
   const status = document.getElementById('status').value;
-  const scaleYear = document.getElementById('scaleYear').value;
+  const year = document.getElementById('scaleYear').value;
   const yoe = parseFloat(document.getElementById('yoe').value || 0);
   const gIdx = ['S1','S2','S3','S4','S5','S6'].indexOf(grade);
-  
-  let finalStep;
-  let note = "";
-
-  if (status === 'PRN') {
-    finalStep = 10;
-    if (grade === 'S2') finalStep = 13;
-    if (grade === 'S5') finalStep = 35;
-    note = "PRN Rule Applied: Step 10 (S2=13, S5=35). Credited YOE ignored.";
+  let matchedStep = steps[0];
+  if(status === 'PRN') {
+    matchedStep = 10; if(grade === 'S2') matchedStep = 13; if(grade === 'S5') matchedStep = 35;
   } else {
-    finalStep = steps[0];
-    for (const s of steps) { if (yoe >= s) finalStep = s; }
-    note = `Rounded to Step ${finalStep} for ${yoe} Credited Years.`;
+    for (const s of steps) { if (yoe >= s) matchedStep = s; }
   }
-
-  const rate = wageData[scaleYear][finalStep][gIdx];
+  const rate = wageData[year][matchedStep][gIdx];
   document.getElementById('outRate').innerText = `$${rate.toFixed(2)}`;
-  document.getElementById('outStep').innerText = `Matched: ${stepLabels[finalStep]}`;
-  document.getElementById('outNote').innerText = note;
+  document.getElementById('outStep').innerText = `Matched Step: ${matchedStep}`;
   document.getElementById('resultBox').classList.add('show');
 }
-
-function renderTable() {
-  const year = document.getElementById('scaleYear').value;
-  const table = document.getElementById('rateTable');
-  let html = '<thead><tr><th>Step</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th></tr></thead><tbody>';
-  steps.forEach(s => {
-    html += `<tr><td>${stepLabels[s]}</td>${wageData[year][s].map(v=>`<td>$${v.toFixed(2)}</td>`).join('')}</tr>`;
-  });
-  table.innerHTML = html + '</tbody>';
-}
-
-document.getElementById('scaleYear').addEventListener('change', renderTable);
-renderTable();
 </script>
 </body>
 </html>
