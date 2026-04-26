@@ -13,7 +13,6 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #F1F5F9; color: var(--slate); font-family: 'Barlow', sans-serif; line-height: 1.6; }
   
-  /* STICKY MANDATORY DISCLAIMER */
   .global-disclaimer { 
     background: var(--disclaimer-bg); color: #991B1B; padding: 12px; font-weight: 800; 
     text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase; font-size: 13px;
@@ -38,14 +37,15 @@
   table { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: 13px; }
   th { background: #E2E8F0; padding: 10px; text-align: left; }
   td { padding: 8px; border-bottom: 1px solid #E2E8F0; }
+  .rate-table-wrap { overflow-x: auto; background: white; padding: 1rem; margin-top: 2rem; border: 1px solid var(--border); }
 </style>
 </head>
 <body>
-<div class="global-disclaimer">This site is independently maintained by a union member. It is not affiliated with or endorsed by SEIU Local 1107 or Sunrise Hospital. Content reflects the views of individual members.</div>
+<div class="global-disclaimer">THIS SITE IS INDEPENDENTLY MAINTAINED BY A UNION MEMBER. IT IS NOT AFFILIATED WITH OR ENDORSED BY SEIU LOCAL 1107 OR SUNRISE HOSPITAL.</div>
 
 <nav>
   <a href="index.html" class="nav-logo">SPU HUB</a>
-  <a href="index.html" style="color:white; text-decoration:none; font-size:12px; font-weight:700;">BACK TO HOME</a>
+  <a href="index.html" style="color:white; text-decoration:none; font-size:12px; font-weight:700;">BACK TO HUB</a>
 </nav>
 
 <div class="page-wrap">
@@ -84,20 +84,28 @@
         <input id="yoe" type="number" step="0.1" placeholder="e.g. 7.5">
       </div>
     </div>
-    <button onclick="calculateStep()">Calculate Hourly Rate</button>
+    <button onclick="calculateStep()">Calculate Rate</button>
   </div>
 
   <div class="result" id="resultBox">
-    <span id="outStep" style="text-transform:uppercase; font-weight:700; color:var(--coral);"></span>
+    <div style="font-family:'Barlow Condensed'; font-size:14px; text-transform:uppercase; color:var(--coral);" id="outStep"></div>
     <span class="big-rate" id="outRate"></span>
-    <p id="outNote" style="opacity:0.8; font-size:14px;"></p>
+    <p id="outNote" style="opacity:0.8; font-size:14px; margin-top:10px;"></p>
+  </div>
+
+  <div class="rate-table-wrap">
+    <h3 style="font-family:'Barlow Condensed'; margin-bottom:1rem;">CURRENT SCALE TABLE</h3>
+    <table id="rateTable"></table>
   </div>
 </div>
 
 <script>
 const steps = [0, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 35];
+const stepLabels = {0:'Step 0', 0.5:'Step 6mo', 1:'Step 1', 2:'Step 2', 3:'Step 3', 4:'Step 4', 5:'Step 5', 6:'Step 6', 7:'Step 7', 8:'Step 8', 9:'Step 9', 10:'Step 10', 11:'Step 11', 12:'Step 12', 13:'Step 13', 14:'Step 14', 15:'Step 15', 16:'Step 16', 17:'Step 17', 18:'Step 18', 19:'Step 19', 20:'Step 20', 25:'Step 25', 35:'Step 35'};
+
+// RESTORED COMPLETE WAGE DATA FROM YOUR ORIGINAL FILE
 const wageData = {
-  year1: { // [cite: 1209-1215, 1416-1421, 1649-1654]
+  year1: {
     0:[32.69,35.16,35.50,37.45,45.26,64.84], 0.5:[33.21,35.72,36.07,37.99,45.94,65.81], 1:[33.72,36.26,36.63,38.61,46.63,66.81], 2:[34.75,37.37,37.73,39.74,48.03,68.80],
     3:[35.74,38.48,38.87,40.98,49.47,70.88], 4:[36.82,39.60,39.99,42.16,50.95,73.01], 5:[37.92,40.79,41.18,43.45,52.48,75.21], 6:[39.08,42.03,42.44,44.75,54.05,77.46],
     7:[39.84,42.84,43.27,45.65,55.14,79.00], 8:[40.62,43.72,44.15,46.54,56.24,80.58], 9:[41.47,44.61,45.04,47.44,57.36,82.20], 10:[42.28,45.48,45.93,48.44,58.51,83.86],
@@ -105,7 +113,7 @@ const wageData = {
     15:[44.44,47.80,48.26,50.90,61.50,88.12], 16:[44.91,48.25,48.72,51.38,62.11,88.96], 17:[45.34,48.72,49.20,51.94,62.73,89.89], 18:[45.79,49.23,49.71,52.41,63.36,90.80],
     19:[46.25,49.71,50.20,52.94,63.99,91.69], 20:[46.72,50.20,50.71,53.46,64.63,92.61], 25:[47.65,51.23,51.75,54.55,65.92,94.48], 35:[49.09,52.78,53.28,56.15,67.90,97.29]
   },
-  year2: { // [cite: 1216-1221, 1422-1427, 1655-1660]
+  year2: {
     0:[33.34,35.86,36.21,38.20,46.17,66.14], 0.5:[33.88,36.43,36.79,38.75,46.86,67.13], 1:[34.39,36.99,37.36,39.38,47.56,68.15], 2:[35.44,38.12,38.49,40.54,48.99,70.18],
     3:[36.46,39.25,39.64,41.80,50.46,72.30], 4:[37.56,40.39,40.79,43.00,51.97,74.47], 5:[38.68,41.61,42.01,44.32,53.53,76.72], 6:[39.87,42.87,43.28,45.64,55.14,79.01],
     7:[40.64,43.70,44.13,46.56,56.24,80.58], 8:[41.43,44.59,45.03,47.47,57.36,82.19], 9:[42.30,45.50,45.94,48.39,58.51,83.84], 10:[43.12,46.39,46.85,49.41,59.68,85.54],
@@ -113,7 +121,7 @@ const wageData = {
     15:[45.33,48.76,49.23,51.92,62.72,89.88], 16:[45.81,49.22,49.70,52.41,63.35,90.74], 17:[46.25,49.69,50.19,52.98,63.99,91.69], 18:[46.71,50.21,50.71,53.45,64.63,92.62],
     19:[47.17,50.70,51.20,54.00,65.27,93.52], 20:[47.65,51.20,51.72,54.53,65.92,94.47], 25:[48.60,52.25,52.78,55.64,67.24,96.36], 35:[50.08,53.84,54.35,57.27,69.26,99.24]
   },
-  year3: { // [cite: 1222-1227, 1428-1433, 1661-1666]
+  year3: {
     0:[33.84,36.40,36.75,38.77,46.86,67.13], 0.5:[34.39,36.98,37.34,39.33,47.56,68.13], 1:[34.91,37.54,37.92,39.97,48.27,69.17], 2:[35.97,38.69,39.07,41.14,49.72,71.23],
     3:[37.00,39.84,40.24,42.43,51.21,73.39], 4:[38.12,41.00,41.40,43.65,52.75,75.59], 5:[39.26,42.23,42.64,44.99,54.33,77.87], 6:[40.46,43.51,43.93,46.32,55.96,80.20],
     7:[41.25,44.35,44.80,47.26,57.08,81.79], 8:[42.05,45.26,45.71,48.18,58.22,83.42], 9:[42.94,46.18,46.63,49.12,59.39,85.10], 10:[43.77,47.09,47.56,50.15,60.58,86.82],
@@ -126,7 +134,7 @@ const wageData = {
 function calculateStep() {
   const grade = document.getElementById('profession').value;
   const status = document.getElementById('status').value;
-  const year = document.getElementById('scaleYear').value;
+  const scaleYear = document.getElementById('scaleYear').value;
   const yoe = parseFloat(document.getElementById('yoe').value || 0);
   const gIdx = ['S1','S2','S3','S4','S5','S6'].indexOf(grade);
   
@@ -134,24 +142,35 @@ function calculateStep() {
   let note = "";
 
   if (status === 'PRN') {
-    // 
     finalStep = 10;
     if (grade === 'S2') finalStep = 13;
     if (grade === 'S5') finalStep = 35;
-    note = "PRN Rate Rule: Step 10 (S2=Step 13, S5=Step 35)";
+    note = "PRN Rule Applied: Step 10 (S2=13, S5=35). Credited YOE ignored.";
   } else {
-    // Floor to nearest step 
     finalStep = steps[0];
     for (const s of steps) { if (yoe >= s) finalStep = s; }
-    note = `Rounded to Step ${finalStep} based on ${yoe} Years of Experience.`;
+    note = `Rounded to Step ${finalStep} for ${yoe} Credited Years.`;
   }
 
-  const rate = wageData[year][finalStep][gIdx];
+  const rate = wageData[scaleYear][finalStep][gIdx];
   document.getElementById('outRate').innerText = `$${rate.toFixed(2)}`;
-  document.getElementById('outStep').innerText = `Matched Step: ${finalStep}`;
+  document.getElementById('outStep').innerText = `Matched: ${stepLabels[finalStep]}`;
   document.getElementById('outNote').innerText = note;
   document.getElementById('resultBox').classList.add('show');
 }
+
+function renderTable() {
+  const year = document.getElementById('scaleYear').value;
+  const table = document.getElementById('rateTable');
+  let html = '<thead><tr><th>Step</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th></tr></thead><tbody>';
+  steps.forEach(s => {
+    html += `<tr><td>${stepLabels[s]}</td>${wageData[year][s].map(v=>`<td>$${v.toFixed(2)}</td>`).join('')}</tr>`;
+  });
+  table.innerHTML = html + '</tbody>';
+}
+
+document.getElementById('scaleYear').addEventListener('change', renderTable);
+renderTable();
 </script>
 </body>
 </html>
