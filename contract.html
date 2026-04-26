@@ -2,67 +2,92 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CBA Contract — Sunrise Professionals Hub</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Contract Hub — Sunrise Professionals Unit</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --white: #F8FAFC;
-    --surface: #FFFFFF; --border: rgba(0, 210, 255, 0.15); --disclaimer-bg: #FEF2F2;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #F1F5F9; color: var(--slate); font-family: 'Barlow', sans-serif; line-height: 1.6; }
-
-  /* STICKY MANDATORY DISCLAIMER */
+  :root { --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --white: #F8FAFC; --disclaimer-bg: #FEF2F2; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: #F1F5F9; color: var(--slate); font-family: 'Barlow', sans-serif; }
+  
   .global-disclaimer { 
     background: var(--disclaimer-bg); color: #991B1B; padding: 12px; font-weight: 800; 
-    text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase; font-size: 13px;
+    text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase;
   }
 
   nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; color: var(--electric); text-decoration: none; text-transform: uppercase; }
+  .nav-logo { font-family: 'Barlow Condensed'; font-weight: 900; color: var(--electric); text-decoration: none; font-size: 24px; }
 
-  .hero-search { background: var(--slate); color: white; padding: 4rem 2rem; text-align: center; }
-  .search-box { max-width: 600px; margin: 2rem auto; display: flex; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-radius: 4px; overflow: hidden; }
+  .search-hero { background: var(--slate); color: white; padding: 4rem 2rem; text-align: center; }
+  .search-box { max-width: 600px; margin: 2rem auto; display: flex; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
   .search-box input { flex: 1; padding: 18px; border: none; font-size: 16px; outline: none; }
   .search-box button { background: var(--electric); border: none; padding: 0 30px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-family: 'Barlow Condensed'; }
 
-  .quick-filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 3rem; }
-  .filter-btn { background: white; border: 1px solid var(--border); padding: 8px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 12px; text-transform: uppercase; transition: 0.2s; }
-  .filter-btn.active { background: var(--electric); border-color: var(--electric); }
+  .filter-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 3rem; padding: 0 1rem; }
+  .filter-btn { background: white; border: 1px solid rgba(0,210,255,0.2); padding: 8px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 11px; text-transform: uppercase; transition: 0.2s; }
+  .filter-btn.active { background: var(--electric); color: var(--slate); border-color: var(--electric); }
 
-  .article-card { background: white; margin-bottom: 1.5rem; padding: 2rem; border-left: 6px solid var(--electric); border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-  .article-card h2 { font-family: 'Barlow Condensed'; font-size: 28px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--slate); }
+  .article-card { background: white; margin-bottom: 1rem; padding: 2rem; border-left: 6px solid var(--electric); border-radius: 4px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+  .article-card h2 { font-family:'Barlow Condensed'; text-transform: uppercase; font-size: 26px; margin-bottom: 0.5rem; }
   .hidden { display: none; }
 </style>
 </head>
 <body>
-<div class="global-disclaimer">THIS SITE IS INDEPENDENTLY MAINTAINED BY A UNION MEMBER. IT IS NOT AFFILIATED WITH OR ENDORSED BY SEIU LOCAL 1107 OR SUNRISE HOSPITAL. CONTENT REFLECTS THE VIEWS OF INDIVIDUAL MEMBERS.</div>
+<div class="global-disclaimer">INDEPENDENT MEMBER SITE: NOT AFFILIATED WITH SEIU 1107 OR SUNRISE HOSPITAL.</div>
 
 <nav>
   <a href="index.html" class="nav-logo">SPU HUB</a>
-  <a href="index.html" style="color:white; text-decoration:none; font-size:12px; font-weight:700;">BACK TO HOME</a>
 </nav>
 
-<div class="hero-search">
-  <div style="text-transform:uppercase; font-weight:700; color:var(--coral); letter-spacing:2px; margin-bottom:10px;">Contract Resource Hub</div>
-  <h1 style="font-family:'Barlow Condensed'; font-size: 60px; line-height:0.9;">ASK THE CONTRACT</h1>
+<div class="search-hero">
+  <h1 style="font-family:'Barlow Condensed'; font-size: 60px; text-transform: uppercase; line-height:0.9;">ASK THE CONTRACT</h1>
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search by keyword (e.g. PTO, Discipline, OT)...">
-    <button onclick="performSearch()">Find</button>
+    <input type="text" id="searchInput" placeholder="Search by keyword (e.g. PTO, OT, Discipline)...">
+    <button onclick="performSearch()">FIND</button>
   </div>
 </div>
 
 <div style="max-width:900px; margin: 3rem auto; padding: 0 1.5rem;">
-  <div class="quick-filters">
+  <div class="filter-bar">
     <button class="filter-btn active" onclick="filterBy('all', this)">All Articles</button>
     <button class="filter-btn" onclick="filterBy('discipline', this)">Discipline</button>
-    <button class="filter-btn" onclick="filterBy('pay', this)">Pay & Wages</button>
-    <button class="filter-btn" onclick="filterBy('pto', this)">PTO & Leave</button>
+    <button class="filter-btn" onclick="filterBy('pay', this)">Pay</button>
+    <button class="filter-btn" onclick="filterBy('pto', this)">PTO</button>
+    <button class="filter-btn" onclick="filterBy('seniority', this)">Seniority</button>
   </div>
 
   <div id="articlesList">
     <div class="article-card" data-topics="discipline schedule">
       <h2>Article 3: Attendance</h2>
-      <p>Standard occurrence is an unscheduled absence of one shift or the first three consecutive shifts. Discipline levels are counted in rolling 12-month periods.</p>
-      <ul style="margin: 10px 0 0
+      <p>Occurrences are counted in rolling 12-month periods. 6 occurrences = First Warning; 9 = Termination.</p>
+    </div>
+    <div class="article-card" data-topics="pay schedule">
+      <h2>Article 25: Mandatory OT</h2>
+      <p>Used only as a last resort. All mandatory OT is paid at <strong>Double Time</strong>.</p>
+    </div>
+    <div class="article-card" data-topics="pay">
+      <h2>Article 52: Wages</h2>
+      <p>Standards established through June 2028. Credited YOE determines placement.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function filterBy(topic, btn) {
+  const articles = document.querySelectorAll('.article-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  articles.forEach(a => {
+    if (topic === 'all' || a.getAttribute('data-topics').includes(topic)) { a.classList.remove('hidden'); }
+    else { a.classList.add('hidden'); }
+  });
+}
+function performSearch() {
+  const query = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.article-card').forEach(a => {
+    a.classList.toggle('hidden', !a.innerText.toLowerCase().includes(query));
+  });
+}
+</script>
+</body>
+</html>
