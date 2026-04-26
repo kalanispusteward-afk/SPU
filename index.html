@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunrise Professionals Unit  - SEIU 1107</title>
+<title>Sunrise Professionals Unit - SEIU 1107</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -30,6 +30,15 @@
   /* HAMBURGER */
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+
+  /* FLOATING ACTION BAR */
+  .floating-bar { position: fixed; top: 100px; left: 0; right: 0; z-index: 97; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 1rem; background: rgba(13,10,20,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(201,168,76,0.12); flex-wrap: wrap; }
+  .fbar-btn { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 16px; text-decoration: none; border: 1px solid rgba(201,168,76,0.25); color: var(--gray-light); transition: all 0.2s; white-space: nowrap; }
+  .fbar-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .fbar-btn.urgent { background: var(--red); border-color: var(--red); color: var(--white); }
+  .fbar-btn.urgent:hover { background: #a93226; border-color: #a93226; color: var(--white); }
+  .fbar-btn.gold { background: var(--gold); border-color: var(--gold); color: var(--black); }
+  .fbar-btn.gold:hover { background: var(--gold-light); border-color: var(--gold-light); }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -50,8 +59,8 @@
   .quick-link.urgent:hover { background: #a93226; border-color: #a93226; }
 
   /* HERO */
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 10rem 5rem 5rem; position: relative; overflow: hidden; background: radial-gradient(ellipse at 80% 50%, rgba(78,49,128,0.25) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(45,27,78,0.3) 0%, transparent 50%); }
-  .hero::after { content: 'SPU THE UNOFFICIAL WEBSITE'; position: absolute; right: -40px; bottom: -80px; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 320px; color: rgba(201,168,76,0.04); line-height: 1; pointer-events: none; user-select: none; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 12rem 5rem 5rem; position: relative; overflow: hidden; background: radial-gradient(ellipse at 80% 50%, rgba(78,49,128,0.25) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(45,27,78,0.3) 0%, transparent 50%); }
+  .hero::after { content: 'SPU'; position: absolute; right: -40px; bottom: -80px; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 320px; color: rgba(201,168,76,0.04); line-height: 1; pointer-events: none; user-select: none; }
   .hero-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 2rem; width: fit-content; }
   .hero-tag::before { content: ''; display: block; width: 32px; height: 2px; background: var(--gold); }
   .hero-tag span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
@@ -186,7 +195,9 @@
     .kyr-stats { grid-template-columns: repeat(3,1fr); }
     .quick-links { gap: 8px; }
     .quick-link { font-size: 11px; padding: 8px 14px; }
-    .nav-logo span { display: none; }
+    .nav-logo span { font-size: 11px; }
+    .floating-bar { top: 96px; gap: 4px; padding: 6px 0.75rem; }
+    .fbar-btn { font-size: 10px; padding: 6px 10px; }
   }
 </style>
 </head>
@@ -194,10 +205,19 @@
 
 <div class="alert-banner">&#9733; S5 Classification Zoom Meeting &mdash; April 29, 7:30 PM &middot; <a href="https://us02web.zoom.us/j/88520433044?pwd=8Z3WpSkjc5e88CawhPmTr250R76pew.1" target="_blank" style="color:var(--gold-light);text-decoration:underline;">Join Now &rarr;</a></div>
 
+<div class="floating-bar">
+  <a href="#forms" class="fbar-btn urgent">&#9888; Need Representation?</a>
+  <a href="#grievance-form" class="fbar-btn">Submit Grievance Review</a>
+  <a href="https://act.seiu.org/onlineactions/KvGLQqa-D0GMiYvWpNKxEA2" target="_blank" class="fbar-btn gold">&#9733; Sign Your Card</a>
+  <a href="contract.html" class="fbar-btn">&#128196; Contract</a>
+  <a href="step-scale.html" class="fbar-btn">&#128200; Step Scale</a>
+</div>
+
 <nav>
-  <div class="nav-logo">SPU <span>Sunrise Professionals Unit &mdash; SEIU 1107 &mdash; THE UNOFFICIAL WEBSITE</span></div>
+  <a href="index.html" class="nav-logo">SPU<span style="color:var(--gold-light);font-weight:600;font-size:11px;letter-spacing:0.08em;margin-left:8px;">&mdash; The Unofficial Website</span></a>
   <ul class="nav-links">
     <li><a href="contract.html" style="color:var(--gold-light);">&#128196; Contract</a></li>
+    <li><a href="step-scale.html" style="color:var(--gold-light);">&#128200; Step Scale</a></li>
     <li><a href="#grievances">Grievances</a></li>
     <li><a href="#rights">Your Rights</a></li>
     <li><a href="#events">Events</a></li>
@@ -213,6 +233,7 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="contract.html">&#128196; View Full Contract &amp; AI Q&amp;A</a>
+  <a href="step-scale.html">&#128200; Step Scale Calculator</a>
   <a href="https://act.seiu.org/onlineactions/KvGLQqa-D0GMiYvWpNKxEA2" target="_blank" style="background:var(--gold);color:var(--black);text-align:center;padding:14px 20px;border-bottom:none;margin-bottom:8px;">&#9733; Sign Your Membership Card</a>
   <a href="#grievances" onclick="closeMenu()">Grievances</a>
   <a href="#rights" onclick="closeMenu()">Know Your Rights</a>
@@ -224,7 +245,8 @@
 
 <section class="hero">
   <div class="hero-tag"><span>Your Voice. Your Rights. Your Union.</span></div>
-  <h1><span class="outline">Sunrise</span><br><span class="accent">Professionals</span><br>Unit THE UNOFFICIAL WEBSITE</h1>
+  <h1><span class="outline">Sunrise</span><br><span class="accent">Professionals</span><br>Unit</h1>
+  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(14px,2.5vw,22px);text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);margin-bottom:2rem;">The Unofficial Website</div>
   <p class="hero-sub">Standing together to protect the rights, benefits, and dignity of every member we represent. Informed members are empowered members.</p>
   <blockquote class="hero-mission">
     <strong>Our Mission</strong>
@@ -236,6 +258,7 @@
     <a href="#grievance-form" class="quick-link">Submit a Concern</a>
     <a href="#rights" class="quick-link">Know Your Rights</a>
     <a href="contract.html" class="quick-link">&#128196; Read the Contract</a>
+    <a href="step-scale.html" class="quick-link">&#128200; Step Scale</a>
     <a href="#events" class="quick-link">Upcoming Events</a>
     <a href="#forms" class="quick-link">Labor Management</a>
   </div>
@@ -567,7 +590,7 @@
 
 <footer>
   <div>
-    <div class="footer-logo">SPU THE UNOFFICAIL WEBSITE</div>
+    <div class="footer-logo">SPU</div>
     <div class="footer-tagline">Sunrise Professionals Unit &mdash; SEIU Local 1107 &mdash; United We Stand</div>
   </div>
   <div class="footer-info">
