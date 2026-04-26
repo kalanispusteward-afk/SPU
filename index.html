@@ -3,212 +3,314 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunrise Professionals Unit - SEIU 1107</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Sunrise Professionals Unit — Member Site</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --electric-cyan: #00D2FF;
-    --energetic-coral: #FF6B6B;
-    --deep-slate: #1E293B;
-    --soft-cloud: #F8FAFC;
-
-    /* Mapped Variables to New Theme */
-    --gold: var(--electric-cyan); 
-    --gold-light: #5CE1FF; 
-    --gold-dark: #0098B8;
-    
-    --purple: var(--deep-slate); 
-    --purple-mid: #334155; 
-    --purple-light: #475569; 
-    --purple-pale: var(--deep-slate);
-    
-    --black: var(--soft-cloud); /* Page background lightened */
-    --white: var(--deep-slate); /* Primary text darkened */
-    --true-white: #FFFFFF;
-    
-    --gray: #64748B; 
-    --gray-light: #475569;
-    
-    --surface: #FFFFFF; 
-    --surface2: #F1F5F9; 
-    --border: rgba(30,41,59,0.15);
-    
-    --red: var(--energetic-coral); 
-    --red-dark: #E05252;
+    --cyan: #00D2FF;
+    --cyan-dark: #00A8CC;
+    --cyan-glow: rgba(0,210,255,0.18);
+    --coral: #FF6B6B;
+    --coral-dark: #E05555;
+    --slate: #1E293B;
+    --slate-mid: #2D3F55;
+    --slate-light: #3E5572;
+    --cloud: #F8FAFC;
+    --cloud-mid: #EFF4F9;
+    --cloud-dark: #CBD5E1;
+    --text: #1E293B;
+    --text-soft: #475569;
+    --text-muted: #94A3B8;
+    --border: rgba(0,210,255,0.15);
+    --white: #FFFFFF;
+    --surface: rgba(30,41,59,0.04);
+    --surface2: rgba(30,41,59,0.08);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { background: var(--black); color: var(--white); font-family: 'Barlow', sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
+  body { background: var(--cloud); color: var(--text); font-family: 'Inter', sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
 
-  /* DISCLAIMER */
-  #disclaimer { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: #FFFFFF; border-bottom: 4px solid var(--energetic-coral); color: #8B0000; font-weight: bold; text-align: center; padding: 10px 20px; font-family: 'Barlow', sans-serif; font-size: 14px; }
+  /* ── DISCLAIMER BANNER ── */
+  .disclaimer-sticky {
+    position: sticky; top: 0; z-index: 200;
+    background: #fff;
+    border-bottom: 4px solid var(--coral);
+    padding: 8px 1.5rem;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #8B0000;
+    line-height: 1.5;
+  }
 
-  /* NAV */
-  nav { position: fixed; top: 44px; left: 0; right: 0; z-index: 100; background: rgba(30,41,59,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: 0.06em; color: var(--gold); text-transform: uppercase; text-decoration: none; }
-  .nav-logo span { color: #CBD5E1; font-weight: 400; font-size: 13px; letter-spacing: 0.08em; margin-left: 10px; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-  .nav-links a { color: #CBD5E1; text-decoration: none; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-links .nav-urgent { background: var(--red); color: var(--true-white); padding: 7px 14px; font-size: 11px; letter-spacing: 0.1em; transition: background 0.2s; }
-  .nav-links .nav-urgent:hover { background: var(--red-dark); color: var(--true-white); }
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 45px; z-index: 100;
+    background: var(--slate);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    border-bottom: 2px solid var(--cyan-dark);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 18px; letter-spacing: 0.08em;
+    color: var(--cyan); text-transform: uppercase; text-decoration: none;
+  }
+  .nav-logo span { color: var(--cloud-dark); font-weight: 400; font-size: 11px; margin-left: 10px; letter-spacing: 0.06em; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+  .nav-links a { color: var(--cloud-dark); text-decoration: none; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-links .nav-urgent { background: var(--coral); color: #fff; padding: 6px 14px; font-size: 11px; border-radius: 2px; }
+  .nav-links .nav-urgent:hover { background: var(--coral-dark); color: #fff; }
 
-  /* HAMBURGER */
+  /* ── HAMBURGER ── */
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
-
-  /* FLOATING ACTION BAR */
-  .floating-bar { position: fixed; top: 144px; left: 0; right: 0; z-index: 97; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 1rem; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,210,255,0.12); flex-wrap: wrap; }
-  .fbar-btn { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 7px 16px; text-decoration: none; border: 1px solid rgba(0,210,255,0.25); color: var(--deep-slate); transition: all 0.2s; white-space: nowrap; }
-  .fbar-btn:hover { border-color: var(--gold); color: var(--gold-dark); }
-  .fbar-btn.urgent { background: var(--red); border-color: var(--red); color: var(--true-white); }
-  .fbar-btn.urgent:hover { background: var(--red-dark); border-color: var(--red-dark); color: var(--true-white); }
-  .fbar-btn.gold { background: var(--gold); border-color: var(--gold); color: var(--true-white); }
-  .fbar-btn.gold:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--cyan); transition: all 0.3s; }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .mobile-menu { display: none; position: fixed; top: 108px; left: 0; right: 0; background: rgba(30,41,59,0.99); z-index: 98; padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); flex-direction: column; gap: 0; }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    display: none; position: fixed; top: 105px; left: 0; right: 0;
+    background: var(--slate); z-index: 99;
+    padding: 1.5rem 2rem; flex-direction: column; gap: 0;
+    border-bottom: 2px solid var(--cyan);
+  }
   .mobile-menu.open { display: flex; }
-  .mobile-menu a { color: #CBD5E1; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 0; border-bottom: 0.5px solid rgba(0,210,255,0.08); transition: color 0.2s; }
-  .mobile-menu a:hover { color: var(--gold); }
-  .mobile-menu .mobile-urgent { color: var(--true-white); background: var(--red); padding: 14px 20px; text-align: center; margin-top: 1rem; border-bottom: none; }
+  .mobile-menu a { color: var(--cloud-dark); text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 0; border-bottom: 1px solid rgba(0,210,255,0.1); transition: color 0.2s; }
+  .mobile-menu a:hover { color: var(--cyan); }
+  .mobile-menu .mobile-urgent { color: #fff; background: var(--coral); padding: 14px 20px; text-align: center; margin-top: 1rem; border-bottom: none; border-radius: 2px; }
 
-  /* ALERT */
-  .alert-banner { background: linear-gradient(90deg, #334155, var(--deep-slate), #334155); border-bottom: 1px solid var(--border); color: var(--gold); text-align: center; padding: 9px 2rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; position: fixed; top: 108px; left: 0; right: 0; z-index: 99; }
+  /* ── FLOATING ACTION BAR ── */
+  .floating-bar {
+    background: var(--slate-mid);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 1.5rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+  }
+  .fbar-btn {
+    display: inline-block;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 7px 14px; text-decoration: none;
+    border: 1px solid rgba(0,210,255,0.3); color: var(--cloud-dark);
+    transition: all 0.2s; white-space: nowrap; border-radius: 2px;
+  }
+  .fbar-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+  .fbar-btn.urgent { background: var(--coral); border-color: var(--coral); color: #fff; }
+  .fbar-btn.urgent:hover { background: var(--coral-dark); }
+  .fbar-btn.gold { background: var(--cyan); border-color: var(--cyan); color: var(--slate); }
+  .fbar-btn.gold:hover { background: var(--cyan-dark); }
 
-  /* QUICK LINKS */
-  .quick-links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 3rem; }
-  .quick-link { display: inline-block; padding: 10px 20px; border: 1px solid rgba(0,210,255,0.3); color: var(--gold-dark); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; }
-  .quick-link:hover { background: rgba(0,210,255,0.1); border-color: var(--gold); }
-  .quick-link.urgent { background: var(--red); border-color: var(--red); color: var(--true-white); }
-  .quick-link.urgent:hover { background: var(--red-dark); border-color: var(--red-dark); }
+  /* ── ALERT BANNER ── */
+  .alert-banner {
+    background: linear-gradient(90deg, var(--slate), var(--slate-mid), var(--slate));
+    border-bottom: 1px solid var(--border);
+    color: var(--cyan); text-align: center;
+    padding: 9px 2rem;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  }
 
-  /* HERO */
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 14rem 5rem 5rem; position: relative; overflow: hidden; background: radial-gradient(ellipse at 80% 50%, rgba(0,210,255,0.1) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(255,107,107,0.05) 0%, transparent 50%); }
-  .hero::after { content: 'SPU'; position: absolute; right: -40px; bottom: -80px; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 320px; color: rgba(30,41,59,0.03); line-height: 1; pointer-events: none; user-select: none; }
-  .hero-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 2rem; width: fit-content; }
-  .hero-tag::before { content: ''; display: block; width: 32px; height: 2px; background: var(--gold); }
-  .hero-tag span { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); }
-  .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(52px, 8.5vw, 110px); line-height: 0.92; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 2.5rem; color: var(--deep-slate); }
-  .hero h1 .accent { color: var(--gold); }
-  .hero h1 .outline { -webkit-text-stroke: 1.5px var(--deep-slate); color: transparent; }
-  .hero-sub { font-size: 17px; color: var(--gray-light); max-width: 520px; font-weight: 300; line-height: 1.8; margin-bottom: 2rem; }
-  .hero-mission { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 1.75rem 2rem; max-width: 620px; font-size: 15px; font-style: italic; color: var(--gray-light); line-height: 1.9; margin-bottom: 3rem; }
-  .hero-mission strong { display: block; font-style: normal; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.75rem; }
+  /* ── QUICK LINKS ── */
+  .quick-links { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 3rem; }
+  .quick-link {
+    display: inline-block; padding: 10px 18px;
+    border: 1.5px solid rgba(30,41,59,0.2); color: var(--slate);
+    text-decoration: none;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: all 0.2s; border-radius: 3px;
+    background: #fff;
+  }
+  .quick-link:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 2px 12px var(--cyan-glow); }
+  .quick-link.urgent { background: var(--coral); border-color: var(--coral); color: #fff; }
+  .quick-link.urgent:hover { background: var(--coral-dark); }
+  .quick-link.primary { background: var(--cyan); border-color: var(--cyan); color: var(--slate); }
+  .quick-link.primary:hover { background: var(--cyan-dark); }
 
-  /* SECTIONS */
-  section { padding: 6rem 5rem; border-top: 1px solid rgba(30,41,59,0.08); }
-  .section-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; }
-  .section-label::after { content: ''; display: block; width: 24px; height: 1px; background: var(--gold-dark); }
-  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(36px, 5vw, 58px); text-transform: uppercase; line-height: 0.95; margin-bottom: 2.5rem; color: var(--deep-slate); letter-spacing: -0.01em; }
-  .section-intro { color: var(--gray-light); max-width: 600px; margin-bottom: 3rem; font-size: 15px; line-height: 1.8; font-weight: 300; }
+  /* ── HERO ── */
+  .hero {
+    min-height: 85vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 5rem 5rem;
+    background: linear-gradient(135deg, var(--slate) 0%, var(--slate-mid) 60%, #1a3a5c 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: 'SPU';
+    position: absolute; right: -30px; bottom: -60px;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 280px;
+    color: rgba(0,210,255,0.04); line-height: 1; pointer-events: none; user-select: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 80% 30%, rgba(0,210,255,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; width: fit-content; animation: fadeUp 0.5s ease both; }
+  .hero-tag::before { content: ''; display: block; width: 32px; height: 2px; background: var(--cyan); }
+  .hero-tag span { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); }
+  .hero h1 {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(48px, 8vw, 100px);
+    line-height: 0.92; text-transform: uppercase; letter-spacing: -0.01em;
+    color: #fff; margin-bottom: 1rem;
+    animation: fadeUp 0.5s ease 0.1s both;
+  }
+  .hero h1 .accent { color: var(--cyan); }
+  .hero h1 .outline { -webkit-text-stroke: 1.5px rgba(0,210,255,0.4); color: transparent; }
+  .hero-tagline {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: clamp(13px, 2vw, 18px); text-transform: uppercase;
+    letter-spacing: 0.15em; color: var(--coral); margin-bottom: 1.5rem;
+    animation: fadeUp 0.5s ease 0.15s both;
+  }
+  .hero-sub {
+    font-size: 16px; color: rgba(200,215,230,0.9); max-width: 520px;
+    font-weight: 300; line-height: 1.8; margin-bottom: 2rem;
+    animation: fadeUp 0.5s ease 0.2s both;
+  }
+  .hero-mission {
+    background: rgba(0,210,255,0.06); border: 1px solid rgba(0,210,255,0.2);
+    border-left: 3px solid var(--cyan);
+    padding: 1.5rem 2rem; max-width: 600px;
+    font-size: 14px; font-style: italic; color: rgba(200,215,230,0.85);
+    line-height: 1.9; margin-bottom: 3rem;
+    animation: fadeUp 0.5s ease 0.3s both;
+  }
+  .hero-mission strong {
+    display: block; font-style: normal;
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--cyan); margin-bottom: 0.75rem;
+  }
 
-  /* EMERGENCY BANNER */
-  .emergency-strip { background: var(--red); padding: 1.5rem 5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; border-top: none; }
-  .emergency-strip-text { font-family: 'Barlow Condensed', sans-serif; }
-  .emergency-strip-text .e-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 4px; }
-  .emergency-strip-text .e-title { font-size: 24px; font-weight: 900; text-transform: uppercase; color: var(--true-white); }
-  .emergency-strip-text .e-sub { font-size: 13px; color: rgba(255,255,255,0.95); margin-top: 4px; font-family: 'Barlow', sans-serif; font-weight: 300; }
-  .emergency-btn { display: inline-block; background: var(--true-white); color: var(--red); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; text-decoration: none; white-space: nowrap; transition: opacity 0.2s; }
+  /* ── SECTIONS ── */
+  section { padding: 5rem 5rem; border-top: 1px solid rgba(0,210,255,0.08); }
+  .section-label {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 10px;
+    letter-spacing: 0.24em; text-transform: uppercase; color: var(--cyan);
+    margin-bottom: 0.6rem; display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after { content: ''; display: block; width: 24px; height: 1px; background: var(--cyan-dark); }
+  .section-title {
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: clamp(32px, 4.5vw, 52px); text-transform: uppercase;
+    line-height: 0.95; margin-bottom: 2rem; color: var(--slate); letter-spacing: -0.01em;
+  }
+  .section-intro { color: var(--text-soft); max-width: 600px; margin-bottom: 2.5rem; font-size: 15px; line-height: 1.8; font-weight: 300; }
+
+  /* ── EMERGENCY STRIP ── */
+  .emergency-strip {
+    background: var(--coral);
+    padding: 1.5rem 5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .emergency-strip-text .e-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-bottom: 4px; font-family: 'Syne', sans-serif; }
+  .emergency-strip-text .e-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; text-transform: uppercase; color: #fff; }
+  .emergency-strip-text .e-sub { font-size: 13px; color: rgba(255,255,255,0.85); margin-top: 4px; font-weight: 300; }
+  .emergency-btn {
+    display: inline-block; background: #fff; color: var(--coral);
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 13px 26px; text-decoration: none; white-space: nowrap;
+    border-radius: 2px; transition: opacity 0.2s;
+  }
   .emergency-btn:hover { opacity: 0.9; }
 
-  /* GRIEVANCES */
-  .grievance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(30,41,59,0.08); border: 1px solid rgba(30,41,59,0.08); }
-  .grievance-card { background: var(--surface); padding: 2rem; transition: background 0.25s; position: relative; }
-  .grievance-card:hover { background: var(--surface2); }
-  .grievance-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gold-dark), transparent); opacity: 0; transition: opacity 0.25s; }
+  /* ── GRIEVANCES ── */
+  .grievance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(0,210,255,0.08); border: 1px solid rgba(0,210,255,0.08); }
+  .grievance-card { background: #fff; padding: 2rem; transition: background 0.2s; position: relative; }
+  .grievance-card:hover { background: var(--cloud-mid); }
+  .grievance-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--cyan-dark), transparent); opacity: 0; transition: opacity 0.25s; }
   .grievance-card:hover::before { opacity: 1; }
-  .grievance-status { display: inline-block; background: rgba(0,210,255,0.12); color: var(--gold-dark); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 1rem; border: 1px solid rgba(0,210,255,0.2); }
-  .grievance-type { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px; text-transform: uppercase; margin-bottom: 0.75rem; color: var(--deep-slate); }
-  .grievance-desc { color: var(--gray); font-size: 14px; line-height: 1.7; }
+  .grievance-status { display: inline-block; background: rgba(0,210,255,0.1); color: var(--cyan-dark); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 3px 10px; margin-bottom: 1rem; border: 1px solid rgba(0,210,255,0.2); border-radius: 2px; }
+  .grievance-type { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; text-transform: uppercase; margin-bottom: 0.6rem; color: var(--slate); }
+  .grievance-desc { color: var(--text-soft); font-size: 13px; line-height: 1.7; }
 
-  /* KNOW YOUR RIGHTS */
+  /* ── KNOW YOUR RIGHTS ── */
   .kyr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
-  .kyr-card { background: var(--surface); border: 0.5px solid rgba(30,41,59,0.1); border-radius: 0; overflow: hidden; }
-  .kyr-header { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; border-bottom: 0.5px solid rgba(30,41,59,0.08); }
-  .kyr-icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-  .kyr-icon.red { background: rgba(255,107,107,0.2); }
-  .kyr-icon.gold { background: rgba(0,210,255,0.15); }
-  .kyr-icon.green { background: rgba(16,185,129,0.15); }
-  .kyr-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; text-transform: uppercase; color: var(--deep-slate); margin: 0; }
-  .kyr-article { font-size: 10px; color: var(--gold-dark); letter-spacing: 0.1em; margin: 2px 0 0; }
+  .kyr-card { background: #fff; border: 1px solid rgba(30,41,59,0.08); box-shadow: 0 2px 12px rgba(30,41,59,0.04); border-radius: 4px; overflow: hidden; }
+  .kyr-header { display: flex; align-items: center; gap: 12px; padding: 1rem 1.25rem; border-bottom: 1px solid rgba(30,41,59,0.06); }
+  .kyr-icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; border-radius: 3px; }
+  .kyr-icon.red { background: rgba(255,107,107,0.15); }
+  .kyr-icon.gold { background: rgba(0,210,255,0.12); }
+  .kyr-icon.green { background: rgba(39,174,96,0.12); }
+  .kyr-card-title { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; text-transform: uppercase; color: var(--slate); margin: 0; }
+  .kyr-article { font-size: 10px; color: var(--cyan-dark); letter-spacing: 0.1em; margin: 2px 0 0; }
   .kyr-body { padding: 1.25rem; }
-  .kyr-alert { background: rgba(255,107,107,0.15); border-left: 3px solid var(--red); padding: 10px 14px; margin-bottom: 1rem; font-size: 13px; color: #C0392B; line-height: 1.6; font-weight: 600; }
+  .kyr-alert { background: rgba(255,107,107,0.08); border-left: 3px solid var(--coral); padding: 10px 14px; margin-bottom: 1rem; font-size: 13px; color: #c0392b; line-height: 1.6; }
   .kyr-points { list-style: none; padding: 0; margin: 0; }
-  .kyr-points li { font-size: 13px; color: var(--gray-light); line-height: 1.6; padding: 7px 0; border-bottom: 0.5px solid rgba(30,41,59,0.06); display: flex; gap: 10px; align-items: flex-start; }
+  .kyr-points li { font-size: 13px; color: var(--text-soft); line-height: 1.6; padding: 7px 0; border-bottom: 1px solid rgba(30,41,59,0.06); display: flex; gap: 10px; align-items: flex-start; }
   .kyr-points li:last-child { border-bottom: none; padding-bottom: 0; }
-  .kyr-points li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--gold-dark); margin-top: 8px; flex-shrink: 0; }
-  .kyr-deadline { background: rgba(0,210,255,0.1); border-left: 3px solid var(--gold); padding: 10px 14px; margin-top: 10px; font-size: 12px; color: var(--gold-dark); font-weight: 600; line-height: 1.5; }
+  .kyr-points li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--cyan-dark); margin-top: 8px; flex-shrink: 0; }
+  .kyr-deadline { background: rgba(0,210,255,0.08); border-left: 3px solid var(--cyan); padding: 10px 14px; margin-top: 10px; font-size: 12px; color: var(--cyan-dark); font-weight: 600; line-height: 1.5; }
   .kyr-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 1rem; }
-  .kyr-stat { background: rgba(0,210,255,0.05); padding: 10px; text-align: center; }
-  .kyr-stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 900; color: var(--gold-dark); line-height: 1; }
-  .kyr-stat-label { font-size: 10px; color: var(--gray); margin-top: 4px; line-height: 1.4; }
+  .kyr-stat { background: rgba(0,210,255,0.07); padding: 10px; text-align: center; border-radius: 3px; }
+  .kyr-stat-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--cyan-dark); line-height: 1; }
+  .kyr-stat-label { font-size: 10px; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
 
-  /* EVENTS */
+  /* ── EVENTS ── */
   .events-list { display: flex; flex-direction: column; gap: 1px; }
-  .event-item { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 2rem; background: var(--surface); padding: 1.5rem 2rem; border-left: 2px solid transparent; transition: all 0.2s; }
-  .event-item:hover { background: var(--surface2); border-left-color: var(--gold); }
-  .event-date { text-align: center; font-family: 'Barlow Condensed', sans-serif; }
-  .event-date .month { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-dark); }
-  .event-date .day { font-size: 44px; font-weight: 900; line-height: 1; color: var(--deep-slate); }
-  .event-info .event-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 21px; text-transform: uppercase; margin-bottom: 4px; color: var(--deep-slate); }
-  .event-info .event-detail { color: var(--gray); font-size: 13px; }
-  .event-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(0,210,255,0.25); color: var(--gold-dark); white-space: nowrap; background: rgba(0,210,255,0.06); }
+  .event-item { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 2rem; background: #fff; padding: 1.5rem 2rem; border-left: 3px solid transparent; transition: all 0.2s; }
+  .event-item:hover { background: var(--cloud-mid); border-left-color: var(--cyan); }
+  .event-date { text-align: center; font-family: 'Syne', sans-serif; }
+  .event-date .month { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cyan-dark); }
+  .event-date .day { font-size: 42px; font-weight: 800; line-height: 1; color: var(--slate); }
+  .event-info .event-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 19px; text-transform: uppercase; margin-bottom: 4px; color: var(--slate); }
+  .event-info .event-detail { color: var(--text-muted); font-size: 13px; }
+  .event-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 12px; border: 1px solid rgba(0,210,255,0.25); color: var(--cyan-dark); white-space: nowrap; background: rgba(0,210,255,0.06); border-radius: 2px; }
 
-  /* OFFICERS */
-  .officers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1px; background: rgba(30,41,59,0.08); border: 1px solid rgba(30,41,59,0.08); }
-  .officer-card { background: var(--surface); padding: 2rem; transition: background 0.2s; }
-  .officer-card:hover { background: var(--surface2); }
-  .officer-initial { width: 48px; height: 48px; background: linear-gradient(135deg, var(--gold), #5CE1FF); color: var(--deep-slate); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
-  .officer-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 19px; text-transform: uppercase; margin-bottom: 3px; color: var(--deep-slate); }
-  .officer-title { color: var(--gold-dark); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
-  .officer-contact { color: var(--gray); font-size: 13px; }
+  /* ── OFFICERS ── */
+  .officers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: rgba(0,210,255,0.08); border: 1px solid rgba(0,210,255,0.08); }
+  .officer-card { background: #fff; padding: 2rem; transition: background 0.2s; }
+  .officer-card:hover { background: var(--cloud-mid); }
+  .officer-initial { width: 48px; height: 48px; background: linear-gradient(135deg, var(--cyan-dark), var(--cyan)); color: var(--slate); font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border-radius: 3px; }
+  .officer-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; text-transform: uppercase; margin-bottom: 3px; color: var(--slate); }
+  .officer-title { color: var(--cyan-dark); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .officer-contact { color: var(--text-soft); font-size: 13px; }
 
-  /* FORMS */
+  /* ── FORMS ── */
   .forms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
-  .form-card { background: var(--surface); border: 1px solid rgba(30,41,59,0.1); padding: 2.5rem; position: relative; overflow: hidden; }
-  .form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark)); }
+  .form-card { background: #fff; border: 1px solid rgba(30,41,59,0.1); padding: 2.5rem; position: relative; overflow: hidden; border-radius: 4px; box-shadow: 0 4px 20px rgba(30,41,59,0.06); }
+  .form-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cyan-dark), var(--cyan), var(--cyan-dark)); }
   .form-card.urgent { border-color: rgba(255,107,107,0.3); }
-  .form-card.urgent::before { background: linear-gradient(90deg, var(--red-dark), var(--red), var(--red-dark)); }
-  .form-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--deep-slate); }
-  .form-card-desc { color: var(--gray); font-size: 13px; margin-bottom: 2rem; line-height: 1.7; font-weight: 300; }
+  .form-card.urgent::before { background: linear-gradient(90deg, var(--coral-dark), var(--coral), var(--coral-dark)); }
+  .form-card-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--slate); }
+  .form-card-desc { color: var(--text-soft); font-size: 13px; margin-bottom: 2rem; line-height: 1.7; font-weight: 300; }
   .form-group { margin-bottom: 1.1rem; }
-  label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px; }
-  input, textarea, select { width: 100%; background: var(--surface2); border: 1px solid rgba(30,41,59,0.15); color: var(--deep-slate); padding: 11px 14px; font-family: 'Barlow', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
-  input:focus, textarea:focus, select:focus { border-color: var(--gold); background: #FFFFFF; }
-  input::placeholder, textarea::placeholder { color: rgba(30,41,59,0.4); }
+  label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+  input, textarea, select { width: 100%; background: var(--cloud); border: 1.5px solid rgba(30,41,59,0.12); color: var(--text); padding: 11px 14px; font-family: 'Inter', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; -webkit-appearance: none; border-radius: 3px; }
+  input:focus, textarea:focus, select:focus { border-color: var(--cyan); background: #fff; }
+  input::placeholder, textarea::placeholder { color: var(--cloud-dark); }
   textarea { resize: vertical; min-height: 90px; }
-  .btn { display: block; width: 100%; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--true-white); font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border: none; cursor: pointer; margin-top: 1rem; transition: opacity 0.2s, transform 0.1s; }
+  .btn { display: block; width: 100%; background: linear-gradient(135deg, var(--cyan-dark), var(--cyan)); color: var(--slate); font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; padding: 14px 28px; border: none; cursor: pointer; margin-top: 1rem; transition: opacity 0.2s, transform 0.1s; border-radius: 3px; }
   .btn:hover { opacity: 0.9; }
   .btn:active { transform: scale(0.99); }
-  .btn-urgent { background: linear-gradient(135deg, var(--red-dark), var(--red)); color: var(--true-white); }
+  .btn-urgent { background: linear-gradient(135deg, var(--coral-dark), var(--coral)); color: #fff; }
 
-  /* FOOTER */
-  footer { background: var(--deep-slate); border-top: 1px solid var(--border); padding: 3rem 5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; color: var(--soft-cloud); }
-  .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 32px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold); }
-  .footer-tagline { font-size: 12px; color: #CBD5E1; letter-spacing: 0.06em; margin-top: 4px; }
-  .footer-info { color: #CBD5E1; font-size: 13px; text-align: right; line-height: 1.8; }
-  .footer-info a { color: var(--gold); text-decoration: none; }
-  .footer-updated { color: rgba(248,250,252,0.5); font-size: 11px; margin-top: 6px; }
+  /* ── FOOTER ── */
+  footer { background: var(--slate); border-top: 2px solid var(--cyan-dark); padding: 3rem 5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 28px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--cyan); }
+  .footer-tagline { font-size: 11px; color: var(--cloud-dark); letter-spacing: 0.06em; margin-top: 4px; }
+  .footer-info { color: var(--cloud-dark); font-size: 13px; text-align: right; line-height: 1.8; }
+  .footer-info a { color: var(--cyan); text-decoration: none; }
+  .footer-updated { color: rgba(200,215,230,0.4); font-size: 11px; margin-top: 6px; }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-tag { animation: fadeUp 0.5s ease both; }
-  .hero h1 { animation: fadeUp 0.5s ease 0.1s both; }
-  .hero-sub { animation: fadeUp 0.5s ease 0.2s both; }
-  .hero-mission { animation: fadeUp 0.5s ease 0.3s both; }
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .quick-links { animation: fadeUp 0.5s ease 0.4s both; }
 
-  /* RESPONSIVE */
+  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 0 1.25rem; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    .alert-banner { font-size: 11px; padding: 8px 1rem; top: 108px; }
-    .hero { padding: 12rem 1.5rem 4rem; }
-    .hero::after { font-size: 140px; }
-    section { padding: 4rem 1.5rem; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    .hero::before { font-size: 120px; }
+    section { padding: 3.5rem 1.5rem; }
     .emergency-strip { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
     .emergency-btn { width: 100%; text-align: center; }
     footer { padding: 2rem 1.5rem; flex-direction: column; }
@@ -219,18 +321,20 @@
     .kyr-grid { grid-template-columns: 1fr; }
     .kyr-stats { grid-template-columns: repeat(3,1fr); }
     .quick-links { gap: 8px; }
-    .quick-link { font-size: 11px; padding: 8px 14px; }
-    .nav-logo span { font-size: 11px; }
-    .floating-bar { top: 144px; gap: 4px; padding: 6px 0.75rem; }
+    .quick-link { font-size: 11px; padding: 8px 12px; }
+    .floating-bar { gap: 4px; padding: 6px 0.75rem; }
     .fbar-btn { font-size: 10px; padding: 6px 10px; }
+    .disclaimer-sticky { font-size: 11px; padding: 7px 1rem; }
   }
 </style>
 </head>
 <body>
 
-<div id="disclaimer">This site is independently maintained by a union member. It is not affiliated with or endorsed by SEIU Local 1107 or Sunrise Hospital. Content reflects the views of individual members.</div>
+<div class="disclaimer-sticky">
+  This site is independently maintained by a union member. It is not affiliated with or endorsed by SEIU Local 1107 or Sunrise Hospital. Content reflects the views of individual members.
+</div>
 
-<div class="alert-banner">&#9733; S5 Classification Zoom Meeting &mdash; April 29, 7:30 PM &middot; <a href="https://us02web.zoom.us/j/88520433044?pwd=8Z3WpSkjc5e88CawhPmTr250R76pew.1" target="_blank" style="color:var(--gold);text-decoration:underline;">Join Now &rarr;</a></div>
+<div class="alert-banner">&#9733; S5 Classification Zoom Meeting &mdash; April 29, 7:30 PM &middot; <a href="https://us02web.zoom.us/j/88520433044?pwd=8Z3WpSkjc5e88CawhPmTr250R76pew.1" target="_blank" style="color:var(--cyan);text-decoration:underline;">Join Now &rarr;</a></div>
 
 <div class="floating-bar">
   <a href="#forms" class="fbar-btn urgent">&#9888; Need Representation?</a>
@@ -241,16 +345,16 @@
 </div>
 
 <nav>
-  <a href="index.html" class="nav-logo">SPU<span style="color:var(--gold);font-weight:600;font-size:11px;letter-spacing:0.08em;margin-left:8px;">&mdash; The Unofficial Website</span></a>
+  <a href="index.html" class="nav-logo">SPU<span>&mdash; The Unofficial Website</span></a>
   <ul class="nav-links">
-    <li><a href="contract.html" style="color:var(--gold);">&#128196; Contract</a></li>
-    <li><a href="step-scale.html" style="color:var(--gold);">&#128200; Step Scale</a></li>
+    <li><a href="contract.html" style="color:var(--cyan);">&#128196; Contract</a></li>
+    <li><a href="step-scale.html" style="color:var(--cyan);">&#128200; Step Scale</a></li>
     <li><a href="#grievances">Grievances</a></li>
     <li><a href="#rights">Your Rights</a></li>
     <li><a href="#events">Events</a></li>
     <li><a href="#officers">Officers</a></li>
     <li><a href="#forms">Submit</a></li>
-    <li><a href="https://act.seiu.org/onlineactions/KvGLQqa-D0GMiYvWpNKxEA2" target="_blank" style="background:var(--gold);color:var(--true-white);padding:7px 14px;font-size:11px;letter-spacing:0.1em;font-weight:700;">&#9733; Sign Your Card</a></li>
+    <li><a href="https://act.seiu.org/onlineactions/KvGLQqa-D0GMiYvWpNKxEA2" target="_blank" style="background:var(--cyan);color:var(--slate);padding:7px 14px;font-size:11px;letter-spacing:0.08em;font-weight:700;border-radius:2px;">&#9733; Sign Your Card</a></li>
     <li><a href="#forms" class="nav-urgent">&#9888; Need Rep?</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -261,7 +365,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="contract.html">&#128196; View Full Contract &amp; AI Q&amp;A</a>
   <a href="step-scale.html">&#128200; Step Scale Calculator</a>
-  <a href="https://act.seiu.org/onlineactions/KvGLQqa-D0GMiYvWpNKxEA2" target="_blank" style="background:var(--gold);color:var(--true-white);text-align:center;padding:14px 20px;border-bottom:none;margin-bottom:8px;">&#9733; Sign Your Membership Card</a>
+  <a href="https://act.seiu.org/onlineactions/KvGLQqa-D0GMiYvWpNKxEA2" target="_blank" style="background:var(--cyan);color:var(--slate);text-align:center;padding:14px 20px;border-bottom:none;margin-bottom:8px;font-weight:700;">&#9733; Sign Your Membership Card</a>
   <a href="#grievances" onclick="closeMenu()">Grievances</a>
   <a href="#rights" onclick="closeMenu()">Know Your Rights</a>
   <a href="#events" onclick="closeMenu()">Events &amp; Training</a>
@@ -271,16 +375,16 @@
 </div>
 
 <section class="hero">
-  <div class="hero-tag"><span>By Members. For Members. We are the Union!</span></div>
+  <div class="hero-tag"><span>Your Voice. Your Rights. Your Union.</span></div>
   <h1><span class="outline">Sunrise</span><br><span class="accent">Professionals</span><br>Unit</h1>
-  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(14px,2.5vw,22px);text-transform:uppercase;letter-spacing:0.18em;color:var(--gold-dark);margin-bottom:2rem;">The Unofficial Website</div>
+  <div class="hero-tagline">By Members. For Members. We are the Union!</div>
   <p class="hero-sub">Standing together to protect the rights, benefits, and dignity of every member we represent. Informed members are empowered members.</p>
   <blockquote class="hero-mission">
     <strong>Our Mission</strong>
     The mission of the Sunrise Professionals Unit is to advocate for the highest level of patient care, equitable compensation, and safe working conditions for all members. We are committed to promoting a Just Culture — a framework championed by The Joint Commission that balances accountability with learning, encourages the reporting of errors and concerns without fear of retaliation, and fosters an environment where every voice is heard and every right is defended.
   </blockquote>
   <div class="quick-links">
-    <a href="https://act.seiu.org/onlineactions/KvGLQqa-D0GMiYvWpNKxEA2" target="_blank" class="quick-link" style="background:var(--gold);border-color:var(--gold);color:var(--true-white);font-weight:800;">&#9733; Sign Your Membership Card</a>
+    <a href="https://act.seiu.org/onlineactions/KvGLQqa-D0GMiYvWpNKxEA2" target="_blank" class="quick-link primary">&#9733; Sign Your Membership Card</a>
     <a href="#forms" class="quick-link urgent">&#9888; Request Representation</a>
     <a href="#grievance-form" class="quick-link">Submit a Concern</a>
     <a href="#rights" class="quick-link">Know Your Rights</a>
@@ -504,18 +608,18 @@
   <div class="section-label">Take Action</div>
   <h2 class="section-title">Submit a Grievance<br>Concern</h2>
   <div style="max-width:680px;">
-    <p style="color:var(--gray-light);font-size:15px;line-height:1.8;margin-bottom:2rem;font-weight:300;">Think your rights under the contract may have been violated? Submit your concern to a union steward for assessment. A steward will review your situation and follow up with you directly.</p>
-    <div style="background:var(--surface);border:1px solid rgba(30,41,59,0.15);padding:2.5rem;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-dark));"></div>
-      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:24px;text-transform:uppercase;color:var(--deep-slate);margin-bottom:0.5rem;">Grievance Assessment Form</div>
-      <p style="color:var(--gray);font-size:13px;line-height:1.7;margin-bottom:1.5rem;">This form goes directly to your stewards. You do not need to know if something is a grievance — just tell us what happened and we will assess it for you.</p>
+    <p style="color:var(--text-soft);font-size:15px;line-height:1.8;margin-bottom:2rem;font-weight:300;">Think your rights under the contract may have been violated? Submit your concern to a union steward for assessment. A steward will review your situation and follow up with you directly.</p>
+    <div style="background:#fff;border:1px solid rgba(30,41,59,0.1);padding:2.5rem;position:relative;overflow:hidden;border-radius:4px;box-shadow:0 4px 20px rgba(30,41,59,0.06);">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan-dark),var(--cyan),var(--cyan-dark));"></div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;color:var(--slate);margin-bottom:0.5rem;">Grievance Assessment Form</div>
+      <p style="color:var(--text-soft);font-size:13px;line-height:1.7;margin-bottom:1.5rem;">This form goes directly to your stewards. You do not need to know if something is a grievance — just tell us what happened and we will assess it for you.</p>
       <ul style="list-style:none;padding:0;margin:0 0 2rem;">
-        <li style="font-size:13px;color:var(--gray-light);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--gold-dark);font-weight:700;">&#10003;</span> No obligation to file a formal grievance</li>
-        <li style="font-size:13px;color:var(--gray-light);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--gold-dark);font-weight:700;">&#10003;</span> A steward will follow up with you directly</li>
-        <li style="font-size:13px;color:var(--gray-light);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--gold-dark);font-weight:700;">&#10003;</span> You have 15 days from the incident to file — do not wait</li>
+        <li style="font-size:13px;color:var(--text-soft);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--cyan-dark);font-weight:700;">&#10003;</span> No obligation to file a formal grievance</li>
+        <li style="font-size:13px;color:var(--text-soft);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--cyan-dark);font-weight:700;">&#10003;</span> A steward will follow up with you directly</li>
+        <li style="font-size:13px;color:var(--text-soft);padding:5px 0;display:flex;gap:10px;align-items:center;"><span style="color:var(--cyan-dark);font-weight:700;">&#10003;</span> You have 15 days from the incident to file — do not wait</li>
       </ul>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScokQybKshydabF_VbNNa___DoNED8-HNyBWmEsMj7lSycYlQ/viewform?usp=header" target="_blank" style="display:inline-block;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:var(--true-white);font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;text-decoration:none;">Open the Form &rarr;</a>
-      <p style="color:var(--gray);font-size:12px;margin-top:1rem;">Opens in a new tab &middot; Powered by Google Forms</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScokQybKshydabF_VbNNa___DoNED8-HNyBWmEsMj7lSycYlQ/viewform?usp=header" target="_blank" style="display:inline-block;background:linear-gradient(135deg,var(--cyan-dark),var(--cyan));color:var(--slate);font-family:'Syne',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;padding:14px 28px;text-decoration:none;border-radius:3px;">Open the Form &rarr;</a>
+      <p style="color:var(--text-muted);font-size:12px;margin-top:1rem;">Opens in a new tab &middot; Powered by Google Forms</p>
     </div>
   </div>
 </section>
@@ -523,31 +627,31 @@
 <section id="events">
   <div class="section-label">Stay Informed</div>
   <h2 class="section-title">Upcoming Dates<br>&amp; Events</h2>
-  <p style="color:var(--gray);font-size:13px;margin-bottom:2rem;">All steward trainings held at SEIU Local 1107 &middot; 2250 S. Rancho Drive #165, Las Vegas, NV 89102. <a href="https://seiunv.org/membership_trainings/" target="_blank" style="color:var(--gold-dark);text-decoration:none;">View full training schedule &rarr;</a></p>
+  <p style="color:var(--text-muted);font-size:13px;margin-bottom:2rem;">All steward trainings held at SEIU Local 1107 &middot; 2250 S. Rancho Drive #165, Las Vegas, NV 89102. <a href="https://seiunv.org/membership_trainings/" target="_blank" style="color:var(--cyan-dark);text-decoration:none;">View full training schedule &rarr;</a></p>
   <div class="events-list">
     <div class="event-item">
       <div class="event-date"><div class="month">Apr</div><div class="day">29</div></div>
-      <div class="event-info"><div class="event-title">S5 Classification Meeting <span style="color:var(--gold-dark);font-size:11px;font-weight:700;letter-spacing:0.1em;">PT / OT / SLP</span></div><div class="event-detail">7:30 PM &middot; 8:30 PM &middot; Zoom &middot; <a href="https://us02web.zoom.us/j/88520433044?pwd=8Z3WpSkjc5e88CawhPmTr250R76pew.1" target="_blank" style="color:var(--gold-dark);text-decoration:none;">Join Zoom Meeting &rarr;</a></div></div>
+      <div class="event-info"><div class="event-title">S5 Classification Meeting <span style="color:var(--cyan-dark);font-size:11px;font-weight:700;letter-spacing:0.1em;">PT / OT / SLP</span></div><div class="event-detail">7:30 PM &middot; 8:30 PM &middot; Zoom &middot; <a href="https://us02web.zoom.us/j/88520433044?pwd=8Z3WpSkjc5e88CawhPmTr250R76pew.1" target="_blank" style="color:var(--cyan-dark);text-decoration:none;">Join Zoom Meeting &rarr;</a></div></div>
       <div class="event-badge">Zoom</div>
     </div>
     <div class="event-item">
       <div class="event-date"><div class="month">May</div><div class="day">06</div></div>
-      <div class="event-info"><div class="event-title">Beginner Steward Training</div><div class="event-detail">1:00 PM &middot; 3:30 PM &middot; Intro to SEIU 1107, Role of a Steward, Weingarten Rights &middot; <a href="https://www.mobilize.us/seiunevada/event/873232/" target="_blank" style="color:var(--gold-dark);text-decoration:none;">Sign Up &rarr;</a></div></div>
+      <div class="event-info"><div class="event-title">Beginner Steward Training</div><div class="event-detail">1:00 PM &middot; 3:30 PM &middot; Intro to SEIU 1107, Role of a Steward, Weingarten Rights &middot; <a href="https://www.mobilize.us/seiunevada/event/873232/" target="_blank" style="color:var(--cyan-dark);text-decoration:none;">Sign Up &rarr;</a></div></div>
       <div class="event-badge">Training</div>
     </div>
     <div class="event-item">
       <div class="event-date"><div class="month">May</div><div class="day">21</div></div>
-      <div class="event-info"><div class="event-title">Intermediate Steward Training <span style="color:var(--red);font-size:11px;font-weight:700;letter-spacing:0.1em;">REQUIRED</span></div><div class="event-detail">5:30 PM &middot; 8:00 PM &middot; Grievance Writing, 7 Steps of Just Cause, Disparate Treatment &middot; <a href="https://www.mobilize.us/seiunevada/event/873238/" target="_blank" style="color:var(--gold-dark);text-decoration:none;">Sign Up &rarr;</a></div></div>
+      <div class="event-info"><div class="event-title">Intermediate Steward Training <span style="color:var(--coral);font-size:11px;font-weight:700;letter-spacing:0.1em;">REQUIRED</span></div><div class="event-detail">5:30 PM &middot; 8:00 PM &middot; Grievance Writing, 7 Steps of Just Cause, Disparate Treatment &middot; <a href="https://www.mobilize.us/seiunevada/event/873238/" target="_blank" style="color:var(--cyan-dark);text-decoration:none;">Sign Up &rarr;</a></div></div>
       <div class="event-badge">Training</div>
     </div>
     <div class="event-item">
       <div class="event-date"><div class="month">Jun</div><div class="day">03</div></div>
-      <div class="event-info"><div class="event-title">Beginner Steward Training</div><div class="event-detail">5:30 PM &middot; 8:00 PM &middot; Intro to SEIU 1107, Role of a Steward, Weingarten Rights &middot; <a href="https://www.mobilize.us/seiunevada/event/873232/" target="_blank" style="color:var(--gold-dark);text-decoration:none;">Sign Up &rarr;</a></div></div>
+      <div class="event-info"><div class="event-title">Beginner Steward Training</div><div class="event-detail">5:30 PM &middot; 8:00 PM &middot; Intro to SEIU 1107, Role of a Steward, Weingarten Rights &middot; <a href="https://www.mobilize.us/seiunevada/event/873232/" target="_blank" style="color:var(--cyan-dark);text-decoration:none;">Sign Up &rarr;</a></div></div>
       <div class="event-badge">Training</div>
     </div>
     <div class="event-item">
       <div class="event-date"><div class="month">Jun</div><div class="day">18</div></div>
-      <div class="event-info"><div class="event-title">Advanced Steward Training</div><div class="event-detail">3:30 PM &middot; 7:30 PM &middot; Arbitration, Advocacy Skills, Contract Interpretation, Step 2 Prep &middot; <a href="https://www.mobilize.us/seiunevada/event/873240/" target="_blank" style="color:var(--gold-dark);text-decoration:none;">Sign Up &rarr;</a></div></div>
+      <div class="event-info"><div class="event-title">Advanced Steward Training</div><div class="event-detail">3:30 PM &middot; 7:30 PM &middot; Arbitration, Advocacy Skills, Contract Interpretation, Step 2 Prep &middot; <a href="https://www.mobilize.us/seiunevada/event/873240/" target="_blank" style="color:var(--cyan-dark);text-decoration:none;">Sign Up &rarr;</a></div></div>
       <div class="event-badge">Training</div>
     </div>
   </div>
@@ -618,11 +722,11 @@
 <footer>
   <div>
     <div class="footer-logo">SPU</div>
-    <div class="footer-tagline">By Members. For Members. We are the Union!</div>
+    <div class="footer-tagline">Sunrise Professionals Unit &mdash; By Members. For Members. We are the Union!</div>
   </div>
   <div class="footer-info">
     Union Steward: <a href="mailto:kalanispusteward@gmail.com">kalanispusteward@gmail.com</a><br>
-    <span style="color:rgba(248,250,252,0.4);font-size:11px;">&copy; 2026 Sunrise Professionals Unit. All rights reserved.</span>
+    <span style="color:rgba(200,215,230,0.35);font-size:11px;">&copy; 2026 Sunrise Professionals Unit. All rights reserved.</span>
     <div class="footer-updated">Last updated: April 2026</div>
   </div>
 </footer>
