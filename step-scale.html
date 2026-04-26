@@ -2,84 +2,155 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Wage Calculator - SPU Independent</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Step Scale - Sunrise Professionals Unit</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --electric: #00D2FF; --slate: #1E293B; --happy-bg: #F8FAFC; --coral: #FF6B6B; }
-  body { font-family: 'Barlow', sans-serif; background: var(--happy-bg); margin: 0; }
-  .global-disclaimer { background: #FEF2F2; color: #991B1B; padding: 14px; font-weight: 800; text-align: center; border-bottom: 4px solid var(--coral); text-transform: uppercase; }
-  .calc-wrap { max-width: 800px; margin: 3rem auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-  select, input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #E2E8F0; border-radius: 6px; }
-  .btn-calc { background: var(--electric); color: var(--slate); border: none; padding: 15px; width: 100%; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 6px; }
-  .result-display { margin-top: 2rem; text-align: center; display: none; }
-  .rate { font-size: 64px; font-weight: 900; color: var(--electric); }
+  :root {
+    --electric: #00D2FF; --coral: #FF6B6B; --slate: #1E293B; --white: #F8FAFC;
+    --surface: #FFFFFF; --border: rgba(0, 210, 255, 0.2); --disclaimer-bg: #FEF2F2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #F1F5F9; color: var(--slate); font-family: 'Barlow', sans-serif; line-height: 1.6; }
+  
+  /* STICKY MANDATORY DISCLAIMER */
+  .global-disclaimer { 
+    background: var(--disclaimer-bg); color: #991B1B; padding: 12px; font-weight: 800; 
+    text-align: center; border-bottom: 4px solid var(--coral); position: sticky; top: 0; z-index: 1000; text-transform: uppercase; font-size: 13px;
+  }
+
+  nav { background: var(--slate); color: white; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; color: var(--electric); text-decoration: none; text-transform: uppercase; }
+  
+  .page-wrap { max-width: 1000px; margin: 0 auto; padding: 3rem 1.5rem; }
+  .tool-card { background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+  
+  label { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; color: var(--slate); text-transform: uppercase; margin-bottom: 5px; }
+  select, input { width: 100%; padding: 12px; border: 2px solid #E2E8F0; border-radius: 4px; font-family: 'Barlow'; }
+  
+  button { background: var(--electric); color: var(--slate); border: none; padding: 14px 28px; font-weight: 900; text-transform: uppercase; cursor: pointer; border-radius: 4px; font-family: 'Barlow Condensed'; width: 100%; font-size: 18px; }
+  
+  .result { display: none; margin-top: 2rem; padding: 2rem; background: var(--slate); color: white; border-radius: 8px; }
+  .result.show { display: block; }
+  .big-rate { font-size: 56px; font-weight: 900; color: var(--electric); display: block; }
+  
+  table { width: 100%; border-collapse: collapse; margin-top: 2rem; font-size: 13px; }
+  th { background: #E2E8F0; padding: 10px; text-align: left; }
+  td { padding: 8px; border-bottom: 1px solid #E2E8F0; }
 </style>
 </head>
 <body>
-<div class="global-disclaimer">INDEPENDENT MEMBER SITE: NOT AFFILIATED WITH SEIU 1107 OR SUNRISE HOSPITAL.</div>
+<div class="global-disclaimer">This site is independently maintained by a union member. It is not affiliated with or endorsed by SEIU Local 1107 or Sunrise Hospital. Content reflects the views of individual members.</div>
 
-<div class="calc-wrap">
-  <h1 style="font-family:'Barlow Condensed'; text-transform: uppercase; font-size: 42px;">Wage Calculator</h1>
-  <label>Profession</label>
-  <select id="profession">
-    <option value="S1">Social Worker BSW (S1)</option>
-    <option value="S2">Social Worker MSW (S2)</option>
-    <option value="S3">Medical Technologist (S3)</option>
-    <option value="S4">Sr Medical Technologist (S4)</option>
-    <option value="S5">PT / OT / SLP (S5)</option>
-    <option value="S6">Clinical Pharmacist (S6)</option>
-  </select>
-  <label>Scale Year</label>
-  <select id="scaleYear">
-    <option value="year1">Year 1 (Current)</option>
-    <option value="year2">Year 2 (July 2026)</option>
-    <option value="year3">Year 3 (July 2027)</option>
-  </select>
-  <label>Status</label>
-  <select id="empStatus">
-    <option value="FTPT">Full-Time / Part-Time</option>
-    <option value="PRN">PRN / VSP</option>
-  </select>
-  <button class="btn-calc" onclick="calculate()">Calculate Rate</button>
+<nav>
+  <a href="index.html" class="nav-logo">SPU HUB</a>
+  <a href="index.html" style="color:white; text-decoration:none; font-size:12px; font-weight:700;">BACK TO HOME</a>
+</nav>
 
-  <div id="result" class="result-display">
-    <div class="rate" id="rateVal">$0.00</div>
-    <p id="note" style="font-weight: 600;"></p>
+<div class="page-wrap">
+  <h1 style="font-family:'Barlow Condensed'; font-size: 48px; text-transform: uppercase; margin-bottom: 1rem;">Wage Scale Calculator</h1>
+  
+  <div class="tool-card">
+    <div class="form-grid">
+      <div>
+        <label>Profession</label>
+        <select id="profession">
+          <option value="S1">Social Worker BSW (S1)</option>
+          <option value="S2">Social Worker MSW (S2)</option>
+          <option value="S3">Medical Technologist (S3)</option>
+          <option value="S4">Sr Medical Technologist (S4)</option>
+          <option value="S5">PT / OT / SLP (S5)</option>
+          <option value="S6">Pharmacist (S6)</option>
+        </select>
+      </div>
+      <div>
+        <label>Status</label>
+        <select id="status">
+          <option value="FTPT">Full-time / Part-time</option>
+          <option value="PRN">PRN / VSP</option>
+        </select>
+      </div>
+      <div>
+        <label>Scale Year</label>
+        <select id="scaleYear">
+          <option value="year1">Year 1 (Oct 2025)</option>
+          <option value="year2">Year 2 (July 2026)</option>
+          <option value="year3">Year 3 (July 2027)</option>
+        </select>
+      </div>
+      <div>
+        <label>Years of Experience</label>
+        <input id="yoe" type="number" step="0.1" placeholder="e.g. 7.5">
+      </div>
+    </div>
+    <button onclick="calculateStep()">Calculate Hourly Rate</button>
+  </div>
+
+  <div class="result" id="resultBox">
+    <span id="outStep" style="text-transform:uppercase; font-weight:700; color:var(--coral);"></span>
+    <span class="big-rate" id="outRate"></span>
+    <p id="outNote" style="opacity:0.8; font-size:14px;"></p>
   </div>
 </div>
 
 <script>
+const steps = [0, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 35];
 const wageData = {
-  year1: { // Appendix A Year 1 [cite: 1209-1215, 1416-1421, 1474-1479, 1649-1654]
-    10: [42.28, 45.48, 45.93, 48.44, 58.51, 83.86],
-    13: [43.54, 46.89, 47.37, 49.89, 60.28, 86.36],
-    35: [49.09, 52.78, 53.28, 56.15, 67.90, 97.29]
+  year1: { // [cite: 1209-1215, 1416-1421, 1649-1654]
+    0:[32.69,35.16,35.50,37.45,45.26,64.84], 0.5:[33.21,35.72,36.07,37.99,45.94,65.81], 1:[33.72,36.26,36.63,38.61,46.63,66.81], 2:[34.75,37.37,37.73,39.74,48.03,68.80],
+    3:[35.74,38.48,38.87,40.98,49.47,70.88], 4:[36.82,39.60,39.99,42.16,50.95,73.01], 5:[37.92,40.79,41.18,43.45,52.48,75.21], 6:[39.08,42.03,42.44,44.75,54.05,77.46],
+    7:[39.84,42.84,43.27,45.65,55.14,79.00], 8:[40.62,43.72,44.15,46.54,56.24,80.58], 9:[41.47,44.61,45.04,47.44,57.36,82.20], 10:[42.28,45.48,45.93,48.44,58.51,83.86],
+    11:[42.72,45.95,46.41,48.89,59.10,84.67], 12:[43.11,46.39,46.87,49.40,59.69,85.55], 13:[43.54,46.89,47.37,49.89,60.28,86.36], 14:[44.02,47.30,47.76,50.39,60.89,87.26],
+    15:[44.44,47.80,48.26,50.90,61.50,88.12], 16:[44.91,48.25,48.72,51.38,62.11,88.96], 17:[45.34,48.72,49.20,51.94,62.73,89.89], 18:[45.79,49.23,49.71,52.41,63.36,90.80],
+    19:[46.25,49.71,50.20,52.94,63.99,91.69], 20:[46.72,50.20,50.71,53.46,64.63,92.61], 25:[47.65,51.23,51.75,54.55,65.92,94.48], 35:[49.09,52.78,53.28,56.15,67.90,97.29]
   },
-  year2: { // Appendix A Year 2 [cite: 1216-1221, 1422-1427, 1480-1485, 1655-1660]
-    10: [43.12, 46.39, 46.85, 49.41, 59.68, 85.54],
-    13: [44.41, 47.83, 48.32, 50.89, 61.49, 88.08],
-    35: [50.08, 53.84, 54.35, 57.27, 69.26, 99.24]
+  year2: { // [cite: 1216-1221, 1422-1427, 1655-1660]
+    0:[33.34,35.86,36.21,38.20,46.17,66.14], 0.5:[33.88,36.43,36.79,38.75,46.86,67.13], 1:[34.39,36.99,37.36,39.38,47.56,68.15], 2:[35.44,38.12,38.49,40.54,48.99,70.18],
+    3:[36.46,39.25,39.64,41.80,50.46,72.30], 4:[37.56,40.39,40.79,43.00,51.97,74.47], 5:[38.68,41.61,42.01,44.32,53.53,76.72], 6:[39.87,42.87,43.28,45.64,55.14,79.01],
+    7:[40.64,43.70,44.13,46.56,56.24,80.58], 8:[41.43,44.59,45.03,47.47,57.36,82.19], 9:[42.30,45.50,45.94,48.39,58.51,83.84], 10:[43.12,46.39,46.85,49.41,59.68,85.54],
+    11:[43.57,46.87,47.33,49.87,60.28,86.37], 12:[43.98,47.32,47.80,50.39,60.88,87.26], 13:[44.41,47.83,48.32,50.89,61.49,88.08], 14:[44.90,48.25,48.71,51.39,62.10,89.01],
+    15:[45.33,48.76,49.23,51.92,62.72,89.88], 16:[45.81,49.22,49.70,52.41,63.35,90.74], 17:[46.25,49.69,50.19,52.98,63.99,91.69], 18:[46.71,50.21,50.71,53.45,64.63,92.62],
+    19:[47.17,50.70,51.20,54.00,65.27,93.52], 20:[47.65,51.20,51.72,54.53,65.92,94.47], 25:[48.60,52.25,52.78,55.64,67.24,96.36], 35:[50.08,53.84,54.35,57.27,69.26,99.24]
   },
-  year3: { // Appendix A Year 3 [cite: 1222-1227, 1428-1433, 1486-1489, 1661-1666]
-    10: [43.77, 47.09, 47.56, 50.15, 60.58, 86.82],
-    13: [45.08, 48.55, 49.04, 51.65, 62.41, 89.40],
-    35: [50.83, 54.64, 55.16, 58.13, 70.30, 100.73]
+  year3: { // [cite: 1222-1227, 1428-1433, 1661-1666]
+    0:[33.84,36.40,36.75,38.77,46.86,67.13], 0.5:[34.39,36.98,37.34,39.33,47.56,68.13], 1:[34.91,37.54,37.92,39.97,48.27,69.17], 2:[35.97,38.69,39.07,41.14,49.72,71.23],
+    3:[37.00,39.84,40.24,42.43,51.21,73.39], 4:[38.12,41.00,41.40,43.65,52.75,75.59], 5:[39.26,42.23,42.64,44.99,54.33,77.87], 6:[40.46,43.51,43.93,46.32,55.96,80.20],
+    7:[41.25,44.35,44.80,47.26,57.08,81.79], 8:[42.05,45.26,45.71,48.18,58.22,83.42], 9:[42.94,46.18,46.63,49.12,59.39,85.10], 10:[43.77,47.09,47.56,50.15,60.58,86.82],
+    11:[44.22,47.57,48.04,50.62,61.18,87.66], 12:[44.64,48.03,48.52,51.15,61.79,88.57], 13:[45.08,48.55,49.04,51.65,62.41,89.40], 14:[45.57,48.97,49.44,52.17,63.04,90.34],
+    15:[46.01,49.49,49.96,52.70,63.67,91.23], 16:[46.50,49.95,50.44,53.20,64.30,92.10], 17:[46.94,50.44,50.94,53.77,64.95,93.06], 18:[47.41,50.97,51.47,54.26,65.59,94.01],
+    19:[47.88,51.46,51.97,54.81,66.25,94.93], 20:[48.36,51.97,52.50,55.35,66.91,95.88], 25:[49.33,53.04,53.58,56.47,68.25,97.81], 35:[50.83,54.64,55.16,58.13,70.30,100.73]
   }
 };
 
-function calculate() {
+function calculateStep() {
   const grade = document.getElementById('profession').value;
+  const status = document.getElementById('status').value;
   const year = document.getElementById('scaleYear').value;
-  const status = document.getElementById('empStatus').value;
+  const yoe = parseFloat(document.getElementById('yoe').value || 0);
   const gIdx = ['S1','S2','S3','S4','S5','S6'].indexOf(grade);
   
-  let step = 10; // Default for most FTPT and PRN
-  if(grade === 'S2') step = 13;
-  if(grade === 'S5') step = 35;
+  let finalStep;
+  let note = "";
 
-  const rate = wageData[year][step][gIdx];
-  document.getElementById('rateVal').innerText = `$${rate.toFixed(2)}`;
-  document.getElementById('result').style.display = 'block';
-  document.getElementById('note').innerText = `Rate based on Step ${step} (Contractual minimum)`;
+  if (status === 'PRN') {
+    // 
+    finalStep = 10;
+    if (grade === 'S2') finalStep = 13;
+    if (grade === 'S5') finalStep = 35;
+    note = "PRN Rate Rule: Step 10 (S2=Step 13, S5=Step 35)";
+  } else {
+    // Floor to nearest step 
+    finalStep = steps[0];
+    for (const s of steps) { if (yoe >= s) finalStep = s; }
+    note = `Rounded to Step ${finalStep} based on ${yoe} Years of Experience.`;
+  }
+
+  const rate = wageData[year][finalStep][gIdx];
+  document.getElementById('outRate').innerText = `$${rate.toFixed(2)}`;
+  document.getElementById('outStep').innerText = `Matched Step: ${finalStep}`;
+  document.getElementById('outNote').innerText = note;
+  document.getElementById('resultBox').classList.add('show');
 }
 </script>
 </body>
